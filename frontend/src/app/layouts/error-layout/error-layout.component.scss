@@ -1,8 +1,8 @@
 .error-layout-container {
   background-image: url('/assets/images/backgrounds/error-background.svg');
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   height: 100vh;
   display: flex;
   justify-content: center;
