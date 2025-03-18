@@ -1,0 +1,76 @@
+<div class="flex flex-col gap-5 mb-3">
+  <p class="text-center">
+    <span class="text-xl font-extrabold text-primary">Login</span>
+  </p>
+  <p>Digite seus dados para acessar sua conta</p>
+</div>
+<form class="flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div>
+    <p-float-label variant="on">
+      <label for="email">Email</label>
+      <input
+        pInputText
+        pSize="small"
+        [pKeyFilter]="'email'"
+        type="email"
+        id="email"
+        formControlName="email"
+        fluid>
+    </p-float-label>
+    <div class="min-h-6">
+      @if(form.get('email')?.touched && form.get('email')?.dirty) {
+        @if(form.controls['email'].hasError('required')){
+          <span class="text-red-800 text-xs">Este campo é obrigatório</span>
+        }
+        @if(form.controls['email'].hasError('email')){
+          <span class="text-red-800 text-xs">Este campo deve conter um email válido</span>
+        }
+      }
+    </div>
+  </div>
+  <div>
+    <p-float-label variant="on">
+      <label for="password">Senha</label>
+      <input
+        pInputText
+        pSize="small"
+        type="password"
+        id="password"
+        formControlName="password"
+        fluid>
+    </p-float-label>
+    <div class="min-h-6">
+      @if(form.get('password')?.touched && form.get('password')?.dirty) {
+        @if(form.controls['password'].hasError('required')){
+          <span class="text-red-800 text-xs">Este campo é obrigatório</span>
+        }
+        @if(form.controls['password'].hasError('minlength')){
+          <span class="text-red-800 text-xs">Este campo deve ter ao menos 8 caracteres</span>
+        }
+      }
+    </div>
+  </div>
+  <div class="flex gap-2">
+    <p-checkbox
+      class="flex items-center"
+      id="keep-signed"
+      formControlName="rememberMe"
+      binary
+    />
+    <label for="keep-signed">Mantenha-me conectado</label>
+  </div>
+  <div class="flex flex-col gap-2 mt-5">
+    <div>
+      <a class="underline cursor-pointer hover:text-blue-800">Esqueci minha senha</a>
+    </div>
+    <button
+      pButton
+      type="submit"
+    >
+      Entrar
+    </button>
+    <div>
+      <span class="text-sm hover:underline cursor-pointer hover:text-blue-800">Ainda não tenho cadastro</span>
+    </div>
+  </div>
+</form>

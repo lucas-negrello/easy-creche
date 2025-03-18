@@ -1,0 +1,26 @@
+.main-layout-container {
+  background-image: url('/assets/images/backgrounds/main-background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+}
+
+.main-layout-sidebar {
+  height: 100%;
+}
+
+.main-layout-body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-layout-content {
+  flex: 1;
+  padding: 15px;
+}

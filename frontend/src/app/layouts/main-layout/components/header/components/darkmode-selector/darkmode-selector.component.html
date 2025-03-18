@@ -1,0 +1,6 @@
+<p-button
+  [icon]="themesService.darkMode$.getValue() ? 'pi pi-sun' : 'pi pi-moon'"
+  rounded
+  text
+  (onClick)="themesService.toggleDarkMode()"
+/>
