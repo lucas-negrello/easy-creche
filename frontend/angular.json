@@ -28,7 +28,13 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
               }
             ],
             "styles": [
@@ -50,9 +56,21 @@
                   "maximumError": "8kB"
                 }
               ],
+              "define": {
+                "APP_KEY": "'production-key'"
+              },
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
+              "define": {
+                "APP_KEY": "'development-key'"
+              },
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
@@ -98,5 +116,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

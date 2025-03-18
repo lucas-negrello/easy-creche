@@ -1,59 +1,56 @@
-# Frontend
+# Easy Creche WebApp
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+## Tecnologias e ferramentas usadas:
 
-## Development server
+### [Angular 19](https://angular.dev/)
+- Framework principal, onde está baseado todo sistema de frontend
+### [Tailwind](https://tailwindcss.com/)
+- Utilizado para estilização de componentes de forma otimizada.
+### [PrimeNG](https://primeng.org/)
+- Biblioteca de componentes para o Angular, afim de otimizar e simplificar o desenvolvimento e as futuras manutenções.
 
-To start a local development server, run:
+## Passo a passo para contribuir com o site
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Faça um Fork da aplicaçao.
+- Faça as instalações de dependencias:
 
 ```bash
-ng generate component component-name
+    npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Após isto, rode o comando para começar a servir a aplicação:
 
 ```bash
-ng generate --help
+  ng serve
 ```
 
-## Building
+- Após isto, a aplicação deve estar disponível na porta 8084 em localhost:
+  - http://localhost:4200
 
-To build the project run:
+## Passo a passo para contribuir:
 
 ```bash
-ng build
+    git checkout main
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Gere uma branch a partir da main com um nome breve e descritivo:
 
 ```bash
-ng test
+    git checkout -b "NOME_DA_BRANCH"
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+- Com isto, você já estará trabalhando na sua branch.
+- Após realizar seu código, execute na raiz de `frontend`:
 
 ```bash
-ng e2e
+    git add .
+```
+```bash
+    git commit -m "Uma breve descrição do que foi feito"
+```
+```bash
+    git push NOME_DA_BRANCH main
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Com isto, você terá enviado seu código para o github. Lá, será possível criar uma Pull Request para a branch main, que deverá ser aprovada e feito o merge caso esteja funcional.
+### **NÃO ESQUEÇA DE COMITAR SEU CÓDIGO PARA O REPOSITÓRIO E CRIAR A PULL REQUEST!!**
