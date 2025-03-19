@@ -4,12 +4,16 @@ import {Button} from 'primeng/button';
 import { LayoutService } from '../../../../core/services/layout/layout.service';
 import {ActivatedRoute} from '@angular/router';
 import {NavigationService} from '../../../../core/services/navigation/navigation.service';
+import {MenuService} from '../../../../core/services/menu/menu.service';
+import {SidebarMenu} from '../../../../core/interfaces/menu/menu.interface';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   imports: [
     Drawer,
     Button,
+    NgClass,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
@@ -20,13 +24,21 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   private readonly _layoutService: LayoutService = inject(LayoutService);
   private readonly _route: ActivatedRoute = inject(ActivatedRoute);
   private readonly _navigationService: NavigationService = inject(NavigationService);
-  visible: boolean = this._layoutService.sidebarStatus$.getValue();
+  private readonly _menuService: MenuService = inject(MenuService);
+
+  protected menu!: SidebarMenu[];
+
+  public visible: boolean = this._layoutService.sidebarStatus$.getValue();
+
 
 
   ngAfterViewInit() {
     this._layoutService.sidebarStatus$.subscribe(status => {
       this.visible = status;
     });
+    this._menuService.getSidebarMenu().subscribe(menu => {
+      this.menu = menu;
+    })
   }
 
   protected toggleSidebar(): void {
