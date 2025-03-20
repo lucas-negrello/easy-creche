@@ -1,5 +1,8 @@
 import {Routes} from '@angular/router';
 import {MainLayoutComponent} from '../../layouts/main-layout/main-layout.component';
+import {
+  RegisterAdminFormComponent
+} from './register-admin/components/register-admin-form/register-admin-form.component';
 
 export const Private: Routes = [
   {
@@ -15,8 +18,8 @@ export const Private: Routes = [
       {
         path: 'register-admin',
         title: 'Registrar Administrador',
-        loadComponent: () => import('./register-admin/register-admin.component')
-          .then(c => c.RegisterAdminComponent),
+        loadChildren: () => import('./register-admin/register-admin.routes')
+          .then(r => r.RegisterAdminRoutes),
       },
       {
         path: 'register-responsible',

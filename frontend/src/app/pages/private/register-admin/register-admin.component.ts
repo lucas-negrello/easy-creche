@@ -2,20 +2,21 @@ import {Component, inject} from '@angular/core';
 import {LayoutService} from '../../../core/services/layout/layout.service';
 import {Card} from 'primeng/card';
 import {DatatableComponent} from '../../../shared/datatable/datatable.component';
-import {Observable, of} from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import {
   CustomCellRendererParams
 } from '../../../shared/datatable/components/grid-action-buttons/grid-action-buttons.interface';
-import {ColDef, ICellRendererParams} from 'ag-grid-community';
+import {ColDef, ICellRendererParams, ValueGetterParams} from 'ag-grid-community';
 import {TableCustomConfig} from '../../../shared/datatable/datatable.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminInterface} from './interfaces/admin.interface';
+import {RegisterAdminService} from './services/register-admin.service';
 
 @Component({
   selector: 'app-register-admin',
   imports: [
     Card,
-    DatatableComponent
+    DatatableComponent,
   ],
   templateUrl: './register-admin.component.html',
   styleUrl: './register-admin.component.scss'
@@ -24,19 +25,10 @@ export class RegisterAdminComponent {
   private readonly _layoutService: LayoutService = inject(LayoutService);
   private readonly _router: Router = inject(Router);
   private readonly _route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly _registerAdminService: RegisterAdminService = inject(RegisterAdminService);
 
   protected loading: boolean = false;
-  protected rowData$: Observable<AdminInterface[]> = of([
-    {
-      nome: 'fulana',
-      cpf: '12345678900',
-      endereco: 'rua abc, rio grande do sul, brasil',
-      cargo: 'diretora',
-      setor: 'diretoria',
-      email: 'diretora@creche.com',
-      celular: '54999876543',
-    }
-  ]);
+  protected rowData$: Observable<AdminInterface[]> = of([]);
   protected cellRenderParams: Partial<CustomCellRendererParams<AdminInterface>> = {
     format: 'ellipsis',
     actions: [
@@ -72,47 +64,67 @@ export class RegisterAdminComponent {
     const screenWidth = window.innerWidth;
 
     if(screenWidth <= 425) return [
-      { headerName: 'Nome', field: 'nome' },
+      { headerName: 'Nome', field: 'name' },
       { headerName: 'Ações', field: 'action', cellRendererParams: this.cellRenderParams },
     ]
     if(screenWidth <= 768) return [
-      { headerName: 'Nome', field: 'nome' },
+      { headerName: 'Nome', field: 'name' },
       { headerName: 'Email', field: 'email' },
       { headerName: 'Ações', field: 'action', cellRendererParams: this.cellRenderParams },
     ]
     if(screenWidth <= 1024) return [
-      { headerName: 'Nome', field: 'nome' },
-      { headerName: 'CPF', field: 'cpf' },
+      { headerName: 'Nome', field: 'name' },
+      { headerName: 'CPF', field: 'cpf', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.cpf},
       { headerName: 'Email', field: 'email' },
-      { headerName: 'Celular', field: 'celular' },
+      { headerName: 'Celular', field: 'phone', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.phone},
       { headerName: 'Ações', field: 'action', cellRendererParams: this.cellRenderParams },
     ]
     return [
-      { headerName: 'Nome', field: 'nome' },
-      { headerName: 'CPF', field: 'cpf' },
-      { headerName: 'Endereço', field: 'endereco' },
-      { headerName: 'Cargo', field: 'cargo' },
-      { headerName: 'Setor', field: 'setor' },
+      { headerName: 'Nome', field: 'name' },
+      { headerName: 'CPF', field: 'cpf', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.cpf },
+      { headerName: 'Endereço', field: 'address', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.address},
+      { headerName: 'Cargo', field: 'function', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.function},
+      { headerName: 'Setor', field: 'workspace', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.workspace},
       { headerName: 'Email', field: 'email' },
-      { headerName: 'Celular', field: 'celular' },
+      { headerName: 'Celular', field: 'phone', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.phone},
       { headerName: 'Ações', field: 'action', cellRendererParams: this.cellRenderParams },
     ]
   }
 
   protected fetchRowData$(): void {
-
+    this.rowData$ = this._registerAdminService.findAll().pipe(
+      map(apiResponse => {
+        console.log(apiResponse.data);
+        return apiResponse.data;
+      })
+    );
   }
 
   public edit(params: ICellRendererParams<AdminInterface>) {
-    console.log('edit', params);
+    const id = params.data?.id;
+    if (id) {
+      this._router.navigate([id, 'edit'], { relativeTo: this._route });
+    }
   }
 
   public view(params: ICellRendererParams<AdminInterface>) {
-    console.log('view', params);
+    const id = params.data?.id;
+    if (id) {
+      this._router.navigate([id], { relativeTo: this._route });
+    }
   }
 
   public delete(params: ICellRendererParams<AdminInterface>) {
-    console.log('delete', params);
+    const id = params.data?.id;
+    if (id) {
+      this._registerAdminService.delete(id).subscribe({
+        next: () => {
+          this.loading = true;
+          this.fetchRowData$();
+          this.loading = false;
+        }
+      });
+    }
   }
 
   public add() {
