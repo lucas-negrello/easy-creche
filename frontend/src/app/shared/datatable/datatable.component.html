@@ -1,0 +1,43 @@
+<div class="shared-datatable-container">
+  @if (hasHeader) {
+    <div class="datatable-action-buttons-container mb-5">
+      @if (addCallbackFn !== undefined) {
+        <p-button [label]="'Adicionar'" severity="primary" size="small" (onClick)="handleAdd()"/>
+      }
+      <div class="max-md:hidden">
+        <p-float-label variant="on">
+          <input pInputText id="quickSearch" [(ngModel)]="quickSearch" pSize="small" [ngModelOptions]="{ standalone: true }"/>
+          <label for="quickSearch">
+            {{ 'Filtrar' }}
+          </label>
+        </p-float-label>
+      </div>
+
+    </div>
+  }
+  <div class="ag-grid">
+    @if (rowData$ | async; as rowData) {
+      <ag-grid-angular
+        class="h-full"
+        [theme]="theme"
+        [gridOptions]="gridOptions"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [columnDefs]="colDefs"
+        [rowSelection]="rowSelection"
+        [pagination]="pagination"
+        [paginationPageSize]="paginationPageSize"
+        [paginationPageSizeSelector]="paginationPageSizeSelector"
+        [suppressPaginationPanel]="supressPaginationPanel"
+        [quickFilterText]="quickSearch"
+        [isExternalFilterPresent]="isExternalFilterPresent"
+        [doesExternalFilterPass]="doesExternalFilterPass"
+        [loading]="loading"
+        (firstDataRendered)="onFirstDataRendered($event)"
+        (selectionChanged)="onSelectionChanged($event, $event.api.getSelectedRows())"
+        (filterChanged)="onFilterChanged($event)"
+        (gridReady)="onGridReady($event)"
+      />
+    }
+  </div>
+</div>

@@ -1,0 +1,179 @@
+  <form class="p-5 flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p-fluid>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="name">
+            Nome
+          </label>
+          <input
+            id="name"
+            pSize="small"
+            pInputText
+            formControlName="name"
+            [class]="invalidInput('name')"
+            fluid
+          />
+        </p-floatlabel>
+        @if (checkValidation('name')) {
+          <small>{{ returnErrors('name') }}</small>
+        }
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="email">
+            Email
+          </label>
+          <input
+            id="email"
+            pSize="small"
+            pInputText
+            formControlName="email"
+            [class]="invalidInput('email')"
+            fluid
+          />
+        </p-floatlabel>
+        @if (checkValidation('email')) {
+          <small>{{ returnErrors('email') }}</small>
+        }
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="password">
+            Senha
+          </label>
+          <input
+            type="password"
+            id="password"
+            pSize="small"
+            pInputText
+            formControlName="password"
+            [class]="invalidInput('password')"
+            fluid
+          />
+        </p-floatlabel>
+        @if (checkValidation('password')) {
+          <small>{{ returnErrors('password') }}</small>
+        }
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="password_confirmation">
+            Confirmação de Senha
+          </label>
+          <input
+            type="password"
+            id="password_confirmation"
+            pSize="small"
+            pInputText
+            formControlName="password_confirmation"
+            [class]="invalidInput('password_confirmation')"
+            fluid
+          />
+        </p-floatlabel>
+        @if (checkValidation('password_confirmation')) {
+          <small>{{ returnErrors('password_confirmation') }}</small>
+        }
+      </div>
+      <div formGroupName="meta">
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="cpf">
+              CPF
+            </label>
+            <input
+              id="cpf"
+              pSize="small"
+              pInputText
+              formControlName="cpf"
+              [class]="invalidInput('cpf')"
+              fluid
+            />
+          </p-floatlabel>
+          @if (checkValidation('cpf')) {
+            <small>{{ returnErrors('cpf') }}</small>
+          }
+        </div>
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="address">
+              Endereço
+            </label>
+            <input
+              id="address"
+              pSize="small"
+              pInputText
+              formControlName="address"
+              [class]="invalidInput('address')"
+              fluid
+            />
+          </p-floatlabel>
+          @if (checkValidation('address')) {
+            <small>{{ returnErrors('address') }}</small>
+          }
+        </div>
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="function">
+              Cargo
+            </label>
+            <input
+              id="function"
+              pSize="small"
+              pInputText
+              formControlName="function"
+              [class]="invalidInput('function')"
+              fluid
+            />
+          </p-floatlabel>
+          @if (checkValidation('function')) {
+            <small>{{ returnErrors('function') }}</small>
+          }
+        </div>
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="workspace">
+              Setor
+            </label>
+            <input
+              id="workspace"
+              pSize="small"
+              pInputText
+              formControlName="workspace"
+              [class]="invalidInput('workspace')"
+              fluid
+            />
+          </p-floatlabel>
+          @if (checkValidation('workspace')) {
+            <small>{{ returnErrors('workspace') }}</small>
+          }
+        </div>
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="phone">
+              Telefone
+            </label>
+            <input
+              id="phone"
+              pSize="small"
+              pInputText
+              formControlName="phone"
+              [class]="invalidInput('phone')"
+              fluid
+            />
+          </p-floatlabel>
+          @if (checkValidation('phone')) {
+            <small>{{ returnErrors('phone') }}</small>
+          }
+        </div>
+      </div>
+      <div>
+        <p-button
+          size="small"
+          severity="secondary"
+          [loading]="loading"
+          [label]="defineLabel()"
+          (onClick)="onSubmit()"
+        />
+      </div>
+    </p-fluid>
+  </form>

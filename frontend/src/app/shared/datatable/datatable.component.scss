@@ -1,0 +1,17 @@
+.shared-datatable-container {
+  height: 100%;
+  .datatable-action-buttons-container {
+    height: var(--datatable-action-buttons-container-height);
+    min-height: var(--datatable-action-buttons-container-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -10px;
+    + .ag-grid {
+      height: calc(100% - var(--datatable-action-buttons-container-height));
+    }
+  }
+  .ag-grid {
+    height: 100%;
+  }
+}

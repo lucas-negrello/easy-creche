@@ -20,81 +20,19 @@
         <ul class="list-none pt-4 px-4 m-0">
           <li>
             <ul class="list-none p-0 m-0 overflow-hidden">
-              <li>
-                <a
-                  (click)="navigateTo()"
-                  class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-bookmark mr-2"></i>
-                  <span class="font-medium">Agendamentos</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['register-responsible'])"
-                   class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-300 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-home mr-2"></i>
-                  <span class="font-medium">Cadastrar Responsável</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['register-student'])"
-                  class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-map mr-2"></i>
-                  <span class="font-medium">Cadastrar Aluno</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['in-out-monitoring'])"
-                   class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-users mr-2"></i>
-                  <span class="font-medium">Monitoramento</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['student-progress'])"
-                   class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-comments mr-2"></i>
-                  <span class="font-medium">Registro de Desenvolvimento</span>
-                  <span
-                    class="inline-flex items-center justify-center ml-auto bg-primary text-primary-contrast rounded-full"
-                    style="min-width: 1.5rem; height: 1.5rem">3</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['docs'])"
-                   class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-calendar mr-2"></i>
-                  <span class="font-medium">Documentos</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['resources'])"
-                   class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-cog mr-2"></i>
-                  <span class="font-medium">Recursos e Materiais</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['contribute'])"
-                  class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-cog mr-2"></i>
-                  <span class="font-medium">Contribua!</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  (click)="navigateTo(['panic'])"
-                  class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-                  <i class="pi pi-cog mr-2"></i>
-                  <span class="font-medium">Botão do Pânico</span>
-                </a>
-              </li>
+              @for (menuItem of menu; track menuItem.route) {
+                @if (menuItem.isActive) {
+                  <li>
+                    <a
+                      (click)="menuItem.isHome ? navigateTo(['']) : navigateTo([menuItem.route])"
+                      class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+                      <i [ngClass]="menuItem.icon"
+                         class="pi mr-2"></i>
+                      <span class="font-medium">{{menuItem.label}}</span>
+                    </a>
+                  </li>
+                }
+              }
             </ul>
           </li>
         </ul>

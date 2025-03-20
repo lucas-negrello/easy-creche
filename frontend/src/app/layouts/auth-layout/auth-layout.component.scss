@@ -27,3 +27,12 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .auth-layout-card {
+    .p-card {
+      min-width: 30vw;
+      max-width: 80vw;
+      width: 100%;
+    }
+  }
+}

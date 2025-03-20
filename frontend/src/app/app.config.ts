@@ -1,13 +1,13 @@
 // Providers Imports
 import {ApplicationConfig, LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
-import {provideRouter} from '@angular/router';
-import {provideHttpClient} from '@angular/common/http';
+import {provideRouter, withComponentInputBinding} from '@angular/router';
+import {provideHttpClient, withInterceptors, withInterceptorsFromDi} from '@angular/common/http';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {providePrimeNG} from 'primeng/config';
 import {routes} from './app.routes';
 
 // Services Imports for Global Providers
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {DialogService} from 'primeng/dynamicdialog';
 
 // Locales imports
@@ -17,6 +17,7 @@ import localePt from '@angular/common/locales/pt';
 // Theme definitions from PrimeNG imports
 import Material from '@primeng/themes/material'
 import {definePreset} from '@primeng/themes';
+import {authInterceptor} from './core/interceptors/auth/auth.interceptor';
 
 // Locale registering
 registerLocaleData(localePt);
@@ -25,8 +26,8 @@ registerLocaleData(localePt);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing: true}),
-    provideRouter(routes),
-    provideHttpClient(),
+    provideRouter(routes, withComponentInputBinding()),
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
@@ -57,6 +58,7 @@ export const appConfig: ApplicationConfig = {
     }),
     MessageService,
     DialogService,
+    ConfirmationService,
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'

@@ -1,0 +1,9 @@
+<p-card>
+  <app-datatable
+    [rowData$]="rowData$"
+    [colDefs]="colDefs"
+    [addCallbackFn]="add.bind(this)"
+    [tableCustomConfig]="custom"
+    [loading]="loading"
+  ></app-datatable>
+</p-card>

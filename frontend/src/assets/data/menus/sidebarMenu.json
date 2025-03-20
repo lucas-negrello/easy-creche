@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Agendamentos",
+    "icon": "pi-calendar",
+    "isActive": false,
+    "isHome": true,
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Cadastrar Administrador",
+    "icon": "pi-shield",
+    "route": "register-admin",
+    "isActive": true,
+    "roles": ["admin"]
+  },
+  {
+    "label": "Cadastrar Responsável",
+    "icon": "pi-users",
+    "route": "register-responsible",
+    "isActive": false,
+    "roles": ["admin"]
+  },
+  {
+    "label": "Cadastrar Aluno",
+    "icon": "pi-user",
+    "route": "register-student",
+    "isActive": false,
+    "roles": ["admin"]
+  },
+  {
+    "label": "Entradas e Saídas",
+    "icon": "pi-eye",
+    "route": "in-out-monitoring",
+    "isActive": false,
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Registro de Desenvolvimento",
+    "icon": "pi-chart-line",
+    "route": "student-progress",
+    "isActive": false,
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Documentos",
+    "icon": "pi-images",
+    "route": "docs",
+    "isActive": false,
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Recursos e Materiais",
+    "icon": "pi-pen-to-square",
+    "route": "resources",
+    "isActive": false,
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Contribua!",
+    "icon": "pi-money-bill",
+    "route": "contribute",
+    "isActive": false,
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Botão do Pânico",
+    "icon": "pi-exclamation-circle",
+    "route": "panic",
+    "isActive": false,
+    "roles": ["admin"]
+  }
+]
