@@ -5,7 +5,7 @@ export const routes: Routes = [
     path: '',
     title: 'Easy Creche',
     pathMatch: 'full',
-    redirectTo: 'auth/login',
+    redirectTo: '',
   },
   {
     path: 'auth',

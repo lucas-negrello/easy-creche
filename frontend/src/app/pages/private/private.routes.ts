@@ -3,7 +3,7 @@ import {MainLayoutComponent} from '../../layouts/main-layout/main-layout.compone
 
 export const Private: Routes = [
   {
-    path: ':id',
+    path: '',
     component: MainLayoutComponent,
     children: [
       {
@@ -11,6 +11,12 @@ export const Private: Routes = [
         title: 'Agendamentos',
         loadComponent: () => import('./schedules/schedules.component')
           .then(c => c.SchedulesComponent),
+      },
+      {
+        path: 'register-admin',
+        title: 'Registrar Administrador',
+        loadComponent: () => import('./register-admin/register-admin.component')
+          .then(c => c.RegisterAdminComponent),
       },
       {
         path: 'register-responsible',

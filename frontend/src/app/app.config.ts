@@ -7,7 +7,7 @@ import {providePrimeNG} from 'primeng/config';
 import {routes} from './app.routes';
 
 // Services Imports for Global Providers
-import {MessageService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 import {DialogService} from 'primeng/dynamicdialog';
 
 // Locales imports
@@ -57,6 +57,7 @@ export const appConfig: ApplicationConfig = {
     }),
     MessageService,
     DialogService,
+    ConfirmationService,
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'

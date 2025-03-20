@@ -1,0 +1,32 @@
+<div class="h-[100%] flex gap-2 items-center justify-around">
+  @if (params.format === 'buttons') {
+    @for (action of params.actions; track action) {
+      <button
+        pButton
+        size="small"
+        class="h-[80%]"
+        [severity]="action.severity ?? 'secondary'"
+        (click)="onClick(action)"
+      >
+        @if (action.label) {
+          <span>{{ action.label }}</span>
+        }
+        @if (action.icon) {
+          <span [innerHTML]="handleIcon(action)"></span>
+        }
+      </button>
+    }
+  } @else if (params.format === 'ellipsis') {
+    <p-button
+      class="h-[100%]"
+      size="small"
+      variant="text"
+      rounded
+      [severity]="'secondary'"
+      (click)="menu.toggle($event)"
+    >
+      <i class="pi pi-ellipsis-v"></i>
+    </p-button>
+    <p-tiered-menu #menu [model]="menuItems" [popup]="true" breakpoint="0" appendTo="body" />
+  }
+</div>

@@ -7,10 +7,17 @@
     "roles": ["admin", "user"]
   },
   {
+    "label": "Cadastrar Administrador",
+    "icon": "pi-shield",
+    "route": "register-admin",
+    "isActive": true,
+    "roles": ["admin"]
+  },
+  {
     "label": "Cadastrar Responsável",
     "icon": "pi-users",
     "route": "register-responsible",
-    "isActive": true,
+    "isActive": false,
     "roles": ["admin"]
   },
   {

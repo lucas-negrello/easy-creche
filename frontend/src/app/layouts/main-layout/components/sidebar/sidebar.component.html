@@ -24,7 +24,7 @@
                 @if (menuItem.isActive) {
                   <li>
                     <a
-                      (click)="menuItem.isHome ? navigateTo() : navigateTo([menuItem.route])"
+                      (click)="menuItem.isHome ? navigateTo(['']) : navigateTo([menuItem.route])"
                       class="flex items-center cursor-pointer p-4 rounded-border hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
                       <i [ngClass]="menuItem.icon"
                          class="pi mr-2"></i>

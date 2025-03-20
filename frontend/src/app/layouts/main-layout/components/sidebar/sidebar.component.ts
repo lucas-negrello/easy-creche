@@ -49,8 +49,8 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
     this.drawerRef.close(e);
   }
 
-  protected navigateTo(routes?: string[]) {
-    this._navigationService.navigateWithIdTo(this._route, routes);
+  protected navigateTo(routes: string[]) {
+    this._navigationService.navigateTo(routes);
     this.toggleSidebar();
   }
 
