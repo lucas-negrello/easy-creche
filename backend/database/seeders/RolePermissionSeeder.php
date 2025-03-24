@@ -70,7 +70,7 @@ class RolePermissionSeeder extends Seeder
                 'student-progress' => ['view', 'create', 'update', 'delete'],
             ],
             'admin' => [
-                'register-admin' => ['view'],
+                'register-admin' => ['view', 'create', 'update', 'delete'],
                 'register-responsible' => ['view', 'create', 'update', 'delete'],
                 'register-student' => ['view', 'create', 'update', 'delete'],
                 'resources' => ['view', 'create', 'update', 'delete'],

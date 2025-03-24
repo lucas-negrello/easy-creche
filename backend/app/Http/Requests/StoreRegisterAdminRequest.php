@@ -25,14 +25,14 @@ class StoreRegisterAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'meta.cpf' => 'nullable|string',
-            'meta.address' => 'nullable|string',
-            'meta.function' => 'nullable|string',
-            'meta.workspace' => 'nullable|string',
-            'meta.phone' => 'nullable|string',
+            'name'              => 'required|string',
+            'email'             => 'required|string|email|unique:users',
+            'password'          => 'required|string|min:8|confirmed',
+            'meta.cpf'          => 'nullable|string',
+            'meta.address'      => 'nullable|string',
+            'meta.function'     => 'nullable|string',
+            'meta.workspace'    => 'nullable|string',
+            'meta.phone'        => 'nullable|string',
         ];
     }
 }
