@@ -18,17 +18,21 @@ class RegisterAdminController extends Controller
     public function index()
     {
         if(!Gate::allows('viewAny', RegisterAdmin::class)){
-            return response()->json('Unauthorized', 401);
+            return response([
+                'message'           => 'Unauthorized',
+                'success'           => false,
+                'status_code'       => 401,
+            ], 401);
         }
 
         $admins = User::whereHas('roles', function ($query) {
             $query->where('name', 'admin');
         })->get();
         return response()->json([
-            'message' => 'Admins listed successfully',
-            'data' => $admins,
-            'success' => true,
-            'status_code' => 200
+            'message'       => 'Admins listed successfully',
+            'data'          => $admins,
+            'success'       => true,
+            'status_code'   => 200
         ]);
 
     }
@@ -41,19 +45,19 @@ class RegisterAdminController extends Controller
     {
         $adminUser = $request->validated();
         $user = User::create([
-            'name' => $adminUser['name'],
-            'email' => $adminUser['email'],
-            'password' => Hash::make($adminUser['password']),
+            'name'              => $adminUser['name'],
+            'email'             => $adminUser['email'],
+            'password'          => Hash::make($adminUser['password']),
             'email_verified_at' => Carbon::now(),
-            'meta' => $adminUser['meta'],
+            'meta'              => $adminUser['meta'],
         ]);
         $user->markEmailAsVerified();
         $user->assignRole('admin');
         return response()->json([
-            'message' => 'Admin created successfully',
-            'data' => $user,
-            'success' => true,
-            'status_code' => 201
+            'message'       => 'Admin created successfully',
+            'data'          => $user,
+            'success'       => true,
+            'status_code'   => 201
         ]);
     }
 
@@ -63,13 +67,17 @@ class RegisterAdminController extends Controller
     public function show(User $registerAdmin)
     {
         if(!Gate::allows('view', RegisterAdmin::class)){
-            return response()->json('Unauthorized', 401);
+            return response([
+                'message'           => 'Unauthorized',
+                'success'           => false,
+                'status_code'       => 401,
+            ], 401);
         }
         return response()->json([
-            'message' => 'Admin found successfully',
-            'data' => $registerAdmin,
-            'success' => true,
-            'status_code' => 200
+            'message'       => 'Admin retrieved successfully',
+            'data'          => $registerAdmin,
+            'success'       => true,
+            'status_code'   => 200
         ]);
     }
 
@@ -80,10 +88,10 @@ class RegisterAdminController extends Controller
     {
         $registerAdmin->update($request->validated());
         return response()->json([
-            'message' => 'Admin updated successfully',
-            'data' => $registerAdmin,
-            'success' => true,
-            'status_code' => 200
+            'message'       => 'Admin updated successfully',
+            'data'          => $registerAdmin,
+            'success'       => true,
+            'status_code'   => 200
         ]);
     }
 
@@ -93,16 +101,20 @@ class RegisterAdminController extends Controller
     public function destroy(User $registerAdmin)
     {
         if(!Gate::allows('delete', RegisterAdmin::class)){
-            return response()->json('Unauthorized', 401);
+            return response([
+                'message'           => 'Unauthorized',
+                'success'           => false,
+                'status_code'       => 401,
+            ], 401);
         }
 
         $registerAdmin->delete();
 
         return response()->json([
-            'message' => 'Admin deleted successfully',
-            'data' => $registerAdmin,
-            'success' => true,
-            'status_code' => 200
+            'message'       => 'Admin deleted successfully',
+            'data'          => $registerAdmin,
+            'success'       => true,
+            'status_code'   => 200
         ]);
     }
 }

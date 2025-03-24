@@ -1,0 +1,203 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"86cc6518-d73b-475a-aab9-6cee50029e35\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/app/app.component.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/app/app.component.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/app/app.component.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/app/app.component.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/app/app.config.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/app/app.config.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/app/app.routes.ts\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/app/app.routes.ts\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/assets/images/.gitkeep\" beforeDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerSettings\" synchronizationState=\"SYNCHRONIZE\">\n    <pharConfigPath>$PROJECT_DIR$/backend/composer.json</pharConfigPath>\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"/bin/php\" />\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2uSwKpDBZ5bzsj7PnnulOl3yyhk\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/src/assets/images/backgrounds&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;ts.external.directory.path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/node_modules/typescript/lib&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/frontend/src/assets/images/backgrounds\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/layouts\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/core\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/core/services\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages/auth\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/core/services/overlays\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Main\" type=\"PHPUnitRunConfigurationType\" factoryName=\"PHPUnit\">\n      <TestRunner configuration_file=\"$PROJECT_DIR$/backend/phpunit.xml\" scope=\"XML\" use_alternative_configuration_file=\"true\" />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PS-243.23654.168\" />\n        <option value=\"bundled-php-predefined-a98d8de5180a-4c3855d0ab16-com.jetbrains.php.sharedIndexes-PS-243.23654.168\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"86cc6518-d73b-475a-aab9-6cee50029e35\" name=\"Changes\" comment=\"\" />\n      <created>1742255221854</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1742255221854</updated>\n      <workItem from=\"1742255223419\" duration=\"10223000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 734c1e9ce9232aecf8a6daf98c373d71df5dba76)
++++ b/.idea/workspace.xml	(date 1742853159656)
+@@ -5,11 +5,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="86cc6518-d73b-475a-aab9-6cee50029e35" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.component.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/images/.gitkeep" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -21,6 +17,11 @@
+     <execution />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
+@@ -35,21 +36,20 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/src/assets/images/backgrounds&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;ts.external.directory.path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/node_modules/typescript/lib&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "last_opened_file_path": "/home/negrello/Projects/easy-creche",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "ts.external.directory.path": "/home/negrello/Projects/easy-creche/frontend/node_modules/typescript/lib",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/frontend/src/assets/images/backgrounds" />
+Index: .idea/php.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"LaravelPint\">\n    <laravel_pint_settings>\n      <LaravelPintConfiguration tool_path=\"$PROJECT_DIR$/backend/vendor/bin/pint\" />\n    </laravel_pint_settings>\n  </component>\n  <component name=\"MessDetectorOptionsConfiguration\">\n    <option name=\"transferred\" value=\"true\" />\n  </component>\n  <component name=\"PHPCSFixerOptionsConfiguration\">\n    <option name=\"transferred\" value=\"true\" />\n  </component>\n  <component name=\"PHPCodeSnifferOptionsConfiguration\">\n    <option name=\"highlightLevel\" value=\"WARNING\" />\n    <option name=\"transferred\" value=\"true\" />\n  </component>\n  <component name=\"PhpProjectSharedConfiguration\" php_language_level=\"8.2\" />\n  <component name=\"PhpStanOptionsConfiguration\">\n    <option name=\"transferred\" value=\"true\" />\n  </component>\n  <component name=\"PhpUnit\">\n    <phpunit_settings>\n      <PhpUnitSettings configuration_file_path=\"$PROJECT_DIR$/backend/phpunit.xml\" custom_loader_path=\"$PROJECT_DIR$/backend/vendor/autoload.php\" use_configuration_file=\"true\" />\n    </phpunit_settings>\n  </component>\n  <component name=\"PsalmOptionsConfiguration\">\n    <option name=\"transferred\" value=\"true\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/php.xml b/.idea/php.xml
+--- a/.idea/php.xml	(revision 734c1e9ce9232aecf8a6daf98c373d71df5dba76)
++++ b/.idea/php.xml	(date 1742853054780)
+@@ -15,6 +15,122 @@
+     <option name="highlightLevel" value="WARNING" />
+     <option name="transferred" value="true" />
+   </component>
++  <component name="PhpIncludePathManager">
++    <include_path>
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/routing" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/error-handler" />
++      <path value="$PROJECT_DIR$/backend/vendor/theseer/tokenizer" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/var-dumper" />
++      <path value="$PROJECT_DIR$/backend/vendor/doctrine/inflector" />
++      <path value="$PROJECT_DIR$/backend/vendor/doctrine/lexer" />
++      <path value="$PROJECT_DIR$/backend/vendor/hamcrest/hamcrest-php" />
++      <path value="$PROJECT_DIR$/backend/vendor/fakerphp/faker" />
++      <path value="$PROJECT_DIR$/backend/vendor/fruitcake/php-cors" />
++      <path value="$PROJECT_DIR$/backend/vendor/carbonphp/carbon-doctrine-types" />
++      <path value="$PROJECT_DIR$/backend/vendor/ralouphie/getallheaders" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpoption/phpoption" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/object-enumerator" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/recursion-context" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/version" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/code-unit" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/complexity" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/global-state" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/cli-parser" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/exporter" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/code-unit-reverse-lookup" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/lines-of-code" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/comparator" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/type" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/object-reflector" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/environment" />
++      <path value="$PROJECT_DIR$/backend/vendor/webmozart/assert" />
++      <path value="$PROJECT_DIR$/backend/vendor/sebastian/diff" />
++      <path value="$PROJECT_DIR$/backend/vendor/guzzlehttp/guzzle" />
++      <path value="$PROJECT_DIR$/backend/vendor/guzzlehttp/promises" />
++      <path value="$PROJECT_DIR$/backend/vendor/guzzlehttp/psr7" />
++      <path value="$PROJECT_DIR$/backend/vendor/guzzlehttp/uri-template" />
++      <path value="$PROJECT_DIR$/backend/vendor/nunomaduro/termwind" />
++      <path value="$PROJECT_DIR$/backend/vendor/nunomaduro/collision" />
++      <path value="$PROJECT_DIR$/backend/vendor/dragonmantank/cron-expression" />
++      <path value="$PROJECT_DIR$/backend/vendor/tijsverkoyen/css-to-inline-styles" />
++      <path value="$PROJECT_DIR$/backend/vendor/graham-campbell/result-type" />
++      <path value="$PROJECT_DIR$/backend/vendor/composer" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/http-factory" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/event-dispatcher" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/http-client" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/simple-cache" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/container" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/log" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/http-message" />
++      <path value="$PROJECT_DIR$/backend/vendor/psr/clock" />
++      <path value="$PROJECT_DIR$/backend/vendor/filp/whoops" />
++      <path value="$PROJECT_DIR$/backend/vendor/psy/psysh" />
++      <path value="$PROJECT_DIR$/backend/vendor/brick/math" />
++      <path value="$PROJECT_DIR$/backend/vendor/voku/portable-ascii" />
++      <path value="$PROJECT_DIR$/backend/vendor/nette/schema" />
++      <path value="$PROJECT_DIR$/backend/vendor/nette/utils" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/flysystem-local" />
++      <path value="$PROJECT_DIR$/backend/vendor/nikic/php-parser" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/config" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/mime-type-detection" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/uri" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/uri-interfaces" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/commonmark" />
++      <path value="$PROJECT_DIR$/backend/vendor/league/flysystem" />
++      <path value="$PROJECT_DIR$/backend/vendor/ramsey/collection" />
++      <path value="$PROJECT_DIR$/backend/vendor/nesbot/carbon" />
++      <path value="$PROJECT_DIR$/backend/vendor/staabm/side-effects-detector" />
++      <path value="$PROJECT_DIR$/backend/vendor/ramsey/uuid" />
++      <path value="$PROJECT_DIR$/backend/vendor/dflydev/dot-access-data" />
++      <path value="$PROJECT_DIR$/backend/vendor/vlucas/phpdotenv" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/pint" />
++      <path value="$PROJECT_DIR$/backend/vendor/egulias/email-validator" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/framework" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/pail" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/prompts" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/sanctum" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/sail" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/serializable-closure" />
++      <path value="$PROJECT_DIR$/backend/vendor/mockery/mockery" />
++      <path value="$PROJECT_DIR$/backend/vendor/laravel/tinker" />
++      <path value="$PROJECT_DIR$/backend/vendor/myclabs/deep-copy" />
++      <path value="$PROJECT_DIR$/backend/vendor/monolog/monolog" />
++      <path value="$PROJECT_DIR$/backend/vendor/phar-io/manifest" />
++      <path value="$PROJECT_DIR$/backend/vendor/phar-io/version" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-invoker" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-timer" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-text-template" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-code-coverage" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpunit/phpunit" />
++      <path value="$PROJECT_DIR$/backend/vendor/phpunit/php-file-iterator" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-intl-normalizer" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-intl-grapheme" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/process" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/css-selector" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-ctype" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/translation-contracts" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-intl-idn" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/http-kernel" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/yaml" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/event-dispatcher" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/event-dispatcher-contracts" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/string" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/deprecation-contracts" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/http-foundation" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/uid" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/mime" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-mbstring" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/console" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/finder" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-uuid" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/clock" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/translation" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/mailer" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-php83" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/service-contracts" />
++      <path value="$PROJECT_DIR$/backend/vendor/symfony/polyfill-php80" />
++    </include_path>
++  </component>
+   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
+   <component name="PhpStanOptionsConfiguration">
+     <option name="transferred" value="true" />

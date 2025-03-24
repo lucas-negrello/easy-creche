@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RegisterAdminController;
+use App\Http\Controllers\RegisterResponsibleController;
+use App\Http\Controllers\RegisterStudentController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Http\Request;
@@ -30,8 +32,11 @@ Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
 // ROUTES FOR AUTHENTICATED/LOGGED IN USERS
 Route::middleware('auth:sanctum')->group(function () {
     // RESOURCE ROUTES
-    Route::resource('register-admins', RegisterAdminController::class);
-
+    Route::apiResources([
+        'register-admins' => RegisterAdminController::class,
+        'register-responsibles' => RegisterResponsibleController::class,
+        'register-students' => RegisterStudentController::class,
+    ]);
 });
 
 
