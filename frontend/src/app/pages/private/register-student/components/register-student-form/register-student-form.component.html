@@ -1,0 +1,236 @@
+<form class="p-5 flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p-fluid>
+    <div class="mb-5">
+      <p-floatlabel variant="on">
+        <label for="name">
+          Nome*
+        </label>
+        <input
+          id="name"
+          pSize="small"
+          pInputText
+          formControlName="name"
+          [class]="invalidInput('name')"
+          fluid
+        />
+      </p-floatlabel>
+      <div class="min-h-5">
+        @if (checkValidation('name')) {
+          <small>{{ returnErrors('name') }}</small>
+        }
+      </div>
+    </div>
+    <div class="mb-5">
+      @if (responsibles$ | async; as responsibles) {
+        <p-floatlabel variant="on">
+          <p-select
+            id="responsible_id"
+            size="small"
+            formControlName="responsible_id"
+            [options]="responsibles"
+            optionValue="id"
+            optionLabel="name"
+            showClear
+            [class]="invalidInput('responsible_id')"
+            appendTo="body"
+            fluid
+          />
+          <label for="responsible_id">
+            Responsável
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('responsible_id')) {
+            <small>{{ returnErrors('responsible_id') }}</small>
+          }
+        </div>
+      }
+    </div>
+    <div class="mb-5">
+      <p-floatlabel variant="on">
+        <label for="birth_certificate">
+          Certidão de Nascimento*
+        </label>
+        <input
+          id="birth_certificate"
+          pSize="small"
+          pInputText
+          formControlName="birth_certificate"
+          [class]="invalidInput('birth_certificate')"
+          fluid
+        />
+      </p-floatlabel>
+      <div class="min-h-5">
+        @if (checkValidation('birth_certificate')) {
+          <small>{{ returnErrors('birth_certificate') }}</small>
+        }
+      </div>
+    </div>
+    <div formGroupName="meta">
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="blood_type">
+            Tipo Sanguíneo
+          </label>
+          <input
+            id="blood_type"
+            pSize="small"
+            pInputText
+            formControlName="blood_type"
+            [class]="invalidInput('blood_type')"
+            fluid
+          />
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('blood_type')) {
+            <small>{{ returnErrors('blood_type') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="age">
+            Idade
+          </label>
+          <input
+            id="age"
+            pSize="small"
+            pInputText
+            formControlName="age"
+            [class]="invalidInput('age')"
+            fluid
+          />
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('age')) {
+            <small>{{ returnErrors('age') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="allergies">
+            Alergias
+          </label>
+          <input
+            id="allergies"
+            pSize="small"
+            pInputText
+            formControlName="allergies"
+            [class]="invalidInput('allergies')"
+            fluid
+          />
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('allergies')) {
+            <small>{{ returnErrors('allergies') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="gender">
+            Gênero
+          </label>
+          <input
+            id="gender"
+            pSize="small"
+            pInputText
+            formControlName="gender"
+            [class]="invalidInput('gender')"
+            fluid
+          />
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('gender')) {
+            <small>{{ returnErrors('gender') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <label for="medical_convenience">
+            Convênio Médico
+          </label>
+          <input
+            id="medical_convenience"
+            pSize="small"
+            pInputText
+            formControlName="medical_convenience"
+            [class]="invalidInput('medical_convenience')"
+            fluid
+          />
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('medical_convenience')) {
+            <small>{{ returnErrors('medical_convenience') }}</small>
+          }
+        </div>
+      </div>
+      <div formArrayName="url_documents">
+        @for (urlDocument of urlDocuments.controls; track urlDocument; let index = $index) {
+          <div class="mb-5 flex gap-1 w-full">
+            <div [formGroupName]="index" class="w-full flex flex-col gap-2">
+              <div>
+                <p-floatlabel variant="on">
+                  <label [for]="'name_'+index">
+                    Nome do Documento {{index+1}}
+                  </label>
+                  <input
+                    [id]="'name_'+index"
+                    pSize="small"
+                    pInputText
+                    formControlName="docName"
+                    fluid
+                  />
+                </p-floatlabel>
+              </div>
+              <div>
+                <p-floatlabel variant="on">
+                  <label [for]="'url_'+index">
+                    URL do Documento {{index+1}}
+                  </label>
+                  <input
+                    [id]="'url_'+index"
+                    pSize="small"
+                    pInputText
+                    formControlName="docUrl"
+                    fluid
+                  />
+                </p-floatlabel>
+              </div>
+            </div>
+            @if(index > 0) {
+              <div>
+                <p-button
+                  size="small"
+                  severity="info"
+                  icon="pi pi-trash"
+                  (onClick)="removeDoc(index)"
+                />
+              </div>
+            }
+          </div>
+        }
+        <div class="mb-5">
+          <p-button
+            size="small"
+            severity="primary"
+            icon="pi pi-plus"
+            label="Adicionar Documento"
+            (onClick)="addDoc()"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <p-button
+        size="small"
+        severity="secondary"
+        [loading]="loading"
+        [label]="defineLabel()"
+        (onClick)="onSubmit()"
+      />
+    </div>
+  </p-fluid>
+</form>

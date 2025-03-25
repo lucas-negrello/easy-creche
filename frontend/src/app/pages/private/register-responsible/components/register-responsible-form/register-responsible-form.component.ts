@@ -1,36 +1,38 @@
 import {Component, inject} from '@angular/core';
 import {Fluid} from 'primeng/fluid';
 import {FloatLabel} from 'primeng/floatlabel';
-import {FormBaseComponent} from '../../../../../core/components/form-base/form-base.component';
-import {AdminInterface} from '../../interfaces/admin.interface';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {RegisterAdminService} from '../../services/register-admin.service';
+import {FormBaseComponent} from '../../../../../core/components/form-base/form-base.component';
+import {AdminInterface} from '../../../register-admin/interfaces/admin.interface';
+import {RegisterAdminService} from '../../../register-admin/services/register-admin.service';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
+import {RegisterResponsibleService} from '../../services/register-responsible.service';
+import {ResponsibleInterface} from '../../interfaces/responsible.interface';
 
 @Component({
-  selector: 'app-register-admin-form',
+  selector: 'app-register-responsible-form',
   imports: [
     Fluid,
     FloatLabel,
-    InputText,
     ReactiveFormsModule,
+    InputText,
     Button
   ],
-  templateUrl: './register-admin-form.component.html',
-  styleUrl: './register-admin-form.component.scss'
+  templateUrl: './register-responsible-form.component.html',
+  styleUrl: './register-responsible-form.component.scss'
 })
-export class RegisterAdminFormComponent extends FormBaseComponent<AdminInterface>{
+export class RegisterResponsibleFormComponent extends FormBaseComponent<ResponsibleInterface>{
 
   private readonly _layoutService: LayoutService = inject(LayoutService);
 
   constructor(
     protected override _fb: FormBuilder,
-    protected readonly _registerAdminService: RegisterAdminService,
+    protected readonly _registerResponsibleService: RegisterResponsibleService,
   ) {
-    super(_fb, _registerAdminService);
-    this._layoutService.updateTitle('Registro de Administrador');
+    super(_fb, _registerResponsibleService);
+    this._layoutService.updateTitle('Registro de Responsável');
   }
 
   protected override buildForm(): void {
@@ -40,11 +42,9 @@ export class RegisterAdminFormComponent extends FormBaseComponent<AdminInterface
       password: [null, [Validators.required, Validators.minLength(8)]],
       password_confirmation: [null, [Validators.required, Validators.minLength(8)]],
       meta: this._fb.group({
-        cpf: [null, [Validators.required]],
-        address: [null, [Validators.required]],
-        function: [null, [Validators.required]],
-        workspace: [null, [Validators.required]],
-        phone: [null, [Validators.required]],
+        cpf: [null, [Validators.minLength(11)]],
+        address: [null],
+        phone: [null, [Validators.minLength(11)]],
       }),
     });
   }

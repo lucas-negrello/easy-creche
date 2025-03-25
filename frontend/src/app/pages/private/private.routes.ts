@@ -24,14 +24,14 @@ export const Private: Routes = [
       {
         path: 'register-responsible',
         title: 'Registrar Responsável',
-        loadComponent: () => import('./register-responsible/register-responsible.component')
-          .then(c => c.RegisterResponsibleComponent),
+        loadChildren: () => import('./register-responsible/register-responsible.routes')
+          .then(r => r.RegisterResponsibleRoutes),
       },
       {
         path: 'register-student',
         title: 'Registrar Estudante',
-        loadComponent: () => import('./register-student/register-student.component')
-          .then(c => c.RegisterStudentComponent),
+        loadChildren: () => import('./register-student/register-student.routes')
+          .then(r => r.RegisterStudentRoutes),
       },
       {
         path: 'in-out-monitoring',
