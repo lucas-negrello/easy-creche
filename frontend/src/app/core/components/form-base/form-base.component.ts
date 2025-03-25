@@ -204,6 +204,10 @@ export abstract class FormBaseComponent<T> implements OnInit, OnDestroy {
     return !!((this.form.get(field)?.dirty || this.form.get(field)?.touched) && this.form.get(field)?.invalid);
   }
 
+  checkFromValidation(): boolean {
+    return ((this.form.dirty || this.form.touched) && this.form.invalid);
+  }
+
   /**
    * Defines a class for invalid input for PrimeNg library.
    *
@@ -233,6 +237,24 @@ export abstract class FormBaseComponent<T> implements OnInit, OnDestroy {
           break;
         default:
           msg = 'Campo inválido'
+          break;
+      }
+    });
+    if (msg) {
+      return msg;
+    }
+    return;
+  }
+
+  returnFormErrors(): any {
+    let msg: null | string = null;
+    Object.keys(this.form.errors || []).forEach((error) => {
+      switch (error) {
+        case 'passwordMismatch':
+          msg = 'Senhas não combinam';
+          break;
+        default:
+          msg = 'Formulário inválido';
           break;
       }
     });

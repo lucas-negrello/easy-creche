@@ -8,6 +8,7 @@ import {RegisterAdminService} from '../../services/register-admin.service';
 import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
+import {PasswordConfirmationValidator} from '../../../../../core/validators/password-confirmation-validator';
 
 @Component({
   selector: 'app-register-admin-form',
@@ -37,16 +38,16 @@ export class RegisterAdminFormComponent extends FormBaseComponent<AdminInterface
     this.form = this._fb.group({
       name: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required, Validators.minLength(8)]],
-      password_confirmation: [null, [Validators.required, Validators.minLength(8)]],
+      password: [null, this._router.url.includes('create') ? [Validators.required, Validators.minLength(8)] : null],
+      password_confirmation: [null, this._router.url.includes('create') ? [Validators.required, Validators.minLength(8)] : null],
       meta: this._fb.group({
-        cpf: [null, [Validators.required]],
-        address: [null, [Validators.required]],
-        function: [null, [Validators.required]],
-        workspace: [null, [Validators.required]],
-        phone: [null, [Validators.required]],
+        cpf: [null],
+        address: [null],
+        function: [null],
+        workspace: [null],
+        phone: [null],
       }),
-    });
+    },{ validators: new PasswordConfirmationValidator().validate });
   }
 
   protected defineLabel(): string {

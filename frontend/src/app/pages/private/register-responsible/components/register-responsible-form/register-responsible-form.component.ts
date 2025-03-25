@@ -10,6 +10,7 @@ import {Button} from 'primeng/button';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
 import {RegisterResponsibleService} from '../../services/register-responsible.service';
 import {ResponsibleInterface} from '../../interfaces/responsible.interface';
+import {PasswordConfirmationValidator} from '../../../../../core/validators/password-confirmation-validator';
 
 @Component({
   selector: 'app-register-responsible-form',
@@ -39,14 +40,14 @@ export class RegisterResponsibleFormComponent extends FormBaseComponent<Responsi
     this.form = this._fb.group({
       name: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required, Validators.minLength(8)]],
-      password_confirmation: [null, [Validators.required, Validators.minLength(8)]],
+      password: [null, this._router.url.includes('create') ? [Validators.required, Validators.minLength(8)] : null],
+      password_confirmation: [null, this._router.url.includes('create') ? [Validators.required, Validators.minLength(8)] : null],
       meta: this._fb.group({
         cpf: [null, [Validators.minLength(11)]],
         address: [null],
         phone: [null, [Validators.minLength(11)]],
       }),
-    });
+    }, { validators: new PasswordConfirmationValidator().validate });
   }
 
   protected defineLabel(): string {
