@@ -3,7 +3,7 @@
       <div class="mb-5">
         <p-floatlabel variant="on">
           <label for="name">
-            Nome
+            Nome*
           </label>
           <input
             id="name"
@@ -14,14 +14,16 @@
             fluid
           />
         </p-floatlabel>
-        @if (checkValidation('name')) {
-          <small>{{ returnErrors('name') }}</small>
-        }
+        <div class="min-h-5">
+          @if (checkValidation('name')) {
+            <small>{{ returnErrors('name') }}</small>
+          }
+        </div>
       </div>
       <div class="mb-5">
         <p-floatlabel variant="on">
           <label for="email">
-            Email
+            Email*
           </label>
           <input
             id="email"
@@ -32,48 +34,58 @@
             fluid
           />
         </p-floatlabel>
-        @if (checkValidation('email')) {
-          <small>{{ returnErrors('email') }}</small>
-        }
+        <div class="min-h-5">
+          @if (checkValidation('email')) {
+            <small>{{ returnErrors('email') }}</small>
+          }
+        </div>
       </div>
-      <div class="mb-5">
-        <p-floatlabel variant="on">
-          <label for="password">
-            Senha
-          </label>
-          <input
-            type="password"
-            id="password"
-            pSize="small"
-            pInputText
-            formControlName="password"
-            [class]="invalidInput('password')"
-            fluid
-          />
-        </p-floatlabel>
-        @if (checkValidation('password')) {
-          <small>{{ returnErrors('password') }}</small>
-        }
-      </div>
-      <div class="mb-5">
-        <p-floatlabel variant="on">
-          <label for="password_confirmation">
-            Confirmação de Senha
-          </label>
-          <input
-            type="password"
-            id="password_confirmation"
-            pSize="small"
-            pInputText
-            formControlName="password_confirmation"
-            [class]="invalidInput('password_confirmation')"
-            fluid
-          />
-        </p-floatlabel>
-        @if (checkValidation('password_confirmation')) {
-          <small>{{ returnErrors('password_confirmation') }}</small>
-        }
-      </div>
+      @if (this._router.url.includes('create')){
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="password">
+              Senha*
+            </label>
+            <input
+              type="password"
+              id="password"
+              pSize="small"
+              pInputText
+              formControlName="password"
+              [class]="invalidInput('password')"
+              fluid
+            />
+          </p-floatlabel>
+          <div class="min-h-5">
+            @if (checkValidation('password')) {
+              <small>{{ returnErrors('password') }}</small>
+            }
+          </div>
+        </div>
+        <div class="mb-5">
+          <p-floatlabel variant="on">
+            <label for="password_confirmation">
+              Confirmação de Senha*
+            </label>
+            <input
+              type="password"
+              id="password_confirmation"
+              pSize="small"
+              pInputText
+              formControlName="password_confirmation"
+              [class]="invalidInput('password_confirmation')"
+              fluid
+            />
+          </p-floatlabel>
+          <div class="min-h-5">
+            @if (checkValidation('password_confirmation')) {
+              <small>{{ returnErrors('password_confirmation') }}</small>
+            } @else if (checkFromValidation()) {
+              <small>{{ returnFormErrors() }}</small>
+            }
+          </div>
+        </div>
+      }
       <div formGroupName="meta">
         <div class="mb-5">
           <p-floatlabel variant="on">
@@ -89,9 +101,11 @@
               fluid
             />
           </p-floatlabel>
-          @if (checkValidation('cpf')) {
-            <small>{{ returnErrors('cpf') }}</small>
-          }
+          <div class="min-h-5">
+            @if (checkValidation('cpf')) {
+              <small>{{ returnErrors('cpf') }}</small>
+            }
+          </div>
         </div>
         <div class="mb-5">
           <p-floatlabel variant="on">
@@ -107,9 +121,11 @@
               fluid
             />
           </p-floatlabel>
-          @if (checkValidation('address')) {
-            <small>{{ returnErrors('address') }}</small>
-          }
+          <div class="min-h-5">
+            @if (checkValidation('address')) {
+              <small>{{ returnErrors('address') }}</small>
+            }
+          </div>
         </div>
         <div class="mb-5">
           <p-floatlabel variant="on">
@@ -125,9 +141,11 @@
               fluid
             />
           </p-floatlabel>
-          @if (checkValidation('function')) {
-            <small>{{ returnErrors('function') }}</small>
-          }
+          <div class="min-h-5">
+            @if (checkValidation('function')) {
+              <small>{{ returnErrors('function') }}</small>
+            }
+          </div>
         </div>
         <div class="mb-5">
           <p-floatlabel variant="on">
@@ -143,9 +161,11 @@
               fluid
             />
           </p-floatlabel>
-          @if (checkValidation('workspace')) {
-            <small>{{ returnErrors('workspace') }}</small>
-          }
+          <div class="min-h-5">
+            @if (checkValidation('workspace')) {
+              <small>{{ returnErrors('workspace') }}</small>
+            }
+          </div>
         </div>
         <div class="mb-5">
           <p-floatlabel variant="on">
@@ -161,9 +181,11 @@
               fluid
             />
           </p-floatlabel>
-          @if (checkValidation('phone')) {
-            <small>{{ returnErrors('phone') }}</small>
-          }
+          <div class="min-h-5">
+            @if (checkValidation('phone')) {
+              <small>{{ returnErrors('phone') }}</small>
+            }
+          </div>
         </div>
       </div>
       <div>

@@ -36,11 +36,11 @@ export class AuthService extends HttpBaseService<unknown> {
    * Handles user login and stores the authentication token.
    * @param payload LoginRequest object containing email and password.
    */
-  login(payload: LoginRequest): Observable<ApiResponse<LoginResponse>> {
-    return this.http.post<ApiResponse<LoginResponse>>(`${this.apiUrl}/login`, payload).pipe(
+  login(payload: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, payload).pipe(
       tap((response) => {
-        if (response.success && response.data?.token) {
-          this._authSessionService.setToken(response.data.token);
+        if (response && response.token) {
+          this._authSessionService.setToken(response.token);
         }
       }),
     );

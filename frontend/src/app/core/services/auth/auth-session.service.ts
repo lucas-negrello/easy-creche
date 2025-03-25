@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthSessionService {
-  private readonly TOKEN_KEY = 'auth_token';
+  private readonly TOKEN_KEY = 'token';
   private readonly RESET_PASSWORD_KEY = 'reset_token';
 
   /**

@@ -6,6 +6,7 @@ use App\Models\RegisterResponsible;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 
 class UpdateRegisterResponsibleRequest extends FormRequest
 {
@@ -26,8 +27,7 @@ class UpdateRegisterResponsibleRequest extends FormRequest
     {
         return [
             'name'              => 'required|string',
-            'email'             => 'required|string|email|unique:users',
-            'password'          => 'required|string|min:8|confirmed',
+            'email'             => ['required','string','email',Rule::unique('users')->ignore($this->route('register_responsible'))],
             'meta.cpf'          => 'nullable|string',
             'meta.address'      => 'nullable|string',
             'meta.phone'        => 'nullable|string',

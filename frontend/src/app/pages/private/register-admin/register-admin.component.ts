@@ -74,19 +74,19 @@ export class RegisterAdminComponent {
     ]
     if(screenWidth <= 1024) return [
       { headerName: 'Nome', field: 'name' },
-      { headerName: 'CPF', field: 'cpf', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.cpf},
+      { headerName: 'CPF', field: 'cpf', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.cpf ?? 'Não Informado'},
       { headerName: 'Email', field: 'email' },
-      { headerName: 'Celular', field: 'phone', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.phone},
+      { headerName: 'Celular', field: 'phone', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.phone ?? 'Não Informado'},
       { headerName: 'Ações', field: 'action', cellRendererParams: this.cellRenderParams },
     ]
     return [
       { headerName: 'Nome', field: 'name' },
-      { headerName: 'CPF', field: 'cpf', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.cpf },
-      { headerName: 'Endereço', field: 'address', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.address},
-      { headerName: 'Cargo', field: 'function', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.function},
-      { headerName: 'Setor', field: 'workspace', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.workspace},
+      { headerName: 'CPF', field: 'cpf', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.cpf ?? 'Não Informado' },
+      { headerName: 'Endereço', field: 'address', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.address ?? 'Não Informado'},
+      { headerName: 'Cargo', field: 'function', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.function ?? 'Não Informado'},
+      { headerName: 'Setor', field: 'workspace', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.workspace ?? 'Não Informado'},
       { headerName: 'Email', field: 'email' },
-      { headerName: 'Celular', field: 'phone', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta.phone},
+      { headerName: 'Celular', field: 'phone', valueGetter: (params: ValueGetterParams<AdminInterface>) => params.data?.meta?.phone ?? 'Não Informado'},
       { headerName: 'Ações', field: 'action', cellRendererParams: this.cellRenderParams },
     ]
   }
@@ -94,7 +94,6 @@ export class RegisterAdminComponent {
   protected fetchRowData$(): void {
     this.rowData$ = this._registerAdminService.findAll().pipe(
       map(apiResponse => {
-        console.log(apiResponse.data);
         return apiResponse.data;
       })
     );

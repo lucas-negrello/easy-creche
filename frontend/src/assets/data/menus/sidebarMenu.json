@@ -2,7 +2,7 @@
   {
     "label": "Agendamentos",
     "icon": "pi-calendar",
-    "isActive": false,
+    "isActive": true,
     "isHome": true,
     "roles": ["admin", "user"]
   },
@@ -17,14 +17,14 @@
     "label": "Cadastrar Responsável",
     "icon": "pi-users",
     "route": "register-responsible",
-    "isActive": false,
+    "isActive": true,
     "roles": ["admin"]
   },
   {
     "label": "Cadastrar Aluno",
     "icon": "pi-user",
     "route": "register-student",
-    "isActive": false,
+    "isActive": true,
     "roles": ["admin"]
   },
   {
