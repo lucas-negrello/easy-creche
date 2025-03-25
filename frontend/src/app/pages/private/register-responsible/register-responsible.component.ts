@@ -92,7 +92,6 @@ export class RegisterResponsibleComponent {
   protected fetchRowData$(): void {
     this.rowData$ = this._registerResponsiblesService.findAll().pipe(
       map(apiResponse => {
-        console.log(apiResponse.data);
         return apiResponse.data;
       })
     );

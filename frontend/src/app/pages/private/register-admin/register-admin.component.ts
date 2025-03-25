@@ -94,7 +94,6 @@ export class RegisterAdminComponent {
   protected fetchRowData$(): void {
     this.rowData$ = this._registerAdminService.findAll().pipe(
       map(apiResponse => {
-        console.log(apiResponse.data);
         return apiResponse.data;
       })
     );
