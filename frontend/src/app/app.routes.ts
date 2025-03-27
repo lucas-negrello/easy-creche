@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import {AuthGuard} from './core/guards/auth/auth.guard';
+import {ProfileGuard} from './core/guards/profile/profile.guard';
 
 export const routes: Routes = [
   {
@@ -14,6 +16,7 @@ export const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [AuthGuard, ProfileGuard],
     loadChildren: () => import('./pages/private/private.routes')
       .then(r => r.Private),
   },

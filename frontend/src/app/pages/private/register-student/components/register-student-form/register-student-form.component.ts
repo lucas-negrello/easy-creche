@@ -13,6 +13,12 @@ import {map, Observable, of} from 'rxjs';
 import {ResponsibleInterface} from '../../../register-responsible/interfaces/responsible.interface';
 import {Select} from 'primeng/select';
 import {AsyncPipe} from '@angular/common';
+import {InputMask} from "primeng/inputmask";
+import {KeyFilter} from "primeng/keyfilter";
+import { BloodTypesService } from '../../../../../core/services/utils/blood-types.service';
+import {BloodType} from "../../../../../core/interfaces/utils/blood-types.interface";
+import {takeUntil} from "rxjs/operators";
+import {ApiResponse} from "../../../../../core/interfaces/http/api-response.interface";
 
 @Component({
   selector: 'app-register-student-form',
@@ -23,17 +29,21 @@ import {AsyncPipe} from '@angular/common';
     InputText,
     ReactiveFormsModule,
     Select,
-    AsyncPipe
+    AsyncPipe,
+    InputMask,
+    KeyFilter
   ],
   templateUrl: './register-student-form.component.html',
   styleUrl: './register-student-form.component.scss'
 })
-export class RegisterStudentFormComponent extends FormBaseComponent<StudentInterface>{
+export class RegisterStudentFormComponent extends FormBaseComponent<StudentInterface> {
 
   private readonly _layoutService: LayoutService = inject(LayoutService);
   private readonly _registerResponsiblesService: RegisterResponsibleService = inject(RegisterResponsibleService);
+  private readonly _bloodTypesService: BloodTypesService = inject(BloodTypesService);
 
   protected responsibles$: Observable<ResponsibleInterface[]> = of([]);
+  protected bloodTypes$: Observable<BloodType[]> = of([]);
 
   constructor(
     protected override _fb: FormBuilder,
@@ -47,6 +57,33 @@ export class RegisterStudentFormComponent extends FormBaseComponent<StudentInter
         return [];
       })
     );
+    this.bloodTypes$ = this._bloodTypesService.getBloodTypes();
+  }
+
+  protected override patchFormValues(id: number | string) {
+    if (id) {
+      this._registerStudentsService
+          .findOne(id)
+          .pipe(takeUntil(this.destroy$))
+          .subscribe({
+            next: (response: ApiResponse<StudentInterface>) => {
+              this.removeDoc(0);
+              if(response.data.meta?.url_documents){
+                response.data.meta?.url_documents.forEach(() => this.addDoc())
+              }
+              this.form.patchValue(response.data ?? {});
+              const inputs = document.querySelectorAll("p-inputmask");
+              inputs.forEach(input => {
+                if(input.querySelector('input')?.value) {
+                  input.querySelector('input')?.classList.add('p-filled');
+                }
+              });
+            },
+            error: (error) => {
+              this.navigateToParent(error);
+            },
+          });
+    }
   }
 
   protected get meta(): FormGroup  {

@@ -9,35 +9,36 @@ import { Injectable } from '@angular/core';
 export class AuthSessionService {
   private readonly TOKEN_KEY = 'token';
   private readonly RESET_PASSWORD_KEY = 'reset_token';
+  private readonly PROFILE_KEY = 'profile';
 
-  /**
-   * Stores authentication token in localStorage.
-   * @param token JWT authentication token.
-   */
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_KEY, token);
   }
 
-  /**
-   * Retrieves authentication token from localStorage.
-   * @returns The stored authentication token or null if not found.
-   */
   getToken(): string | null {
     return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  /**
-   * Clears authentication token from localStorage.
-   */
   clearToken(): void {
     localStorage.removeItem(this.TOKEN_KEY);
   }
 
-  /**
-   * Checks if user is authenticated based on token existence.
-   * @returns True if token exists, otherwise false.
-   */
   isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  setProfile(profile: string): void {
+    localStorage.setItem(this.PROFILE_KEY, profile);
+  }
+
+  getProfile(): string | null {
+    return localStorage.getItem(this.PROFILE_KEY);
+  }
+
+  clearProfile(): void {
+    localStorage.removeItem(this.PROFILE_KEY);
+  }
+  hasProfile(): boolean {
+    return !!this.getProfile();
   }
 }

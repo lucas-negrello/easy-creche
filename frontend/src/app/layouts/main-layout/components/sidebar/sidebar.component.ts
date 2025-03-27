@@ -7,6 +7,7 @@ import {NavigationService} from '../../../../core/services/navigation/navigation
 import {MenuService} from '../../../../core/services/menu/menu.service';
 import {SidebarMenu} from '../../../../core/interfaces/menu/menu.interface';
 import {NgClass} from '@angular/common';
+import { AuthService } from '../../../../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,6 +26,7 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   private readonly _route: ActivatedRoute = inject(ActivatedRoute);
   private readonly _navigationService: NavigationService = inject(NavigationService);
   private readonly _menuService: MenuService = inject(MenuService);
+  private readonly _authService: AuthService = inject(AuthService);
 
   protected menu!: SidebarMenu[];
 
@@ -52,6 +54,11 @@ export class SidebarComponent implements AfterViewInit, OnDestroy {
   protected navigateTo(routes: string[]) {
     this._navigationService.navigateTo(routes);
     this.toggleSidebar();
+  }
+
+  protected logout() {
+    this._authService.logout();
+    this._navigationService.navigateTo(['/auth/login']);
   }
 
   ngOnDestroy() {

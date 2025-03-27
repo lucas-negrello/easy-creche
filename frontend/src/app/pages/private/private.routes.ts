@@ -1,8 +1,8 @@
 import {Routes} from '@angular/router';
 import {MainLayoutComponent} from '../../layouts/main-layout/main-layout.component';
-import {
-  RegisterAdminFormComponent
-} from './register-admin/components/register-admin-form/register-admin-form.component';
+import {AdminGuard} from '../../core/guards/route/admin.guard';
+import {UserGuard} from '../../core/guards/route/user.guard';
+
 
 export const Private: Routes = [
   {
@@ -17,18 +17,21 @@ export const Private: Routes = [
       },
       {
         path: 'register-admin',
+        canActivate: [AdminGuard],
         title: 'Registrar Administrador',
         loadChildren: () => import('./register-admin/register-admin.routes')
           .then(r => r.RegisterAdminRoutes),
       },
       {
         path: 'register-responsible',
+        canActivate: [AdminGuard],
         title: 'Registrar Responsável',
         loadChildren: () => import('./register-responsible/register-responsible.routes')
           .then(r => r.RegisterResponsibleRoutes),
       },
       {
         path: 'register-student',
+        canActivate: [AdminGuard],
         title: 'Registrar Estudante',
         loadChildren: () => import('./register-student/register-student.routes')
           .then(r => r.RegisterStudentRoutes),
@@ -59,6 +62,7 @@ export const Private: Routes = [
       },
       {
         path: 'contribute',
+        canActivate: [UserGuard],
         title: 'Contribua!',
         loadComponent: () => import('./contribute/contribute.component')
           .then(c => c.ContributeComponent),
@@ -66,6 +70,7 @@ export const Private: Routes = [
       {
         path: 'panic',
         title: 'Botão do Pânico',
+        canActivate: [AdminGuard],
         loadComponent: () => import('./panic/panic.component')
           .then(c => c.PanicComponent),
       }

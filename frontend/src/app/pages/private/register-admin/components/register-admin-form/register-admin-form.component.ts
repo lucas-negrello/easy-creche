@@ -9,6 +9,8 @@ import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
 import {PasswordConfirmationValidator} from '../../../../../core/validators/password-confirmation-validator';
+import {InputMask} from 'primeng/inputmask';
+import {KeyFilter} from 'primeng/keyfilter';
 
 @Component({
   selector: 'app-register-admin-form',
@@ -17,7 +19,9 @@ import {PasswordConfirmationValidator} from '../../../../../core/validators/pass
     FloatLabel,
     InputText,
     ReactiveFormsModule,
-    Button
+    Button,
+    InputMask,
+    KeyFilter
   ],
   templateUrl: './register-admin-form.component.html',
   styleUrl: './register-admin-form.component.scss'

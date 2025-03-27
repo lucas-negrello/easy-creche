@@ -6,10 +6,11 @@ export interface SidebarMenu {
   route: string;
   isActive: boolean;
   isHome: boolean;
-  role: SidebarMenuRoles[];
+  roles: SidebarMenuRoles[];
 }
 
 export const SidebarMenuRoles = {
   admin: 'admin',
   user: 'user',
+  super_admin: 'super_admin',
 } as const;
