@@ -107,6 +107,14 @@ class RegisterResponsibleController extends Controller
             ], 401);
         }
 
+        if(auth()->user()->id === $registerResponsible->id){
+            return response([
+                'message'           => 'Impossible to delete responsible. This user is still logged in',
+                'success'           => false,
+                'status_code'       => 422,
+            ], 422);
+        }
+
         $registerResponsible->delete();
 
         return response()->json([

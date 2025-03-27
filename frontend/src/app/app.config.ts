@@ -62,6 +62,6 @@ export const appConfig: ApplicationConfig = {
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
-    }
+    },
   ]
 };

@@ -86,6 +86,14 @@ class RegisterAdminController extends Controller
      */
     public function update(UpdateRegisterAdminRequest $request, User $registerAdmin)
     {
+        if($registerAdmin->hasRole('super_admin')){
+            return response([
+                'message'           => 'Impossible to update super admin user',
+                'success'           => false,
+                'status_code'       => 422,
+            ], 422);
+        }
+
         $registerAdmin->update($request->validated());
         return response()->json([
             'message'       => 'Admin updated successfully',
@@ -106,6 +114,22 @@ class RegisterAdminController extends Controller
                 'success'           => false,
                 'status_code'       => 401,
             ], 401);
+        }
+
+        if($registerAdmin->hasRole('super_admin')){
+            return response([
+                'message'           => 'Impossible to delete super admin user',
+                'success'           => false,
+                'status_code'       => 422,
+            ], 422);
+        }
+
+        if(auth()->user()->id === $registerAdmin->id){
+            return response([
+                'message'           => 'Impossible to delete admin. This user is still logged in',
+                'success'           => false,
+                'status_code'       => 422,
+            ], 422);
         }
 
         $registerAdmin->delete();

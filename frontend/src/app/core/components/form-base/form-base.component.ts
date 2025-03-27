@@ -1,20 +1,17 @@
 import {OnInit, OnDestroy, Directive, inject, AfterViewInit} from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ApiResponse } from '../../interfaces/http/api-response.interface';
-import { HttpBaseService } from '../../services/http/http-base.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {FormGroup, FormBuilder} from '@angular/forms';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {ApiResponse} from '../../interfaces/http/api-response.interface';
+import {HttpBaseService} from '../../services/http/http-base.service';
+import {BaseInjectionsComponent} from '../base-injections/base-injections.component';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Directive()
-export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnDestroy {
+export abstract class FormBaseComponent<T> extends BaseInjectionsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public form!: FormGroup;
 
-  protected readonly _route: ActivatedRoute = inject(ActivatedRoute);
-  protected readonly _router: Router = inject(Router);
-
-  protected loading: boolean = false;
   protected id?: number | string;
 
   protected destroy$ = new Subject<void>();
@@ -22,7 +19,9 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
   protected constructor(
     protected readonly _fb: FormBuilder,
     protected readonly _httpService: HttpBaseService<T>,
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
     this.buildForm();
@@ -58,7 +57,7 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
             this.form.patchValue(response.data ?? {});
             const inputs = document.querySelectorAll("p-inputmask");
             inputs.forEach(input => {
-              if(input.querySelector('input')?.value) {
+              if (input.querySelector('input')?.value) {
                 input.querySelector('input')?.classList.add('p-filled');
               }
             });
@@ -84,7 +83,8 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
     }
   }
 
-  protected onFormValueChanged(values: any): void {}
+  protected onFormValueChanged(values: any): void {
+  }
 
   protected onSubmit(): void {
     if (this._route.snapshot.routeConfig?.path === ':id') {
@@ -103,7 +103,7 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
       if (control instanceof FormGroup) {
         this.validateAllFormFields(control);
       } else {
-        control?.markAsTouched({ onlySelf: true });
+        control?.markAsTouched({onlySelf: true});
         control?.updateValueAndValidity();
       }
     });
@@ -186,7 +186,7 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
           next: (response: ApiResponse<T>) => {
             this.onSubmitSuccess(response);
           },
-          error: (error) => {
+          error: (error: HttpErrorResponse) => {
             this.onSubmitError(error);
           },
         });
@@ -195,10 +195,23 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
 
   protected onSubmitSuccess(response: ApiResponse<T>): void {
     this.loading = false;
+    this.toast.showToast("success", 'Informações Salvas', 'As informaçoes foram salvas com sucesso!')
     this.navigateToParent(response);
   }
 
-  protected onSubmitError(error: any): void {
+  protected onSubmitError(error: HttpErrorResponse): void {
+    if (error.status === 401) {
+      this.toast.showToast("error", 'Não Autorizado', 'Você não tem autorização para executar esta ação')
+    }
+    else if (error.status === 403) {
+      this.toast.showToast('error', 'Nao Autenticado', 'Você nao está logado, por favor, realize o login para poder executar esta açao')
+    }
+    else if (error.status === 422) {
+      this.toast.showToast('error', 'Conteúdo Improcessável', 'Algum dado alterado está no formato incorreto, por favor, revise os dados')
+    }
+    else {
+      this.toast.showToast('error', 'Erro ao processar solicitação', 'Um erro ocorreu ao tentar processar sua solicitação. Por favor, tente novamente')
+    }
     this.loading = false;
   }
 
@@ -207,15 +220,15 @@ export abstract class FormBaseComponent<T> implements OnInit, AfterViewInit, OnD
     if (routePath?.includes('edit')) {
       this._router.navigate(['../../'], {
         relativeTo: this._route,
-        state: { extras: extras },
-        queryParams: { refresh: true },
+        state: {extras: extras},
+        queryParams: {refresh: true},
       });
       return;
     }
     this._router.navigate(['../'], {
       relativeTo: this._route,
-      state: { extras: extras },
-      queryParams: { refresh: true },
+      state: {extras: extras},
+      queryParams: {refresh: true},
     });
   }
 

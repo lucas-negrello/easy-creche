@@ -33,7 +33,6 @@ export class LoginComponent extends FormBaseComponent<unknown> {
     super(_fb, _authService);
   }
 
-
   protected buildForm() {
     this.form = this._fb.group({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -68,7 +67,17 @@ export class LoginComponent extends FormBaseComponent<unknown> {
   }
 
   public override onSubmitSuccess() {
+    this.toast.showToast("success", 'Login realizado com sucesso')
     this._router.navigate(['']);
+  }
+
+  public override onSubmitError(error: HttpErrorResponse) {
+    if (error.status === 401) {
+      this.toast.showToast("error", 'Não Autorizado', 'Você não tem autorização para se logar no sistema')
+    }
+    else {
+      this.toast.showToast('error', 'Erro ao realizar login', 'Um erro ocorreu ao tentar acessar o sistema. Por favor, verifique seus dados e tente novamente')
+    }
   }
 
 }

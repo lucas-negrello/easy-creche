@@ -1,3 +1,7 @@
+import {AvailableRoles} from '../commons/roles/roles.interface';
+
+export type UserRoleNames = keyof typeof UserRoleNames;
+
 export interface UserInterface {
   id?: number;
   name: string;
@@ -11,7 +15,9 @@ export interface UserInterface {
 
 export interface RolesInterface {
   id?: number;
-  name: 'admin' | 'user' | 'super_admin';
+  name: UserRoleNames;
   created_at?: string;
   updated_at?: string;
 }
+
+export const UserRoleNames = AvailableRoles;

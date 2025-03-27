@@ -1,3 +1,6 @@
+import {AvailableRoles} from '../commons/roles/roles.interface';
+
+
 export type SidebarMenuRoles = keyof typeof SidebarMenuRoles;
 
 export interface SidebarMenu {
@@ -9,8 +12,4 @@ export interface SidebarMenu {
   roles: SidebarMenuRoles[];
 }
 
-export const SidebarMenuRoles = {
-  admin: 'admin',
-  user: 'user',
-  super_admin: 'super_admin',
-} as const;
+export const SidebarMenuRoles = AvailableRoles;
