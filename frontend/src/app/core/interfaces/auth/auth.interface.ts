@@ -1,3 +1,5 @@
+import {RolesInterface, UserInterface} from '../user/user.interface';
+
 export interface RegisterRequest {
   name: string;
   email: string;
@@ -49,4 +51,9 @@ export interface ResetPasswordRequest {
   email: string;
   new_password: string;
   new_password_confirmation: string;
+}
+
+export interface MeResponse {
+  user: UserInterface;
+  role: RolesInterface;
 }

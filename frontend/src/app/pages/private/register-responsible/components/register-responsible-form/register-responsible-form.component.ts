@@ -11,6 +11,8 @@ import {LayoutService} from '../../../../../core/services/layout/layout.service'
 import {RegisterResponsibleService} from '../../services/register-responsible.service';
 import {ResponsibleInterface} from '../../interfaces/responsible.interface';
 import {PasswordConfirmationValidator} from '../../../../../core/validators/password-confirmation-validator';
+import {KeyFilter} from "primeng/keyfilter";
+import {InputMask} from "primeng/inputmask";
 
 @Component({
   selector: 'app-register-responsible-form',
@@ -19,7 +21,9 @@ import {PasswordConfirmationValidator} from '../../../../../core/validators/pass
     FloatLabel,
     ReactiveFormsModule,
     InputText,
-    Button
+    Button,
+    KeyFilter,
+    InputMask
   ],
   templateUrl: './register-responsible-form.component.html',
   styleUrl: './register-responsible-form.component.scss'

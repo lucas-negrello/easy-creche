@@ -6,13 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="86cc6518-d73b-475a-aab9-6cee50029e35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Requests/UpdateRegisterAdminRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Requests/UpdateRegisterAdminRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Requests/UpdateRegisterResponsibleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Requests/UpdateRegisterResponsibleRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/core/components/form-base/form-base.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/components/form-base/form-base.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/interfaces/auth/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/interfaces/auth/auth.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/interfaces/menu/menu.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/interfaces/menu/menu.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth-session.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth-session.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/services/menu/menu.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/services/menu/menu.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/sidebar/sidebar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/sidebar/sidebar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-admin/components/register-admin-form/register-admin-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-admin/components/register-admin-form/register-admin-form.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-admin/components/register-admin-form/register-admin-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-admin/components/register-admin-form/register-admin-form.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-responsible/components/register-responsible-form/register-responsible-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-responsible/components/register-responsible-form/register-responsible-form.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-responsible/components/register-responsible-form/register-responsible-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-responsible/components/register-responsible-form/register-responsible-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/components/register-student-form/register-student-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/components/register-student-form/register-student-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/components/register-student-form/register-student-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/components/register-student-form/register-student-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/interfaces/student.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/interfaces/student.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/data/menus/sidebarMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/data/menus/sidebarMenu.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,8 +175,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "LucasNegrello__Frontend__Entrega__2",
-    "last_opened_file_path": "/home/negrello/Projects/easy-creche/frontend/src/app/pages/private/register-student",
+    "git-widget-placeholder": "LucasNegrello__BugFixes__Entrega__2",
+    "last_opened_file_path": "/home/negrello/Projects/easy-creche/frontend/src/app/core/guards/route",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -180,13 +193,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/app/core/guards/route" />
+      <recent name="$PROJECT_DIR$/frontend/src/app/core/guards/profile" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/register-student" />
       <recent name="$PROJECT_DIR$/backend" />
       <recent name="$PROJECT_DIR$/backend/.docker" />
-      <recent name="$PROJECT_DIR$/frontend/src/assets/images/backgrounds" />
-      <recent name="$PROJECT_DIR$/frontend/src/app/layouts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/assets/data/utils" />
       <recent name="$PROJECT_DIR$/frontend/src/app/shared/datatable" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/auth" />
       <recent name="$PROJECT_DIR$/frontend/src/app/core/services/overlays" />

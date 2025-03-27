@@ -17,5 +17,5 @@ export interface StudentMetaInterface {
   allergies?: string,
   gender?: string,
   medical_convenience?: string,
-  url_documents?: Object,
+  url_documents?: Object[],
 }

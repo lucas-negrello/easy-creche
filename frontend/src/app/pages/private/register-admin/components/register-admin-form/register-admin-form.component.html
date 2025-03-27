@@ -29,6 +29,7 @@
             id="email"
             pSize="small"
             pInputText
+            pKeyFilter="email"
             formControlName="email"
             [class]="invalidInput('email')"
             fluid
@@ -89,17 +90,17 @@
       <div formGroupName="meta">
         <div class="mb-5">
           <p-floatlabel variant="on">
+            <p-inputmask
+              id="cpf"
+              size="small"
+              mask="999.999.999-99"
+              pKeyFilter="pint"
+              formControlName="cpf"
+              [class]="invalidInput('cpf')"
+            />
             <label for="cpf">
               CPF
             </label>
-            <input
-              id="cpf"
-              pSize="small"
-              pInputText
-              formControlName="cpf"
-              [class]="invalidInput('cpf')"
-              fluid
-            />
           </p-floatlabel>
           <div class="min-h-5">
             @if (checkValidation('cpf')) {
@@ -169,17 +170,17 @@
         </div>
         <div class="mb-5">
           <p-floatlabel variant="on">
+            <p-inputmask
+              id="phone"
+              size="small"
+              mask="(99) 99999-9999"
+              pKeyFilter="pint"
+              formControlName="phone"
+              [class]="invalidInput('phone')"
+            />
             <label for="phone">
               Telefone
             </label>
-            <input
-              id="phone"
-              pSize="small"
-              pInputText
-              formControlName="phone"
-              [class]="invalidInput('phone')"
-              fluid
-            />
           </p-floatlabel>
           <div class="min-h-5">
             @if (checkValidation('phone')) {
