@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {LayoutService} from '../../../core/services/layout/layout.service';
 import {Card} from 'primeng/card';
 import {DatatableComponent} from '../../../shared/datatable/datatable.component';
-import {map, Observable, of} from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 import {
   CustomCellRendererParams
 } from '../../../shared/datatable/components/grid-action-buttons/grid-action-buttons.interface';
@@ -11,6 +11,8 @@ import {TableCustomConfig} from '../../../shared/datatable/datatable.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AdminInterface} from './interfaces/admin.interface';
 import {RegisterAdminService} from './services/register-admin.service';
+import {BaseInjectionsComponent} from '../../../core/components/base-injections/base-injections.component';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-register-admin',
@@ -21,13 +23,10 @@ import {RegisterAdminService} from './services/register-admin.service';
   templateUrl: './register-admin.component.html',
   styleUrl: './register-admin.component.scss'
 })
-export class RegisterAdminComponent {
+export class RegisterAdminComponent extends BaseInjectionsComponent {
   private readonly _layoutService: LayoutService = inject(LayoutService);
-  private readonly _router: Router = inject(Router);
-  private readonly _route: ActivatedRoute = inject(ActivatedRoute);
   private readonly _registerAdminService: RegisterAdminService = inject(RegisterAdminService);
 
-  protected loading: boolean = false;
   protected rowData$: Observable<AdminInterface[]> = of([]);
   protected cellRenderParams: Partial<CustomCellRendererParams<AdminInterface>> = {
     format: 'ellipsis',
@@ -116,11 +115,22 @@ export class RegisterAdminComponent {
   public delete(params: ICellRendererParams<AdminInterface>) {
     const id = params.data?.id;
     if (id) {
+      if(this.user && this.user.id === id) {
+        this.toast.showToast('error', 'Falha ao deletar Administrador',
+          'Não é possível deletar o Administrador pois o mesmo está conecatdo nesta sessão. ' +
+          'Por favor, acesse com outro usuário Administrador ou Super Administrador para deletar este Administrador.', 5000);
+        return;
+      }
       this._registerAdminService.delete(id).subscribe({
         next: () => {
+          this.toast.showToast('success', 'Deletado com sucesso');
           this.loading = true;
           this.fetchRowData$();
           this.loading = false;
+        },
+        error: (err) => {
+          console.log(err)
+          this.toast.showToast('error', 'Falha ao deletar Administrador');
         }
       });
     }

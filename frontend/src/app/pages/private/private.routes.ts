@@ -2,11 +2,13 @@ import {Routes} from '@angular/router';
 import {MainLayoutComponent} from '../../layouts/main-layout/main-layout.component';
 import {AdminGuard} from '../../core/guards/route/admin.guard';
 import {UserGuard} from '../../core/guards/route/user.guard';
+import {ProfileGuard} from '../../core/guards/profile/profile.guard';
 
 
 export const Private: Routes = [
   {
     path: '',
+    canActivateChild: [ProfileGuard],
     component: MainLayoutComponent,
     children: [
       {

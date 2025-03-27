@@ -23,7 +23,6 @@ import {ThemesService} from '../../core/services/themes/themes.service';
 import {Button} from 'primeng/button';
 import {FloatLabel} from 'primeng/floatlabel';
 import {InputText} from 'primeng/inputtext';
-// Register AG-Grid modules
 ModuleRegistry.registerModules([AllCommunityModule, RowSelectionModule]);
 
 @Component({
@@ -172,49 +171,20 @@ export class DatatableComponent<DataType> implements OnInit {
     return this._tableCustomConfig.callback?.doesExternalFilterPass?.(node) as unknown as boolean;
   };
 
-  /**
-   * Callback triggered when a filter is changed.
-   *
-   * This function notifies the parent component by invoking the corresponding callback, if provided.
-   *
-   * @param event The filter change event, containing the updated filter state.
-   */
   protected onFilterChanged(event: FilterChangedEvent<DataType>) {
     this._tableCustomConfig.callback?.onFilterChanged?.(event);
   }
 
-  /**
-   * Callback for when the data is first rendered.
-   *
-   * Can be substituted with the callback function from parent component.
-   *
-   * @param params The event of first data rendering in the table.
-   */
   protected onFirstDataRendered(params: FirstDataRenderedEvent<DataType>) {
     params.api.paginationGoToPage(0); // Navigate to the first page after the first render
     this._tableCustomConfig.callback?.onFirstDataRendered?.(params); // Call the custom callback if defined
   }
 
-  /**
-   * Callback for when the row selection changes.
-   *
-   * Can be substituted with the callback function from parent component.
-   *
-   * @param params The event for row selection change.
-   * @param selectedRows The rows that were selected.
-   */
   protected onSelectionChanged(params: SelectionChangedEvent<DataType>, selectedRows: DataType[]) {
     this.selectedRows = selectedRows; // Update the selected rows
     this._tableCustomConfig.callback?.onSelectionChanged?.(params, selectedRows); // Call the custom callback if defined
   }
 
-  /**
-   * Callback for when the grid is ready and initialized.
-   *
-   * Can be substituted with the callback function from parent component.
-   *
-   * @param params The event of grid initialization.
-   */
   protected onGridReady(params: GridReadyEvent<DataType>) {
     if (this._tableCustomConfig.callback?.onGridReady) {
       this._tableCustomConfig.callback?.onGridReady?.(params); // Call the custom callback if defined
@@ -223,12 +193,6 @@ export class DatatableComponent<DataType> implements OnInit {
     params.api.sizeColumnsToFit(); // Resize columns to fit the available space
   }
 
-  /**
-   * Function to add a new item, called when the user clicks the add button.
-   *
-   * Must be substituted with the callback function from parent component if
-   * there is an addition action.
-   */
   protected handleAdd = () => {
     this._addCallbackFn?.(); // Call the callback function if defined
   };
