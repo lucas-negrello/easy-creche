@@ -1,7 +1,6 @@
 import {Component, inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {Menubar} from 'primeng/menubar';
 import {Avatar} from 'primeng/avatar';
-import {InputText} from 'primeng/inputtext';
 import {Button} from 'primeng/button';
 import {LayoutService} from '../../../../core/services/layout/layout.service';
 import {SidebarComponent} from '../sidebar/sidebar.component';
@@ -12,7 +11,6 @@ import {DarkmodeSelectorComponent} from './components/darkmode-selector/darkmode
   imports: [
     Menubar,
     Avatar,
-    InputText,
     Button,
     SidebarComponent,
     DarkmodeSelectorComponent

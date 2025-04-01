@@ -13,29 +13,17 @@ export const Auth: Routes = [
           .then(c => c.LoginComponent),
       },
       {
-        path: 'register',
-        title: 'Register',
-        loadComponent: () => import('./register/register.component')
-          .then(c => c.RegisterComponent),
-      },
-      {
         path: 'forgot-password',
         title: 'Forgot Password',
         loadComponent: () => import('./forgot-password/forgot-password.component')
           .then(c => c.ForgotPasswordComponent),
       },
       {
-        path: 'new-password',
+        path: 'reset/:token/:email',
         title: 'New Password',
         loadComponent: () => import('./new-password/new-password.component')
           .then(c => c.NewPasswordComponent),
       },
-      {
-        path: 'verification',
-        title: 'Verification',
-        loadComponent: () => import('./verification/verification.component')
-          .then(c => c.VerificationComponent),
-      }
     ]
   }
 ]

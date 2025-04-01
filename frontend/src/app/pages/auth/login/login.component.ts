@@ -10,6 +10,7 @@ import {AuthService} from '../../../core/services/auth/auth.service';
 import {LoginRequest, LoginResponse} from '../../../core/interfaces/auth/auth.interface';
 import {HttpErrorResponse} from '@angular/common/http';
 import {ApiResponse} from '../../../core/interfaces/http/api-response.interface';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ import {ApiResponse} from '../../../core/interfaces/http/api-response.interface'
     KeyFilter,
     ButtonDirective,
     Checkbox,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

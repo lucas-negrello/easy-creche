@@ -54,8 +54,8 @@ export class AuthService extends HttpBaseService<unknown> {
     return this.http.post<ApiResponse<ForgotPasswordResponse>>(`${this.apiUrl}/password/forgot`, payload);
   }
 
-  resetPassword(payload: ResetPasswordRequest): Observable<ApiResponse<void>> {
-    return this.http.post<ApiResponse<void>>(`${this.apiUrl}/password/reset`, payload);
+  resetPassword(token: string, email: string, payload: ResetPasswordRequest): Observable<ApiResponse<void>> {
+    return this.http.post<ApiResponse<void>>(`${this.apiUrl}/password/reset/${token}/${email}`, payload);
   }
 
   logout(): void {
