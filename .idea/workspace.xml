@@ -5,34 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86cc6518-d73b-475a-aab9-6cee50029e35" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_24_25,_6_52 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_24_25__6_52PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_24_25,_6_50 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_3_24_25__6_50PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/pull_request_template.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/pull_request_template.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/ForgotPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/ForgotPasswordController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/RegisterStudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Models/RegisterStudent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/components/base-injections/base-injections.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/components/base-injections/base-injections.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/interfaces/auth/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/interfaces/auth/auth.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/layouts/main-layout/components/header/header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/auth.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/auth/auth.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/forgot-password/forgot-password.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/auth/forgot-password/forgot-password.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/forgot-password/forgot-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/auth/forgot-password/forgot-password.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/auth/login/login.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/auth/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/new-password/new-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/auth/new-password/new-password.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/register/register.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/register/register.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/register/register.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/verification/verification.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/verification/verification.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/auth/verification/verification.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/docs/docs.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/docs/docs.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/docs/docs.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/docs/docs.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/data/menus/sidebarMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/data/menus/sidebarMenu.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,8 +162,8 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "LucasNegrello__LastAdjusts__Entrega__2",
-    "last_opened_file_path": "/home/negrello/Projects/easy-creche/frontend/src/app/core/guards/route",
+    "git-widget-placeholder": "LucasNegrello__Start__Entrega__3",
+    "last_opened_file_path": "/home/negrello/Projects/easy-creche/frontend/src/app/pages/private/docs",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -200,18 +180,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/docs" />
       <recent name="$PROJECT_DIR$/frontend/src/app/core/guards/route" />
       <recent name="$PROJECT_DIR$/frontend/src/app/core/guards/profile" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/register-student" />
       <recent name="$PROJECT_DIR$/backend" />
-      <recent name="$PROJECT_DIR$/backend/.docker" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/docs" />
       <recent name="$PROJECT_DIR$/frontend/src/app/core/interfaces/commons" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/data/utils" />
       <recent name="$PROJECT_DIR$/frontend/src/app/shared/datatable" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/auth" />
-      <recent name="$PROJECT_DIR$/frontend/src/app/core/services/overlays" />
     </key>
   </component>
   <component name="RunManager">

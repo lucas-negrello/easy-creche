@@ -23,4 +23,9 @@ class RegisterStudent extends Model
     {
         return $this->belongsTo(RegisterResponsible::class, 'responsible_id', 'id');
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

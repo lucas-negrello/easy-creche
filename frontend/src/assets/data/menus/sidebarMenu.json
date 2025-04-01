@@ -45,7 +45,7 @@
     "label": "Documentos",
     "icon": "pi-images",
     "route": "docs",
-    "isActive": false,
+    "isActive": true,
     "roles": ["super_admin","admin", "user"]
   },
   {

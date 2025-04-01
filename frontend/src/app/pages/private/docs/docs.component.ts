@@ -9,7 +9,9 @@ import {LayoutService} from '../../../core/services/layout/layout.service';
 })
 export class DocsComponent {
   private readonly _layoutService: LayoutService = inject(LayoutService);
+
   ngOnInit() {
     this._layoutService.updateTitle('Documentos');
   }
+
 }

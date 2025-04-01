@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\RegisterResponsibleController;
@@ -27,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
         'register-admins' => RegisterAdminController::class,
         'register-responsibles' => RegisterResponsibleController::class,
         'register-students' => RegisterStudentController::class,
+        'docs' => DocumentController::class,
     ]);
 });
 
