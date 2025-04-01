@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Notifications\Mail\MailForgotPasswordNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,19 +14,14 @@ class ForgotPasswordController extends Controller
 
     public function sendResetLinkEmail(Request $request)
     {
-        $rules = [
-            'email' => 'required|email|exists:users'
-        ];
-
-        $feedback = [
-            'email.exists' => 'Email is not registered yet.'
-        ];
-
-        $request->validate($rules, $feedback);
 
         $user = User::where('email', $request->email)->first();
         if (!$user) {
-            return response()->json(['message' => 'Email not found'], 404);
+            return response([
+                'message'           => 'Email not found',
+                'success'           => false,
+                'status_code'       => 404,
+            ], 404);
         }
 
         $token = Str::random(64);
@@ -34,12 +30,13 @@ class ForgotPasswordController extends Controller
             ['token' => $token, 'created_at' => Carbon::now()]
         );
 
-//        $user->notify(new MailForgotPasswordNotification($request->email, $token));
+        $user->notify(new MailForgotPasswordNotification($request->email, $token));
 
         return response()->json([
-            'message' => 'New token generated',
-            'email' => $request->email,
-            'reset_token' => $token,
+            'message'       => 'Token created successfully and mail sent.',
+            'data'          => [],
+            'success'       => true,
+            'status_code'   => 200
         ]);
     }
 

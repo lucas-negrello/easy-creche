@@ -12,5 +12,5 @@ export abstract class BaseInjectionsComponent {
   protected readonly _authSessionService: AuthSessionService = inject(AuthSessionService);
 
   protected loading: boolean = false;
-  protected user: UserInterface | '' = JSON.parse(this._authSessionService.getProfile() ?? '');
+  protected user: UserInterface | null = this._authSessionService.getProfile() ? JSON.parse(this._authSessionService.getProfile() ?? '') : null;
 }

@@ -9,27 +9,29 @@ use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
-    public function reset(Request $request)
+    public function reset(Request $request, string $token, string $email)
     {
         $rules = [
-            'token' => 'required',
-            'email' => 'required|email',
-            'new_password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8|confirmed',
         ];
 
         $request->validate($rules);
 
-        $resetToken = DB::table('password_reset_tokens')->where('email', $request->email)->first();
+        $resetToken = DB::table('password_reset_tokens')->where('email', $email)->first();
 
-        if (!$resetToken || $resetToken->token !== $request->token) {
-            return response()->json(['message' => 'Invalid reset token'], 400);
+        if (!$resetToken || $token !== $resetToken->token) {
+            return response([
+                'message'           => 'Invalid reset token',
+                'success'           => false,
+                'status_code'       => 400,
+            ], 400);
         }
 
-        $user = User::where('email', $request->email)->first();
-        $user->password = Hash::make($request->new_password);
+        $user = User::where('email', $email)->first();
+        $user->password = Hash::make($request->password);
         $user->save();
 
-        DB::table('password_reset_tokens')->where('email', $request->email)->delete();
+        DB::table('password_reset_tokens')->where('email', $email)->delete();
 
         return response()->json([
             'message' => 'Password has been reset successfully',

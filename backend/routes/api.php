@@ -17,7 +17,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
 
 // PASSWORD RESEND ROUTES
 Route::post('/password/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
-Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.reset');
+Route::post('/password/reset/{token}/{email}', [ResetPasswordController::class, 'reset'])->name('password.reset');
 
 // ROUTES FOR AUTHENTICATED/LOGGED IN USERS
 Route::middleware('auth:sanctum')->group(function () {

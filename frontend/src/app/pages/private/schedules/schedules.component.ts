@@ -1,9 +1,12 @@
 import {Component, inject} from '@angular/core';
 import {LayoutService} from '../../../core/services/layout/layout.service';
+import {Card} from 'primeng/card';
 
 @Component({
   selector: 'app-schedules',
-  imports: [],
+  imports: [
+    Card
+  ],
   templateUrl: './schedules.component.html',
   styleUrl: './schedules.component.scss'
 })

@@ -42,15 +42,12 @@ export interface ForgotPasswordRequest {
 }
 
 export interface ForgotPasswordResponse {
-  email: string;
-  reset_token: string;
+
 }
 
 export interface ResetPasswordRequest {
-  token: string;
-  email: string;
-  new_password: string;
-  new_password_confirmation: string;
+  password: string;
+  password_confirmation: string;
 }
 
 export interface MeResponse {
