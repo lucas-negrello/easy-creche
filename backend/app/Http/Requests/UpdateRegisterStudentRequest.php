@@ -33,7 +33,6 @@ class UpdateRegisterStudentRequest extends FormRequest
             'meta.allergies'            => 'nullable|string',
             'meta.gender'               => 'nullable|string',
             'meta.medical_convenience'  => 'nullable|string',
-            'meta.url_documents'        => 'nullable|array',
         ];
     }
 }

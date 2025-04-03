@@ -19,7 +19,7 @@ class DocumentPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user): bool
+    public function view(User $user, Document $document): bool
     {
         return $user->hasPermission('docs_view');
     }

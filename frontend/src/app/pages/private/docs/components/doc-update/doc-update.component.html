@@ -49,6 +49,8 @@
         [maxFileSize]="20480000"
         [accept]="'.doc,.docx,.pdf,.jpg,.jpeg,.png'"
         (uploadHandler)="onUpload($event)"
+        (onRemove)="onRemove()"
+        [files]="files"
         auto
       >
       </p-fileupload>

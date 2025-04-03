@@ -25,7 +25,9 @@ class UpdateDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'file'                  => ['required', 'file', 'mimes:doc,docx,pdf,jpg,jpeg,png', 'max:20480'],
+            'name'                  => ['required', 'string'],
+            'register_student_id'   => ['required', 'integer', 'exists:register_students,id'],
         ];
     }
 }

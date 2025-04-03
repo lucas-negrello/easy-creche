@@ -173,61 +173,6 @@
           }
         </div>
       </div>
-      <div formArrayName="url_documents">
-        @for (urlDocument of urlDocuments.controls; let index = $index; track urlDocument) {
-          <div class="mb-5 flex gap-1 w-full">
-            <div [formGroupName]="index" class="w-full flex flex-col gap-2">
-              <div>
-                <p-floatlabel variant="on">
-                  <label [for]="'name_'+index">
-                    Nome do Documento {{index+1}}
-                  </label>
-                  <input
-                    [id]="'name_'+index"
-                    pSize="small"
-                    pInputText
-                    formControlName="docName"
-                    fluid
-                  />
-                </p-floatlabel>
-              </div>
-              <div>
-                <p-floatlabel variant="on">
-                  <label [for]="'url_'+index">
-                    URL do Documento {{index+1}}
-                  </label>
-                  <input
-                    [id]="'url_'+index"
-                    pSize="small"
-                    pInputText
-                    formControlName="docUrl"
-                    fluid
-                  />
-                </p-floatlabel>
-              </div>
-            </div>
-            @if(index > 0) {
-              <div>
-                <p-button
-                  size="small"
-                  severity="info"
-                  icon="pi pi-trash"
-                  (onClick)="removeDoc(index)"
-                />
-              </div>
-            }
-          </div>
-        }
-        <div class="mb-5">
-          <p-button
-            size="small"
-            severity="primary"
-            icon="pi pi-plus"
-            label="Adicionar Documento"
-            (onClick)="addDoc()"
-          />
-        </div>
-      </div>
     </div>
     <div>
       <p-button

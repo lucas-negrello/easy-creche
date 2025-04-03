@@ -11,6 +11,7 @@ class Document extends Model
     protected $fillable = [
         'register_student_id',
         'name',
+        'original_name',
         'file_path',
         'mime_type',
         'size'

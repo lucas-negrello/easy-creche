@@ -28,8 +28,17 @@ Route::middleware('auth:sanctum')->group(function () {
         'register-admins' => RegisterAdminController::class,
         'register-responsibles' => RegisterResponsibleController::class,
         'register-students' => RegisterStudentController::class,
-        'docs' => DocumentController::class,
     ]);
+    Route::group([
+        'prefix'    => 'docs',
+        'as'        => 'docs.'
+    ], function() {
+        Route::post('/', [DocumentController::class, 'upload']);
+        Route::get('/', [DocumentController::class, 'index']);
+        Route::post('/{document}', [DocumentController::class, 'update']);
+        Route::get('/{document}', [DocumentController::class, 'download']);
+        Route::delete('/{document}', [DocumentController::class, 'destroy']);
+    });
 });
 
 

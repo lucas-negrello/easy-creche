@@ -11,14 +11,4 @@ export const DocsRoutes: Routes = [
     loadComponent: () => import('./components/doc-form/doc-form.component')
       .then(c => c.DocFormComponent),
   },
-  {
-    path: ':id/edit',
-    loadComponent: () => import('./components/doc-form/doc-form.component')
-      .then(c => c.DocFormComponent),
-  },
-  {
-    path: ':id',
-    loadComponent: () => import('./components/doc-form/doc-form.component')
-      .then(c => c.DocFormComponent),
-  },
 ];

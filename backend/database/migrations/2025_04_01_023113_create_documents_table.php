@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('register_student_id')->nullable();
             $table->string('name');
+            $table->string('original_name');
             $table->string('file_path');
             $table->string('mime_type')->nullable();
             $table->unsignedInteger('size')->nullable();

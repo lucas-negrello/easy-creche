@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Models\RegisterResponsible;
+use App\Models\RegisterStudent;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,9 +49,19 @@ class AuthController extends Controller
     public function me()
     {
         $user = auth()->user();
+
+        if($user->hasRole(['user'])) {
+            $responsible = RegisterResponsible::where('id', $user->id)->with('students')->with('roles')->first();
+            return response()->json([
+                'user'      => $responsible,
+                'role'      => $user->roles,
+                'students'  => $responsible->students,
+            ]);
+        }
         return response()->json([
-            'user' => $user,
-            'role' => $user->roles
+            'user'      => $user,
+            'role'      => $user->roles,
+            'students'  => RegisterStudent::all()
         ]);
     }
 
