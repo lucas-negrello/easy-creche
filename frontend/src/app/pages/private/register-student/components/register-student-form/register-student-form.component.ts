@@ -3,7 +3,7 @@ import {Button} from "primeng/button";
 import {FloatLabel} from "primeng/floatlabel";
 import {Fluid} from "primeng/fluid";
 import {InputText} from "primeng/inputtext";
-import {FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {FormBaseComponent} from '../../../../../core/components/form-base/form-base.component';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
 import {RegisterResponsibleService} from '../../../register-responsible/services/register-responsible.service';
@@ -67,10 +67,6 @@ export class RegisterStudentFormComponent extends FormBaseComponent<StudentInter
           .pipe(takeUntil(this.destroy$))
           .subscribe({
             next: (response: ApiResponse<StudentInterface>) => {
-              this.removeDoc(0);
-              if(response.data.meta?.url_documents){
-                response.data.meta?.url_documents.forEach(() => this.addDoc())
-              }
               this.form.patchValue(response.data ?? {});
               const inputs = document.querySelectorAll("p-inputmask");
               inputs.forEach(input => {
@@ -86,13 +82,6 @@ export class RegisterStudentFormComponent extends FormBaseComponent<StudentInter
     }
   }
 
-  protected get meta(): FormGroup  {
-    return this.form.controls['meta'] as FormGroup;
-  }
-  protected get urlDocuments(): FormArray {
-    return this.meta.controls['url_documents'] as FormArray;
-  }
-
   protected override buildForm(): void {
     this.form = this._fb.group({
       name: [null, [Validators.required]],
@@ -104,10 +93,8 @@ export class RegisterStudentFormComponent extends FormBaseComponent<StudentInter
         allergies: [null],
         gender: [null],
         medical_convenience: [null],
-        url_documents: this._fb.array([]),
       }),
     });
-    this.addDoc();
   }
 
   protected defineLabel(): string {
@@ -115,17 +102,5 @@ export class RegisterStudentFormComponent extends FormBaseComponent<StudentInter
       return 'Retornar';
     }
     return 'Enviar';
-  }
-
-  protected removeDoc(index: number): void {
-    this.urlDocuments.removeAt(index);
-  }
-
-  protected addDoc(): void {
-    const docGroup = this._fb.group({
-      docName: [null],
-      docUrl: [null],
-    })
-    this.urlDocuments.push(docGroup);
   }
 }

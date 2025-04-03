@@ -19,8 +19,15 @@ class RegisterStudent extends Model
         'meta' => 'array'
     ];
 
+    protected $with = ['documents'];
+
     public function responsible()
     {
         return $this->belongsTo(RegisterResponsible::class, 'responsible_id', 'id');
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 }

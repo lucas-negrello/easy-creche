@@ -11,6 +11,3 @@
 
 ## 📢 Observações adicionais
 <!-- Algum detalhe extra que os revisores devem saber -->
-
-## 📌 Descrição
-<!-- Descreva resumidamente o que essa PR faz -->

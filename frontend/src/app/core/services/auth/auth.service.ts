@@ -71,6 +71,9 @@ export class AuthService extends HttpBaseService<unknown> {
         if(response.user){
           this._authSessionService.setProfile(JSON.stringify(response.user));
         }
+        if(response.students){
+          this._authSessionService.setStudents(JSON.stringify(response.students));
+        }
       })
     );
   }

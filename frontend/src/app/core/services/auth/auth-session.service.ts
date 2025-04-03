@@ -10,6 +10,7 @@ export class AuthSessionService {
   private readonly TOKEN_KEY = 'token';
   private readonly RESET_PASSWORD_KEY = 'reset_token';
   private readonly PROFILE_KEY = 'profile';
+  private readonly STUDENT_KEY = 'students';
 
   setToken(token: string): void {
     localStorage.setItem(this.TOKEN_KEY, token);
@@ -40,5 +41,17 @@ export class AuthSessionService {
   }
   hasProfile(): boolean {
     return !!this.getProfile();
+  }
+
+  setStudents(students: string): void {
+    localStorage.setItem(this.STUDENT_KEY, students);
+  }
+
+  getStudents(): string | null {
+    return localStorage.getItem(this.STUDENT_KEY);
+  }
+
+  clearStudents(): void {
+    localStorage.removeItem(this.STUDENT_KEY);
   }
 }

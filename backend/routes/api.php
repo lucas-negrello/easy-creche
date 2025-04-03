@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\RegisterResponsibleController;
@@ -28,6 +29,16 @@ Route::middleware('auth:sanctum')->group(function () {
         'register-responsibles' => RegisterResponsibleController::class,
         'register-students' => RegisterStudentController::class,
     ]);
+    Route::group([
+        'prefix'    => 'docs',
+        'as'        => 'docs.'
+    ], function() {
+        Route::post('/', [DocumentController::class, 'upload']);
+        Route::get('/', [DocumentController::class, 'index']);
+        Route::post('/{document}', [DocumentController::class, 'update']);
+        Route::get('/{document}', [DocumentController::class, 'download']);
+        Route::delete('/{document}', [DocumentController::class, 'destroy']);
+    });
 });
 
 

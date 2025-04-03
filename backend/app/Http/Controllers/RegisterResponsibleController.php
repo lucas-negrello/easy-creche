@@ -17,13 +17,7 @@ class RegisterResponsibleController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows('viewAny', RegisterResponsible::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
+        $this->authorize('view', RegisterResponsible::class);
 
         $responsibles = User::whereHas('roles', function ($query) {
             $query->where('name', 'user');

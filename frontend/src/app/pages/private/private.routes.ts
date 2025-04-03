@@ -53,8 +53,8 @@ export const Private: Routes = [
       {
         path: 'docs',
         title: 'Documentos',
-        loadComponent: () => import('./docs/docs.component')
-          .then(c => c.DocsComponent),
+        loadChildren: () => import('./docs/docs.routes')
+          .then(r => r.DocsRoutes),
       },
       {
         path: 'resources',

@@ -1,4 +1,5 @@
 import {RolesInterface, UserInterface} from '../user/user.interface';
+import {StudentInterface} from '../../../pages/private/register-student/interfaces/student.interface';
 
 export interface RegisterRequest {
   name: string;
@@ -53,4 +54,5 @@ export interface ResetPasswordRequest {
 export interface MeResponse {
   user: UserInterface;
   role: RolesInterface;
+  students?: StudentInterface[];
 }
