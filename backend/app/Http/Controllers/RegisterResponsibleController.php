@@ -17,8 +17,7 @@ class RegisterResponsibleController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', RegisterResponsible::class);
-
+        $this->authorize('viewAny', RegisterResponsible::class);
         $responsibles = User::whereHas('roles', function ($query) {
             $query->where('name', 'user');
         })->get();
@@ -58,14 +57,7 @@ class RegisterResponsibleController extends Controller
      */
     public function show(RegisterResponsible $registerResponsible)
     {
-        if(!Gate::allows('view', RegisterResponsible::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
-
+        $this->authorize('view', $registerResponsible);
         return response()->json([
             'message'       => 'Responsible retrieved successfully',
             'data'          => $registerResponsible,
@@ -93,14 +85,7 @@ class RegisterResponsibleController extends Controller
      */
     public function destroy(RegisterResponsible $registerResponsible)
     {
-        if(!Gate::allows('delete', RegisterResponsible::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
-
+        $this->authorize('delete', $registerResponsible);
         if(auth()->user()->id === $registerResponsible->id){
             return response([
                 'message'           => 'Impossible to delete responsible. This user is still logged in',
@@ -108,9 +93,7 @@ class RegisterResponsibleController extends Controller
                 'status_code'       => 422,
             ], 422);
         }
-
         $registerResponsible->delete();
-
         return response()->json([
             'message'       => 'Responsible deleted successfully',
             'data'          => $registerResponsible,

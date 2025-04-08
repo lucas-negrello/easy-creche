@@ -14,6 +14,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Document::class);
         $documents = Document::all();
 
         return response()->json([
@@ -30,6 +31,7 @@ class DocumentController extends Controller
      */
     public function upload(StoreDocumentRequest $request)
     {
+        $this->authorize('create', Document::class);
         $file = $request->file('file');
         $path = $file->store('documents', 'public');
         $document = Document::create([
@@ -97,7 +99,7 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        $this->authorize('delete', $document); // Verifica permissão
+        $this->authorize('delete', $document);
 
         if (Storage::disk('public')->exists($document->file_path)) {
             Storage::disk('public')->delete($document->file_path);

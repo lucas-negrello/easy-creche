@@ -14,13 +14,7 @@ class RegisterStudentController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows('viewAny', RegisterStudent::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
+        $this->authorize('viewAny', RegisterStudent::class);
         $registerStudents = RegisterStudent::with(['responsible' => function ($query) {
             $query->select('id', 'name', 'meta');
         }])->get();
@@ -51,13 +45,7 @@ class RegisterStudentController extends Controller
      */
     public function show(RegisterStudent $registerStudent)
     {
-        if(!Gate::allows('view', RegisterStudent::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
+        $this->authorize('view', $registerStudent);
         $registerStudent->load(['responsible' => function ($query) {
             $query->select('id', 'name', 'meta');
         }]);
@@ -88,13 +76,7 @@ class RegisterStudentController extends Controller
      */
     public function destroy(RegisterStudent $registerStudent)
     {
-        if(!Gate::allows('delete', RegisterStudent::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
+        $this->authorize('delete', $registerStudent);
         $registerStudent->delete();
 
         return response()->json([

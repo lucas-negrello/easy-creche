@@ -17,13 +17,7 @@ class RegisterAdminController extends Controller
      */
     public function index()
     {
-        if(!Gate::allows('viewAny', RegisterAdmin::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
+        $this->authorize('viewAny', RegisterAdmin::class);
 
         $admins = User::whereHas('roles', function ($query) {
             $query->where('name', 'admin');
@@ -66,13 +60,7 @@ class RegisterAdminController extends Controller
      */
     public function show(User $registerAdmin)
     {
-        if(!Gate::allows('view', RegisterAdmin::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
+        $this->authorize('view', $registerAdmin);
         return response()->json([
             'message'       => 'Admin retrieved successfully',
             'data'          => $registerAdmin,
@@ -86,14 +74,7 @@ class RegisterAdminController extends Controller
      */
     public function update(UpdateRegisterAdminRequest $request, User $registerAdmin)
     {
-        if($registerAdmin->hasRole('super_admin')){
-            return response([
-                'message'           => 'Impossible to update super admin user',
-                'success'           => false,
-                'status_code'       => 422,
-            ], 422);
-        }
-
+        $this->authorize('update', $registerAdmin);
         $registerAdmin->update($request->validated());
         return response()->json([
             'message'       => 'Admin updated successfully',
@@ -108,14 +89,7 @@ class RegisterAdminController extends Controller
      */
     public function destroy(User $registerAdmin)
     {
-        if(!Gate::allows('delete', RegisterAdmin::class)){
-            return response([
-                'message'           => 'Unauthorized',
-                'success'           => false,
-                'status_code'       => 401,
-            ], 401);
-        }
-
+        $this->authorize('delete', $registerAdmin);
         if($registerAdmin->hasRole('super_admin')){
             return response([
                 'message'           => 'Impossible to delete super admin user',
@@ -131,9 +105,7 @@ class RegisterAdminController extends Controller
                 'status_code'       => 422,
             ], 422);
         }
-
         $registerAdmin->delete();
-
         return response()->json([
             'message'       => 'Admin deleted successfully',
             'data'          => $registerAdmin,
