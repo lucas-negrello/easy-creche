@@ -14,8 +14,8 @@ export const Private: Routes = [
       {
         path: '',
         title: 'Agendamentos',
-        loadComponent: () => import('./schedules/schedules.component')
-          .then(c => c.SchedulesComponent),
+        loadChildren: () => import('./schedules/schedules.routes')
+          .then(r => r.SchedulesRoutes),
       },
       {
         path: 'register-admin',

@@ -61,7 +61,7 @@ export const appConfig: ApplicationConfig = {
     ConfirmationService,
     {
       provide: LOCALE_ID,
-      useValue: 'pt-BR'
+      useValue: 'pt-BR',
     },
   ]
 };

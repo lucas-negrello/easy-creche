@@ -27,6 +27,7 @@ class StoreScheduleRequest extends FormRequest
         return [
             'event_name'            => ['required', 'string', 'max:255'],
             'event_date'            => ['required', 'date', 'after_or_equal:now'],
+            'meta.event_description'=> ['nullable', 'string', 'max:500'],
             'meta.event_type'       => ['nullable', 'string', 'max:255'],
             'meta.event_location'   => ['nullable', 'string', 'max:255'],
             'meta.event_duration'   => ['nullable', 'string', 'max:255'],

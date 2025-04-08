@@ -23,6 +23,7 @@ Route::post('/password/reset/{token}/{email}', [ResetPasswordController::class, 
 // ROUTES FOR AUTHENTICATED/LOGGED IN USERS
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
+    Route::get('/users', [AuthController::class, 'users']);
     // RESOURCE ROUTES
     Route::apiResources([
         'register-admins' => RegisterAdminController::class,

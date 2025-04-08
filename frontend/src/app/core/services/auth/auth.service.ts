@@ -9,13 +9,14 @@ import {
   RegisterRequest,
   RegisterResponse,
   ResendEmailRequest,
-  ResetPasswordRequest,
+  ResetPasswordRequest, UserList,
   VerificationResponse,
 } from '../../interfaces/auth/auth.interface';
 import { Observable, tap } from 'rxjs';
 import { ApiResponse } from '../../interfaces/http/api-response.interface';
 import { AuthSessionService } from './auth-session.service';
 import { Router } from '@angular/router';
+import {UserInterface} from '../../interfaces/user/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -76,5 +77,9 @@ export class AuthService extends HttpBaseService<unknown> {
         }
       })
     );
+  }
+
+  users(): Observable<UserList> {
+    return this.http.get<UserList>(`${this.apiUrl}/users`);
   }
 }
