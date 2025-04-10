@@ -56,3 +56,7 @@ export interface MeResponse {
   role: RolesInterface;
   students?: StudentInterface[];
 }
+
+export interface UserList {
+  user: Pick<UserInterface, 'id' | 'name'>[];
+}

@@ -1,3 +1,15 @@
-<p-card>
-  Sem Agendamentos
-</p-card>
+<p-tabs value="0">
+  <p-tablist>
+    <p-tab value="0">Criados Por Mim</p-tab>
+    <p-tab value="1">Fui Relacionado</p-tab>
+  </p-tablist>
+  <p-tabpanels>
+    <p-tabpanel value="0">
+      <app-user-created-schedules></app-user-created-schedules>
+    </p-tabpanel>
+    <p-tabpanel value="1">
+      <app-user-in-schedules></app-user-in-schedules>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>
+<router-outlet />

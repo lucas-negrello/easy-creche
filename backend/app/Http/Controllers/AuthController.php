@@ -65,4 +65,11 @@ class AuthController extends Controller
         ]);
     }
 
+    public function users()
+    {
+        return response()->json([
+            'user' => User::select('id', 'name')->without('students')->get(),
+        ]);
+    }
+
 }

@@ -33,7 +33,8 @@ class RolePermissionSeeder extends Seeder
             'resources',
             'docs',
             'schedules',
-            'student-progress'
+            'student-progress',
+            'monitoring',
         ];
 
         $actions = [
@@ -68,6 +69,7 @@ class RolePermissionSeeder extends Seeder
                 'docs' => ['view', 'create', 'update', 'delete'],
                 'schedules' => ['view', 'create', 'update', 'delete'],
                 'student-progress' => ['view', 'create', 'update', 'delete'],
+                'monitoring' => ['view', 'create', 'update', 'delete'],
             ],
             'admin' => [
                 'register-admin' => ['view', 'create', 'update', 'delete'],
@@ -77,6 +79,7 @@ class RolePermissionSeeder extends Seeder
                 'docs' => ['view', 'create', 'update', 'delete'],
                 'schedules' => ['view', 'create', 'update', 'delete'],
                 'student-progress' => ['view', 'create', 'update', 'delete'],
+                'monitoring' => ['view', 'create', 'update', 'delete'],
             ],
             'user' => [
                 'register-admin' => [''],
@@ -86,6 +89,7 @@ class RolePermissionSeeder extends Seeder
                 'docs' => ['view', 'create', 'update', 'delete'],
                 'schedules' => ['view', 'create', 'update', 'delete'],
                 'student-progress' => ['view'],
+                'monitoring' => ['view'],
             ]
         ];
 

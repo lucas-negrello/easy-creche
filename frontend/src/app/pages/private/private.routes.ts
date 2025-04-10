@@ -12,12 +12,6 @@ export const Private: Routes = [
     component: MainLayoutComponent,
     children: [
       {
-        path: '',
-        title: 'Agendamentos',
-        loadComponent: () => import('./schedules/schedules.component')
-          .then(c => c.SchedulesComponent),
-      },
-      {
         path: 'register-admin',
         canActivate: [AdminGuard],
         title: 'Registrar Administrador',
@@ -75,7 +69,13 @@ export const Private: Routes = [
         canActivate: [AdminGuard],
         loadComponent: () => import('./panic/panic.component')
           .then(c => c.PanicComponent),
-      }
+      },
+      {
+        path: '',
+        title: 'Agendamentos',
+        loadChildren: () => import('./schedules/schedules.routes')
+          .then(r => r.SchedulesRoutes),
+      },
     ]
   }
 ]

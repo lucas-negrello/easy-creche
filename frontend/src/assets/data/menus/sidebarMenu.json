@@ -31,7 +31,7 @@
     "label": "Entradas e Saídas",
     "icon": "pi-eye",
     "route": "in-out-monitoring",
-    "isActive": false,
+    "isActive": true,
     "roles": ["super_admin","admin", "user"]
   },
   {

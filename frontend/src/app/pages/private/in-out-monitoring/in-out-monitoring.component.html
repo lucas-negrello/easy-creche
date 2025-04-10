@@ -1,1 +1,188 @@
-<p>in-out-monitoring works!</p>
+@if (currentUserRole !== 'user') {
+  <div class="flex max-sm:flex-col gap-5">
+    <p-card class="w-full sm:w-[30%]">
+      <div class="flex flex-col gap-5">
+        <p>Selecione um Aluno</p>
+        <div>
+          <p-select
+            appendTo="body"
+            optionLabel="name"
+            optionValue="id"
+            [options]="students"
+            [(ngModel)]="selectedStudent"
+            (onChange)="fetchData$()"
+            placeholder="Aluno"
+            fluid
+          />
+        </div>
+      </div>
+    </p-card>
+    <p-card class="w-full">
+      @if (!selectedStudent) {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">Nenhum Aluno Selecionado</div>
+      } @else {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">
+          <p-table
+            [value]="studentMonitoring"
+            [paginator]="true"
+            [rows]="3"
+            [rowsPerPageOptions]="[3,6,10]"
+            [sortOrder]="-1"
+            sortField="entrance"
+          >
+            <ng-template #caption>
+              <div>
+                Aluno: {{getStudent(selectedStudent)?.name ?? 'Não Encontrado'}}
+              </div>
+            </ng-template>
+            <ng-template #header>
+              <tr>
+                <th pSortableColumn="entrance">Entrada <p-sortIcon field="entrance" /></th>
+                <th>Responsável</th>
+                <th pSortableColumn="exit">Saída <p-sortIcon field="exit" /></th>
+                <th>Responsável</th>
+              </tr>
+            </ng-template>
+            <ng-template #body let-monitoring>
+              <tr>
+                <td>{{monitoring.entrance | date: 'dd/MM/YY HH:mm'}}</td>
+                @if (monitoring?.meta?.entrance?.responsible_id) {
+                  <td>{{getResponsibleNameById(monitoring.meta.entrance.responsible_id)}}</td>
+                } @else {
+                  <td>
+                    <div [pTooltip]="monitoring?.meta?.entrance?.responsible_cpf" [showDelay]="1000">
+                      {{monitoring?.meta?.entrance?.responsible}}
+                    </div>
+                  </td>
+                }
+                @if (!monitoring.exit) {
+                  <td colspan="2">
+                    <div class="flex justify-center">
+                      <button
+                        class="w-full"
+                        pButton
+                        severity="warn"
+                        (click)="setMonitoringData(selectedStudent, monitoring.id)"
+                      >
+                        Adicionar Saída
+                      </button>
+                    </div>
+                  </td>
+                } @else {
+                  <td>{{monitoring?.exit | date: 'dd/MM/YY HH:mm'}}</td>
+                  @if (monitoring?.meta?.exit?.responsible_id) {
+                    <td>{{getResponsibleNameById(monitoring.meta.exit.responsible_id)}}</td>
+                  } @else {
+                    <td>
+                      <div [pTooltip]="monitoring?.meta?.exit?.responsible_cpf" [showDelay]="1000" tooltipPosition="left">
+                        {{monitoring?.meta?.exit?.responsible}}
+                      </div>
+                    </td>
+                  }
+                }
+              </tr>
+            </ng-template>
+            <ng-template #footer>
+              <tr>
+                <td colspan="4">
+                  <div class="flex justify-center">
+                    <button
+                      class="w-full"
+                      pButton
+                      severity="primary"
+                      (click)="setMonitoringData(selectedStudent)"
+                    >
+                      Adicionar Entrada
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      }
+    </p-card>
+  </div>
+} @else {
+  <div class="flex max-sm:flex-col gap-5">
+    <p-card class="w-full sm:w-[30%]">
+      <div class="flex flex-col gap-5">
+        <p>Selecione um Filho</p>
+        <div>
+          <p-select
+            appendTo="body"
+            optionLabel="name"
+            optionValue="id"
+            [options]="students"
+            [(ngModel)]="selectedStudent"
+            (onChange)="fetchData$()"
+            placeholder="Filho"
+            fluid
+          />
+        </div>
+      </div>
+    </p-card>
+    <p-card class="w-full">
+      @if (!selectedStudent) {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">Nenhum Filho Selecionado</div>
+      } @else {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">
+          <p-table
+            [value]="studentMonitoring"
+            [paginator]="true"
+            [rows]="3"
+            [rowsPerPageOptions]="[3,6,10]"
+            [sortOrder]="-1"
+            sortField="entrance"
+          >
+            <ng-template #caption>
+              <div>
+                Aluno: {{getStudent(selectedStudent)?.name ?? 'Não Encontrado'}}
+              </div>
+            </ng-template>
+            <ng-template #header>
+              <tr>
+                <th pSortableColumn="entrance">Entrada <p-sortIcon field="entrance" /></th>
+                <th>Responsável</th>
+                <th pSortableColumn="exit">Saída <p-sortIcon field="exit" /></th>
+                <th>Responsável</th>
+              </tr>
+            </ng-template>
+            <ng-template #body let-monitoring>
+              <tr>
+                <td>{{monitoring.entrance | date: 'dd/MM/YY HH:mm'}}</td>
+                @if (monitoring?.meta?.entrance?.responsible_id) {
+                  <td>{{getResponsibleNameById(monitoring.meta.entrance.responsible_id)}}</td>
+                } @else {
+                  <td>
+                    <div [pTooltip]="monitoring?.meta?.entrance?.responsible_cpf" [showDelay]="1000">
+                      {{monitoring?.meta?.entrance?.responsible}}
+                    </div>
+                  </td>
+                }
+                @if (!monitoring.exit) {
+                  <td colspan="2">
+                    <div class="flex justify-center">
+                      <p class="w-full border border-primary rounded-md text-primary text-center">Não registrada</p>
+                    </div>
+                  </td>
+                } @else {
+                  <td>{{monitoring?.exit | date: 'dd/MM/YY HH:mm'}}</td>
+                  @if (monitoring?.meta?.exit?.responsible_id) {
+                    <td>{{getResponsibleNameById(monitoring.meta.exit.responsible_id)}}</td>
+                  } @else {
+                    <td>
+                      <div [pTooltip]="monitoring?.meta?.exit?.responsible_cpf" [showDelay]="1000" tooltipPosition="left">
+                        {{monitoring?.meta?.exit?.responsible}}
+                      </div>
+                    </td>
+                  }
+                }
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      }
+    </p-card>
+  </div>
+}

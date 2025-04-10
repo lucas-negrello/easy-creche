@@ -1,0 +1,7 @@
+<app-datatable
+  [rowData$]="userCreatedSchedules$"
+  [colDefs]="colDefs"
+  [loading]="loading"
+  [addCallbackFn]="add.bind(this)"
+  [tableCustomConfig]="custom"
+/>

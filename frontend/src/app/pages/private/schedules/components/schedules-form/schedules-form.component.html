@@ -1,0 +1,179 @@
+<form class="p-5 flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p-fluid>
+    <div class="mb-5">
+      <p-floatlabel variant="on">
+        <label for="event_name">
+          Nome*
+        </label>
+        <input
+          id="event_name"
+          pSize="small"
+          pInputText
+          formControlName="event_name"
+          [class]="invalidInput('event_name')"
+          fluid
+        />
+      </p-floatlabel>
+      <div class="min-h-5">
+        @if (checkValidation('event_name')) {
+          <small>{{ returnErrors('event_name') }}</small>
+        }
+      </div>
+    </div>
+    <div>
+      <p-floatlabel variant="on">
+        <p-date-picker
+          id="event_date"
+          [showTime]="true"
+          size="small"
+          hourFormat="24"
+          formControlName="event_date"
+          appendTo="body"
+        />
+        <label for="event_date">
+          Data*
+        </label>
+      </p-floatlabel>
+      <div class="min-h-5">
+        @if (checkValidation('event_date')) {
+          <small>{{ returnErrors('event_date') }}</small>
+        }
+      </div>
+    </div>
+    <div formGroupName="meta">
+      <div class="mb-5">
+        <small>Caso nenhum convidado seja selecionado, todos usuários serão convidados</small>
+        <p-floatlabel variant="on" class="w-full">
+          <p-multi-select
+            id="event_user_ids"
+            appendTo="body"
+            [options]="users.user"
+            size="small"
+            optionValue="id"
+            optionLabel="name"
+            formControlName="event_user_ids"
+            fluid
+          />
+          <label for="event_user_ids">
+            Convidados
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_user_ids')) {
+            <small>{{ returnErrors('event_user_ids') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <input
+            id="event_type"
+            pSize="small"
+            pInputText
+            formControlName="event_type"
+            [class]="invalidInput('event_type')"
+            fluid
+          />
+          <label for="event_type">
+            Tipo de Evento
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_type')) {
+            <small>{{ returnErrors('event_type') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <input
+            id="event_location"
+            pSize="small"
+            pInputText
+            formControlName="event_location"
+            [class]="invalidInput('event_location')"
+            fluid
+          />
+          <label for="event_location">
+            Endereço
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_location')) {
+            <small>{{ returnErrors('event_location') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <input
+            id="event_duration"
+            pSize="small"
+            pInputText
+            formControlName="event_duration"
+            [class]="invalidInput('event_duration')"
+            fluid
+          />
+          <label for="event_duration">
+            Duração
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_duration')) {
+            <small>{{ returnErrors('event_duration') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <p-select
+            id="event_urgency"
+            appendTo="body"
+            [options]="[{name: 'Baixa'}, {name: 'Normal'}, {name: 'Urgente'}]"
+            size="small"
+            optionValue="name"
+            optionLabel="name"
+            formControlName="event_urgency"
+          />
+          <label for="event_urgency">
+            Urgência
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_urgency')) {
+            <small>{{ returnErrors('event_urgency') }}</small>
+          }
+        </div>
+      </div>
+      <div class="mb-5">
+        <p-floatlabel variant="on">
+          <textarea
+            id="event_description"
+            pTextarea
+            rows="4"
+            formControlName="event_description"
+            [class]="invalidInput('event_description')"
+            fluid
+          ></textarea>
+          <label for="event_description">
+            Descrição
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_description')) {
+            <small>{{ returnErrors('event_description') }}</small>
+          }
+        </div>
+      </div>
+    </div>
+    <div>
+      <p-button
+        size="small"
+        severity="secondary"
+        [loading]="loading"
+        [label]="defineLabel()"
+        (onClick)="onSubmit()"
+      />
+    </div>
+  </p-fluid>
+</form>
