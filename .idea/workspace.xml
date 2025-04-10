@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86cc6518-d73b-475a-aab9-6cee50029e35" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/63e8c047-151b-4eec-aaef-ec9b5ca71a51.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/63e8c047-151b-4eec-aaef-ec9b5ca71a51.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/63e8c047-151b-4eec-aaef-ec9b5ca71a51/storage_v2/_src_/database/easy-creche.NYcY_g/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/63e8c047-151b-4eec-aaef-ec9b5ca71a51/storage_v2/_src_/database/easy-creche.NYcY_g/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Requests/StoreScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Requests/StoreScheduleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Requests/UpdateScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Requests/UpdateScheduleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/interfaces/auth/auth.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/interfaces/auth/auth.interface.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/services/auth/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/interfaces/user/user.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/core/interfaces/user/user.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/docs/components/doc-update/doc-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/docs/components/doc-update/doc-update.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/in-out-monitoring/in-out-monitoring.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/in-out-monitoring/in-out-monitoring.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/in-out-monitoring/in-out-monitoring.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/in-out-monitoring/in-out-monitoring.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/interfaces/student.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-student/interfaces/student.interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/schedules-form/schedules-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/schedules-form/schedules-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/schedules-form/schedules-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/schedules-form/schedules-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/user-created-schedules/user-created-schedules.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/user-created-schedules/user-created-schedules.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/user-in-schedules/user-in-schedules.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components/user-in-schedules/user-in-schedules.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/schedules.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,26 +164,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "12-agendamentos-e-monitoramento-de-entradas-e-saídas",
-    "last_opened_file_path": "/home/negrello/Projects/easy-creche/frontend/src/app/pages/private/schedules",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/home/negrello/Projects/easy-creche/frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;12-agendamentos-e-monitoramento-de-entradas-e-saídas&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/src/app/pages/private/schedules&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/schedules" />
@@ -224,7 +226,8 @@
       <workItem from="1742420939345" duration="32555000" />
       <workItem from="1743463476294" duration="6711000" />
       <workItem from="1743630691632" duration="25479000" />
-      <workItem from="1744065352272" duration="21630000" />
+      <workItem from="1744065352272" duration="21694000" />
+      <workItem from="1744236299733" duration="19840000" />
     </task>
     <servers />
   </component>

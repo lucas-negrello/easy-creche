@@ -1,0 +1,63 @@
+<div class="flex justify-center mb-5">
+  <p-select-button
+    size="small"
+    [options]="selectButtonOptions"
+    optionValue="value"
+    optionLabel="name"
+    [(ngModel)]="selectedOption"
+    (onChange)="clearForm()"
+  />
+</div>
+<div [formGroup]="form" class="max-w-[90vw] min-w-[90vw] sm:min-w-[50vw] sm:max-w-[50vw]">
+  @if (this.form.hasError('responsibleError')) {
+    <div class="mb-5 text-red-700">
+      Por favor, selecione um responsável ou adicione um (Nome e CPF)
+    </div>
+  }
+  @if (selectedOption === 'existing') {
+    <div class="mb-5">
+      <p-select
+        placeholder="Selecione um responsável"
+        appendTo="body"
+        [options]="responsibles"
+        optionValue="id"
+        optionLabel="name"
+        formControlName="responsible_id"
+        fluid
+      />
+    </div>
+  } @else {
+    <div class="mb-5">
+      <p-float-label variant="on">
+        <label for="responsible">Nome do Responsável</label>
+        <input
+          pInputText
+          id="responsible"
+          formControlName="responsible"
+          fluid>
+      </p-float-label>
+    </div>
+    <div class="mb-5">
+      <p-float-label variant="on">
+        <p-input-mask
+          id="responsible_cpf"
+          mask="999.999.999-99"
+          pKeyFilter="pint"
+          formControlName="responsible_cpf"
+          class="w-full"
+        />
+        <label for="responsible_cpf">CPF do Responsável</label>
+      </p-float-label>
+    </div>
+  }
+  <div class="flex justify-end">
+    <button
+      pButton
+      severity="primary"
+      type="submit"
+      (click)="submitForm()"
+    >
+      Adicionar
+    </button>
+  </div>
+</div>

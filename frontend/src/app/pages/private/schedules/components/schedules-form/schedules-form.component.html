@@ -20,7 +20,7 @@
         }
       </div>
     </div>
-    <div class="mb-5">
+    <div>
       <p-floatlabel variant="on">
         <p-date-picker
           id="event_date"
@@ -42,36 +42,25 @@
     </div>
     <div formGroupName="meta">
       <div class="mb-5">
-        <div class="flex justify-between items-center gap-4">
-          <div class="flex justify-start items-center gap-4">
-            <p-checkbox
-              class="flex justify-center items-center"
-              id="everyone"
-              formControlName="everyone"
-              binary
-            />
-            <label for="everyone">
-              Convidar Todos
-            </label>
-          </div>
-          @if (!meta.get('everyone')?.value) {
-            <div class="flex flex-1 items-center">
-              <p-floatlabel variant="on" class="w-full">
-                <p-multi-select
-                  id="event_user_ids"
-                  appendTo="body"
-                  [options]="users.user"
-                  size="small"
-                  optionValue="id"
-                  optionLabel="name"
-                  formControlName="event_user_ids"
-                  fluid
-                />
-                <label for="event_user_ids">
-                  Convidados*
-                </label>
-              </p-floatlabel>
-            </div>
+        <small>Caso nenhum convidado seja selecionado, todos usuários serão convidados</small>
+        <p-floatlabel variant="on" class="w-full">
+          <p-multi-select
+            id="event_user_ids"
+            appendTo="body"
+            [options]="users.user"
+            size="small"
+            optionValue="id"
+            optionLabel="name"
+            formControlName="event_user_ids"
+            fluid
+          />
+          <label for="event_user_ids">
+            Convidados
+          </label>
+        </p-floatlabel>
+        <div class="min-h-5">
+          @if (checkValidation('event_user_ids')) {
+            <small>{{ returnErrors('event_user_ids') }}</small>
           }
         </div>
       </div>

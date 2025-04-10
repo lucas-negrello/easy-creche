@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {AsyncPipe} from '@angular/common';
 import {Button} from 'primeng/button';
 import {FileUpload, FileUploadHandlerEvent} from 'primeng/fileupload';
 import {FloatLabel} from 'primeng/floatlabel';
@@ -9,20 +8,14 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Select} from 'primeng/select';
 import {FormBaseComponent} from '../../../../../core/components/form-base/form-base.component';
 import {DocumentInterface, DocumentResponse} from '../../interfaces/docs.interface';
-import {RegisterStudentService} from '../../../register-student/services/register-student.service';
 import {DocumentService} from '../../services/document.service';
-import {map, Observable, of} from 'rxjs';
 import {StudentInterface} from '../../../register-student/interfaces/student.interface';
 import {HttpErrorResponse, HttpEventType} from '@angular/common/http';
 import {ModalService} from '../../../../../core/services/overlays/modal.service';
-import {UserInterface} from '../../../../../core/interfaces/user/user.interface';
-import {ProgressBar} from 'primeng/progressbar';
-import {Toast} from 'primeng/toast';
 
 @Component({
   selector: 'app-doc-update',
   imports: [
-    AsyncPipe,
     Button,
     FileUpload,
     FloatLabel,
@@ -30,8 +23,6 @@ import {Toast} from 'primeng/toast';
     InputText,
     ReactiveFormsModule,
     Select,
-    ProgressBar,
-    Toast
   ],
   templateUrl: './doc-update.component.html',
   styleUrl: './doc-update.component.scss'

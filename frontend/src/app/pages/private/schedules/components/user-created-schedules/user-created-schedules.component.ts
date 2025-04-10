@@ -57,6 +57,10 @@ export class UserCreatedSchedulesComponent extends BaseInjectionsComponent {
   protected colDefs: ColDef[] = this.colDefByWindowSize();
   protected custom: TableCustomConfig<ScheduleInterface> = {
     rowSelection: 'single',
+    pagination: {
+      pageSize: 5,
+      pageSizeSelector: [5, 10]
+    }
   };
 
   protected colDefByWindowSize(): ColDef[] {
@@ -68,7 +72,7 @@ export class UserCreatedSchedulesComponent extends BaseInjectionsComponent {
     ]
     if(screenWidth <= 768) return [
       { headerName: 'Nome', field: 'event_name' },
-      { headerName: 'Data', field: 'event_date', valueGetter: (params: ValueGetterParams<ScheduleInterface>) => {
+      { headerName: 'Data', initialSort: 'asc', field: 'event_date', valueGetter: (params: ValueGetterParams<ScheduleInterface>) => {
           if(!params.data) return 'Não Informado';
           const date = new Date(params.data.event_date);
           return new Intl.DateTimeFormat('pt-BR', {
@@ -84,7 +88,7 @@ export class UserCreatedSchedulesComponent extends BaseInjectionsComponent {
     ]
     if(screenWidth <= 1024) return [
       { headerName: 'Nome', field: 'event_name' },
-      { headerName: 'Data', field: 'event_date', valueGetter: (params: ValueGetterParams<ScheduleInterface>) => {
+      { headerName: 'Data', initialSort: 'asc', field: 'event_date', valueGetter: (params: ValueGetterParams<ScheduleInterface>) => {
           if(!params.data) return 'Não Informado';
           const date = new Date(params.data.event_date);
           return new Intl.DateTimeFormat('pt-BR', {
@@ -102,7 +106,7 @@ export class UserCreatedSchedulesComponent extends BaseInjectionsComponent {
     ]
     return [
       { headerName: 'Nome', field: 'event_name' },
-      { headerName: 'Data', field: 'event_date', valueGetter: (params: ValueGetterParams<ScheduleInterface>) => {
+      { headerName: 'Data', initialSort: 'asc', field: 'event_date', valueGetter: (params: ValueGetterParams<ScheduleInterface>) => {
           if(!params.data) return 'Não Informado';
           const date = new Date(params.data.event_date);
           return new Intl.DateTimeFormat('pt-BR', {
@@ -128,6 +132,13 @@ export class UserCreatedSchedulesComponent extends BaseInjectionsComponent {
         return response.data.filter((schedule: ScheduleInterface) => {
           return (
             (schedule.created_by && this.currentUser.id && +schedule.created_by === +this.currentUser.id));
+        })
+      }),
+      map((response) => {
+        return response.filter((schedule: ScheduleInterface) => {
+          return (
+            (Date.parse(schedule.event_date) >= Date.now())
+          )
         })
       })
     );

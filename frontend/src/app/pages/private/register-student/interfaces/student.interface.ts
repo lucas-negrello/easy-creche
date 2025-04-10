@@ -7,7 +7,7 @@ export interface StudentInterface {
   name: string;
   birth_certificate: string;
   meta?: StudentMetaInterface;
-  responsible?: Partial<ResponsibleInterface>;
+  responsible?: Pick<ResponsibleInterface, 'id' | 'name'>;
   documents: DocumentResponse[];
   created_at?: string,
   updated_at?: string

@@ -1,6 +1,5 @@
 import {Component, inject} from '@angular/core';
 import {LayoutService} from '../../../core/services/layout/layout.service';
-import {DatatableComponent} from '../../../shared/datatable/datatable.component';
 import {Tab, TabList, TabPanel, TabPanels, Tabs} from 'primeng/tabs';
 import {RouterOutlet} from '@angular/router';
 import {UserCreatedSchedulesComponent} from './components/user-created-schedules/user-created-schedules.component';

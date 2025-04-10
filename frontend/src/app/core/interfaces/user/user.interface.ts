@@ -11,7 +11,7 @@ export interface UserInterface {
   meta?: any;
   created_at?: string;
   updated_at?: string;
-  roles?: RolesInterface[];
+  roles: RolesInterface[];
   students?: StudentInterface[];
 }
 
