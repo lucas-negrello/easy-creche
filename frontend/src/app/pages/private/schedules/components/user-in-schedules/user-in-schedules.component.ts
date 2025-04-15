@@ -25,12 +25,11 @@ export class UserInSchedulesComponent extends BaseInjectionsComponent {
   private readonly _layoutService: LayoutService = inject(LayoutService);
   private readonly _schedulesService: SchedulesService = inject(SchedulesService);
 
-  protected currentUser: UserInterface = {} as UserInterface;
+  protected currentUser: UserInterface = JSON.parse(this._authSessionService.getProfile() ?? '') as UserInterface;
   protected userInSchedules$: Observable<ScheduleInterface[]> = of([]);
 
   ngOnInit() {
     this._layoutService.updateTitle('Agendamentos');
-    this.currentUser = JSON.parse(this._authSessionService.getProfile() ?? '') as UserInterface;
     this.fetchRowDatas$();
   }
 
