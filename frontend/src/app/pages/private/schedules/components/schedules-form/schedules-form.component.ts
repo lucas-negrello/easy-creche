@@ -4,7 +4,7 @@ import {ScheduleInterface} from '../../interfaces/schedule.interface';
 import {Button} from 'primeng/button';
 import {FloatLabel} from 'primeng/floatlabel';
 import {Fluid} from 'primeng/fluid';
-import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InputText} from 'primeng/inputtext';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
 import {SchedulesService} from '../../services/schedules.service';
@@ -47,7 +47,10 @@ export class SchedulesFormComponent extends FormBaseComponent<ScheduleInterface>
     this._layoutService.updateTitle('Criação de Agendamento');
   }
 
+  protected now: Date = new Date();
+  protected minDate: Date = new Date(this.now.getFullYear(), this.now.getMonth(), this.now.getDate() + 1);
   protected users: UserList = {} as UserList;
+  protected currentUser: UserInterface = JSON.parse(this._authSessionService.getProfile() ?? '') as UserInterface;
 
   protected get meta(): FormGroup {
     return this.form.get('meta') as FormGroup;
@@ -69,7 +72,7 @@ export class SchedulesFormComponent extends FormBaseComponent<ScheduleInterface>
     this._authService.users().subscribe({
       next: users => {
         const me: UserInterface = JSON.parse(this._authSessionService.getProfile() ?? '') as UserInterface;
-        this.users.user = users.user.filter(user => (user.id !== me.id && user.id !== 1));
+        this.users.user = users.user.filter(user => (user.id !== 1));
       }
     });
   }
@@ -108,5 +111,4 @@ export class SchedulesFormComponent extends FormBaseComponent<ScheduleInterface>
     }
     return 'Enviar';
   }
-
 }

@@ -58,7 +58,7 @@ class RegisterAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $registerAdmin)
+    public function show(RegisterAdmin $registerAdmin)
     {
         $this->authorize('view', $registerAdmin);
         return response()->json([
@@ -72,7 +72,7 @@ class RegisterAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRegisterAdminRequest $request, User $registerAdmin)
+    public function update(UpdateRegisterAdminRequest $request, RegisterAdmin $registerAdmin)
     {
         $this->authorize('update', $registerAdmin);
         $registerAdmin->update($request->validated());
@@ -87,7 +87,7 @@ class RegisterAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $registerAdmin)
+    public function destroy(RegisterAdmin $registerAdmin)
     {
         $this->authorize('delete', $registerAdmin);
         if($registerAdmin->hasRole('super_admin')){

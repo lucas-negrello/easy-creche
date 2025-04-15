@@ -25,6 +25,7 @@
         <p-date-picker
           id="event_date"
           [showTime]="true"
+          [minDate]="minDate"
           size="small"
           hourFormat="24"
           formControlName="event_date"
@@ -51,6 +52,9 @@
             size="small"
             optionValue="id"
             optionLabel="name"
+            filterMatchMode="notEquals"
+            [filterValue]="currentUser.name?.toString()"
+            [showHeader]="false"
             formControlName="event_user_ids"
             fluid
           />
