@@ -74,7 +74,6 @@ class RegisterAdminController extends Controller
      */
     public function update(UpdateRegisterAdminRequest $request, RegisterAdmin $registerAdmin)
     {
-        $this->authorize('update', $registerAdmin);
         $registerAdmin->update($request->validated());
         return response()->json([
             'message'       => 'Admin updated successfully',

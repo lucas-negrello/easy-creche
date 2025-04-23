@@ -73,5 +73,9 @@ class User extends Authenticatable
         return $this->hasMany(RegisterStudent::class, 'responsible_id', 'id');
     }
 
+    public function chats(): BelongsToMany
+    {
+        return $this->belongsToMany(Chat::class);
+    }
 
 }

@@ -14,4 +14,9 @@ class RegisterAdmin extends User
     {
         return $this->belongsToMany(Role::class, 'user_role_permissions', 'user_id', 'role_id');
     }
+
+    public function chats(): BelongsToMany
+    {
+        return $this->belongsToMany(Chat::class);
+    }
 }

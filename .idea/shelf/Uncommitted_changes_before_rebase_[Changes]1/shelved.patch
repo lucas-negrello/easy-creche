@@ -1,0 +1,215 @@
+Index: backend/.docker/Dockerfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>FROM php:8.2-fpm\n\nLABEL maintainer=\"EasyCreche\"\n\n# Atualiza e instala as dependências necessárias\nRUN apt-get update -yqq && \\\n    apt-get install -yqq --no-install-recommends \\\n    apt-transport-https \\\n    libpq-dev \\\n    zip \\\n    unzip && \\\n    rm -rf /var/lib/apt/lists/*\n\n# Instala extensões do PHP\nRUN docker-php-ext-install pdo pdo_pgsql\n\n# Instala e habilita a extensão Redis apenas se não estiver instalada\nRUN if ! php -m | grep -q 'redis'; then pecl install redis && docker-php-ext-enable redis; fi\n\n# Instala o Composer\nCOPY --from=composer:latest /usr/bin/composer /usr/bin/composer\n\n# Define o diretório de trabalho\nWORKDIR /var/www/html\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/.docker/Dockerfile b/backend/.docker/Dockerfile
+--- a/backend/.docker/Dockerfile	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ b/backend/.docker/Dockerfile	(date 1744851698310)
+@@ -12,7 +12,7 @@
+     rm -rf /var/lib/apt/lists/*
+ 
+ # Instala extensões do PHP
+-RUN docker-php-ext-install pdo pdo_pgsql
++RUN docker-php-ext-install pdo pdo_pgsql pcntl
+ 
+ # Instala e habilita a extensão Redis apenas se não estiver instalada
+ RUN if ! php -m | grep -q 'redis'; then pecl install redis && docker-php-ext-enable redis; fi
+Index: backend/app/Events/MessageSent.php
+===================================================================
+diff --git a/backend/app/Events/MessageSent.php b/backend/app/Events/MessageSent.php
+deleted file mode 100644
+--- a/backend/app/Events/MessageSent.php	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ /dev/null	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
+@@ -1,38 +0,0 @@
+-<?php
+-
+-namespace App\Events;
+-
+-use Illuminate\Broadcasting\Channel;
+-use Illuminate\Broadcasting\InteractsWithSockets;
+-use Illuminate\Broadcasting\PresenceChannel;
+-use Illuminate\Broadcasting\PrivateChannel;
+-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+-use Illuminate\Foundation\Events\Dispatchable;
+-use Illuminate\Queue\SerializesModels;
+-
+-class MessageSent implements ShouldBroadcast
+-{
+-    use Dispatchable, InteractsWithSockets, SerializesModels;
+-
+-    public $message;
+-
+-    public function __construct($message)
+-    {
+-        $this->message = $message;
+-    }
+-
+-    public function broadcastOn()
+-    {
+-        return new Channel('easy-creche');
+-    }
+-
+-    public function broadcastAs()
+-    {
+-        return 'message.sent';
+-    }
+-
+-    public function broadcastWith()
+-    {
+-        return ['msg' => $this->message];
+-    }
+-}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"86cc6518-d73b-475a-aab9-6cee50029e35\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/php.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/php.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/backend/bootstrap/app.php\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/bootstrap/app.php\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/backend/composer.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/composer.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/backend/composer.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/composer.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/backend/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/package-lock.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/backend/package.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/package.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/backend/resources/js/bootstrap.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/resources/js/bootstrap.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ComposerConfigs\">\n    <option name=\"configs\">\n      <option value=\"$PROJECT_DIR$/backend/.docker/reverb/composer.json\" />\n    </option>\n  </component>\n  <component name=\"ComposerSettings\" synchronizationState=\"SYNCHRONIZE\">\n    <pharConfigPath>$PROJECT_DIR$/backend/composer.json</pharConfigPath>\n    <execution />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PhpWorkspaceProjectConfiguration\" interpreter_name=\"/bin/php\">\n    <include_path>\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/routing\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/error-handler\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/theseer/tokenizer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/var-dumper\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/doctrine/inflector\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/doctrine/lexer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/hamcrest/hamcrest-php\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/fakerphp/faker\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/fruitcake/php-cors\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/carbonphp/carbon-doctrine-types\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/ralouphie/getallheaders\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpoption/phpoption\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/object-enumerator\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/recursion-context\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/version\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/code-unit\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/complexity\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/global-state\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/cli-parser\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/exporter\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/code-unit-reverse-lookup\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/lines-of-code\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/comparator\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/type\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/object-reflector\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/environment\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/webmozart/assert\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/sebastian/diff\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/guzzlehttp/guzzle\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/guzzlehttp/promises\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/guzzlehttp/psr7\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/guzzlehttp/uri-template\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/nunomaduro/termwind\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/nunomaduro/collision\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/dragonmantank/cron-expression\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/tijsverkoyen/css-to-inline-styles\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/graham-campbell/result-type\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/composer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/http-factory\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/http-client\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/simple-cache\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/container\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/log\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/http-message\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psr/clock\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/filp/whoops\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/psy/psysh\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/brick/math\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/voku/portable-ascii\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/nette/schema\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/nette/utils\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/flysystem-local\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/nikic/php-parser\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/config\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/mime-type-detection\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/uri\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/uri-interfaces\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/commonmark\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/league/flysystem\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/ramsey/collection\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/nesbot/carbon\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/staabm/side-effects-detector\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/ramsey/uuid\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/dflydev/dot-access-data\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/vlucas/phpdotenv\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/pint\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/egulias/email-validator\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/framework\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/pail\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/prompts\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/sanctum\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/sail\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/serializable-closure\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/mockery/mockery\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/tinker\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/myclabs/deep-copy\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/monolog/monolog\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phar-io/manifest\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phar-io/version\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpunit/php-invoker\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpunit/php-timer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpunit/php-text-template\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpunit/php-code-coverage\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpunit/phpunit\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/phpunit/php-file-iterator\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-intl-normalizer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-intl-grapheme\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/process\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/css-selector\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-ctype\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/translation-contracts\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-intl-idn\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/http-kernel\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/yaml\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/event-dispatcher\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/event-dispatcher-contracts\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/string\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/deprecation-contracts\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/http-foundation\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/uid\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/mime\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-mbstring\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/console\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/finder\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-uuid\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/clock\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/translation\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/mailer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-php83\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/service-contracts\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/symfony/polyfill-php80\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/event-loop\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/pusher/pusher-php-server\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/dns\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/promise\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/promise-timer\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/cache\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/socket\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/react/stream\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/clue/redis-react\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/clue/redis-protocol\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/paragonie/sodium_compat\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/ratchet/rfc6455\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/evenement/evenement\" />\n      <path value=\"$PROJECT_DIR$/backend/vendor/laravel/reverb\" />\n    </include_path>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 5\n}</component>\n  <component name=\"ProjectId\" id=\"2uSwKpDBZ5bzsj7PnnulOl3yyhk\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"1\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;13-comunicação-entre-pais-e-escola-e-feedback-dos-alunos&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/src/app/pages/private/schedules&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;ts.external.directory.path&quot;: &quot;/home/negrello/Projects/easy-creche/frontend/node_modules/typescript/lib&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  },\n  &quot;keyToStringList&quot;: {\n    &quot;DatabaseDriversLRU&quot;: [\n      &quot;postgresql&quot;\n    ]\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages/private/schedules\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages/private/docs\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/core/guards/route\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/core/guards/profile\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages/private/register-student\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/pages/private/docs\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/core/interfaces/commons\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/assets/data/utils\" />\n      <recent name=\"$PROJECT_DIR$/frontend/src/app/shared/datatable\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"Main\" type=\"PHPUnitRunConfigurationType\" factoryName=\"PHPUnit\">\n      <TestRunner configuration_file=\"$PROJECT_DIR$/backend/phpunit.xml\" scope=\"XML\" use_alternative_configuration_file=\"true\" />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PS-243.26053.13\" />\n        <option value=\"bundled-php-predefined-a98d8de5180a-1ec7b7818973-com.jetbrains.php.sharedIndexes-PS-243.26053.13\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"86cc6518-d73b-475a-aab9-6cee50029e35\" name=\"Changes\" comment=\"\" />\n      <created>1742255221854</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1742255221854</updated>\n      <workItem from=\"1742255223419\" duration=\"10577000\" />\n      <workItem from=\"1742420939345\" duration=\"32555000\" />\n      <workItem from=\"1743463476294\" duration=\"6711000\" />\n      <workItem from=\"1743630691632\" duration=\"25479000\" />\n      <workItem from=\"1744065352272\" duration=\"21694000\" />\n      <workItem from=\"1744236299733\" duration=\"21322000\" />\n      <workItem from=\"1744259880803\" duration=\"9000\" />\n      <workItem from=\"1744672360786\" duration=\"212000\" />\n      <workItem from=\"1744673044725\" duration=\"4145000\" />\n      <workItem from=\"1744678935576\" duration=\"375000\" />\n      <workItem from=\"1744679334062\" duration=\"6734000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/12-agendamentos-e-monitoramento-de-entradas-e-saídas\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ b/.idea/workspace.xml	(date 1744855481162)
+@@ -5,14 +5,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="86cc6518-d73b-475a-aab9-6cee50029e35" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/bootstrap/app.php" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/composer.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/composer.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/resources/js/bootstrap.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/.docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.docker/Dockerfile" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.env.example" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/app/Events/MessageSent.php" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/channels.php" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -246,7 +245,7 @@
+       <workItem from="1744672360786" duration="212000" />
+       <workItem from="1744673044725" duration="4145000" />
+       <workItem from="1744678935576" duration="375000" />
+-      <workItem from="1744679334062" duration="6734000" />
++      <workItem from="1744679334062" duration="12400000" />
+     </task>
+     <servers />
+   </component>
+Index: frontend/package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/package-lock.json b/frontend/package-lock.json
+--- a/frontend/package-lock.json	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ b/frontend/package-lock.json	(date 1744852311991)
+@@ -24,8 +24,10 @@
+         "@fullcalendar/timegrid": "^6.1.15",
+         "@primeng/themes": "^19.0.6",
+         "ag-grid-angular": "^33.1.1",
++        "laravel-echo": "^2.0.2",
+         "primeicons": "^7.0.0",
+         "primeng": "^19.0.6",
++        "pusher-js": "^8.4.0",
+         "rxjs": "~7.8.0",
+         "tailwind-scrollbar": "^3.1.0",
+         "tailwindcss-primeui": "^0.4.0",
+@@ -9618,6 +9620,15 @@
+         "node": ">=0.10.0"
+       }
+     },
++    "node_modules/laravel-echo": {
++      "version": "2.0.2",
++      "resolved": "https://registry.npmjs.org/laravel-echo/-/laravel-echo-2.0.2.tgz",
++      "integrity": "sha512-Ciai6hA7r35MFqNRb8G034cvm9WiveSTFQQKRGJhWtZGbng7C8BBa5QvqDxk/Mw5GeJ+q19jrEwQhf7r1b1lcg==",
++      "license": "MIT",
++      "engines": {
++        "node": ">=20"
++      }
++    },
+     "node_modules/launch-editor": {
+       "version": "2.10.0",
+       "resolved": "https://registry.npmjs.org/launch-editor/-/launch-editor-2.10.0.tgz",
+@@ -11971,6 +11982,15 @@
+       "dev": true,
+       "license": "MIT"
+     },
++    "node_modules/pusher-js": {
++      "version": "8.4.0",
++      "resolved": "https://registry.npmjs.org/pusher-js/-/pusher-js-8.4.0.tgz",
++      "integrity": "sha512-wp3HqIIUc1GRyu1XrP6m2dgyE9MoCsXVsWNlohj0rjSkLf+a0jLvEyVubdg58oMk7bhjBWnFClgp8jfAa6Ak4Q==",
++      "license": "MIT",
++      "dependencies": {
++        "tweetnacl": "^1.0.3"
++      }
++    },
+     "node_modules/qjobs": {
+       "version": "1.2.0",
+       "resolved": "https://registry.npmjs.org/qjobs/-/qjobs-1.2.0.tgz",
+@@ -14024,6 +14044,12 @@
+         "node": "^18.17.0 || >=20.5.0"
+       }
+     },
++    "node_modules/tweetnacl": {
++      "version": "1.0.3",
++      "resolved": "https://registry.npmjs.org/tweetnacl/-/tweetnacl-1.0.3.tgz",
++      "integrity": "sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==",
++      "license": "Unlicense"
++    },
+     "node_modules/type-fest": {
+       "version": "0.21.3",
+       "resolved": "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz",
+Index: backend/.env.example
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>APP_NAME=\"Easy Creche\"\nAPP_ENV=local\nAPP_KEY=\nAPP_DEBUG=true\nAPP_URL=http://localhost\nWEBAPP_URL=http://localhost:4200\n\nAPP_LOCALE=en\nAPP_FALLBACK_LOCALE=en\nAPP_FAKER_LOCALE=en_US\n\nAPP_MAINTENANCE_DRIVER=file\n# APP_MAINTENANCE_STORE=database\n\nPHP_CLI_SERVER_WORKERS=4\n\nBCRYPT_ROUNDS=12\n\nLOG_CHANNEL=stack\nLOG_STACK=single\nLOG_DEPRECATIONS_CHANNEL=null\nLOG_LEVEL=debug\n\nDB_CONNECTION=pgsql\nDB_HOST=db\nDB_PORT=5432\nDB_DATABASE=easy-creche\nDB_USERNAME=root\nDB_PASSWORD=password\n\nSESSION_DRIVER=database\nSESSION_LIFETIME=120\nSESSION_ENCRYPT=false\nSESSION_PATH=/\nSESSION_DOMAIN=null\n\nBROADCAST_CONNECTION=log\nFILESYSTEM_DISK=local\nQUEUE_CONNECTION=database\n\nCACHE_STORE=database\n# CACHE_PREFIX=\n\nMEMCACHED_HOST=127.0.0.1\n\nREDIS_CLIENT=phpredis\nREDIS_HOST=127.0.0.1\nREDIS_PASSWORD=null\nREDIS_PORT=7379\n\nMAIL_MAILER=log\nMAIL_SCHEME=null\nMAIL_HOST=127.0.0.1\nMAIL_PORT=2525\nMAIL_USERNAME=null\nMAIL_PASSWORD=null\nMAIL_FROM_ADDRESS=\"hello@example.com\"\nMAIL_FROM_NAME=\"${APP_NAME}\"\n\nAWS_ACCESS_KEY_ID=\nAWS_SECRET_ACCESS_KEY=\nAWS_DEFAULT_REGION=us-east-1\nAWS_BUCKET=\nAWS_USE_PATH_STYLE_ENDPOINT=false\n\nVITE_APP_NAME=\"${APP_NAME}\"\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/.env.example b/backend/.env.example
+--- a/backend/.env.example	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ b/backend/.env.example	(date 1744850699593)
+@@ -64,3 +64,15 @@
+ AWS_USE_PATH_STYLE_ENDPOINT=false
+ 
+ VITE_APP_NAME="${APP_NAME}"
++
++REVERB_APP_ID=
++REVERB_APP_KEY=
++REVERB_APP_SECRET=
++REVERB_HOST="localhost"
++REVERB_PORT=8080
++REVERB_SCHEME=http
++
++VITE_REVERB_APP_KEY="${REVERB_APP_KEY}"
++VITE_REVERB_HOST="${REVERB_HOST}"
++VITE_REVERB_PORT="${REVERB_PORT}"
++VITE_REVERB_SCHEME="${REVERB_SCHEME}"
+Index: frontend/package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"frontend\",\n  \"version\": \"0.0.0\",\n  \"scripts\": {\n    \"ng\": \"ng\",\n    \"start\": \"ng serve\",\n    \"build\": \"ng build\",\n    \"watch\": \"ng build --watch --configuration development\",\n    \"test\": \"ng test\"\n  },\n  \"private\": true,\n  \"dependencies\": {\n    \"@angular/animations\": \"^19.1.0\",\n    \"@angular/common\": \"^19.1.0\",\n    \"@angular/compiler\": \"^19.1.0\",\n    \"@angular/core\": \"^19.1.0\",\n    \"@angular/forms\": \"^19.1.0\",\n    \"@angular/platform-browser\": \"^19.1.0\",\n    \"@angular/platform-browser-dynamic\": \"^19.1.0\",\n    \"@angular/router\": \"^19.1.0\",\n    \"@fullcalendar/angular\": \"^6.1.16\",\n    \"@fullcalendar/core\": \"^6.1.15\",\n    \"@fullcalendar/daygrid\": \"^6.1.15\",\n    \"@fullcalendar/interaction\": \"^6.1.15\",\n    \"@fullcalendar/rrule\": \"^6.1.15\",\n    \"@fullcalendar/timegrid\": \"^6.1.15\",\n    \"@primeng/themes\": \"^19.0.6\",\n    \"ag-grid-angular\": \"^33.1.1\",\n    \"primeicons\": \"^7.0.0\",\n    \"primeng\": \"^19.0.6\",\n    \"rxjs\": \"~7.8.0\",\n    \"tailwind-scrollbar\": \"^3.1.0\",\n    \"tailwindcss-primeui\": \"^0.4.0\",\n    \"tslib\": \"^2.3.0\",\n    \"uuid\": \"^11.1.0\",\n    \"zone.js\": \"~0.15.0\"\n  },\n  \"devDependencies\": {\n    \"@angular-devkit/build-angular\": \"^19.1.6\",\n    \"@angular/cli\": \"^19.1.6\",\n    \"@angular/compiler-cli\": \"^19.1.0\",\n    \"@types/jasmine\": \"~5.1.0\",\n    \"autoprefixer\": \"^10.4.20\",\n    \"jasmine-core\": \"~5.5.0\",\n    \"karma\": \"~6.4.0\",\n    \"karma-chrome-launcher\": \"~3.2.0\",\n    \"karma-coverage\": \"~2.2.0\",\n    \"karma-jasmine\": \"~5.1.0\",\n    \"karma-jasmine-html-reporter\": \"~2.1.0\",\n    \"postcss\": \"^8.5.2\",\n    \"tailwindcss\": \"^3.4.17\",\n    \"typescript\": \"~5.7.2\"\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/package.json b/frontend/package.json
+--- a/frontend/package.json	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ b/frontend/package.json	(date 1744852311425)
+@@ -26,8 +26,10 @@
+     "@fullcalendar/timegrid": "^6.1.15",
+     "@primeng/themes": "^19.0.6",
+     "ag-grid-angular": "^33.1.1",
++    "laravel-echo": "^2.0.2",
+     "primeicons": "^7.0.0",
+     "primeng": "^19.0.6",
++    "pusher-js": "^8.4.0",
+     "rxjs": "~7.8.0",
+     "tailwind-scrollbar": "^3.1.0",
+     "tailwindcss-primeui": "^0.4.0",

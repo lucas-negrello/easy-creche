@@ -35,6 +35,8 @@ class RolePermissionSeeder extends Seeder
             'schedules',
             'student-progress',
             'monitoring',
+            'chat',
+            'chat-message'
         ];
 
         $actions = [
@@ -70,6 +72,8 @@ class RolePermissionSeeder extends Seeder
                 'schedules' => ['view', 'create', 'update', 'delete'],
                 'student-progress' => ['view', 'create', 'update', 'delete'],
                 'monitoring' => ['view', 'create', 'update', 'delete'],
+                'chat' => ['view', 'create', 'update', 'delete'],
+                'chat-message' => ['view', 'create', 'update', 'delete'],
             ],
             'admin' => [
                 'register-admin' => ['view', 'create', 'update', 'delete'],
@@ -80,6 +84,8 @@ class RolePermissionSeeder extends Seeder
                 'schedules' => ['view', 'create', 'update', 'delete'],
                 'student-progress' => ['view', 'create', 'update', 'delete'],
                 'monitoring' => ['view', 'create', 'update', 'delete'],
+                'chat' => ['view', 'create', 'delete'],
+                'chat-message' => ['view', 'create'],
             ],
             'user' => [
                 'register-admin' => [''],
@@ -90,6 +96,8 @@ class RolePermissionSeeder extends Seeder
                 'schedules' => ['view', 'create', 'update', 'delete'],
                 'student-progress' => ['view'],
                 'monitoring' => ['view'],
+                'chat' => ['view', 'create'],
+                'chat-message' => ['view', 'create'],
             ]
         ];
 

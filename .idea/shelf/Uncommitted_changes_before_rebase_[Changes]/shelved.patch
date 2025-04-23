@@ -1,0 +1,26 @@
+Index: backend/routes/channels.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\n\nuse Illuminate\\Support\\Facades\\Broadcast;\n\nBroadcast::channel('App.Models.User.{id}', function ($user, $id) {\n    return (int) $user->id === (int) $id;\n});\n
+===================================================================
+diff --git a/backend/routes/channels.php b/backend/routes/channels.php
+--- a/backend/routes/channels.php	(revision 61d9081cda0e568b4dc30be272f4f5afb91e3023)
++++ b/backend/routes/channels.php	(date 1744854838654)
+@@ -1,7 +1,17 @@
+ <?php
+ 
++use App\Models\User;
+ use Illuminate\Support\Facades\Broadcast;
+ 
+ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
+     return (int) $user->id === (int) $id;
+ });
++
++Broadcast::channel('Chat.{receiverId}', function (User $user, $receiverId) {
++    $senderRole = $user->roles()->first()->name;
++    $receiver = User::find($receiverId);
++    $receiverRole = $receiver->roles()->first()->name;
++
++    return ($senderRole === 'admin' && $receiverRole === 'responsible') ||
++        ($senderRole === 'responsible' && $receiverRole === 'admin');
++});
