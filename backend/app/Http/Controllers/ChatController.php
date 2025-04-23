@@ -38,10 +38,10 @@ class ChatController extends Controller
         $recipient = User::findOrFail($request->recipient_id);
         if($this->verifyChatOnCreate($sender, $recipient)) {
             return response([
-                'message'           => 'Impossible to create chat between two users or two admins',
+                'message'           => 'Impossible to create chat between two users',
                 'success'           => false,
-                'status_code'       => 403,
-            ], 403);
+                'status_code'       => 409,
+            ], 409);
         }
         return $this->createChat($sender, $recipient);
     }

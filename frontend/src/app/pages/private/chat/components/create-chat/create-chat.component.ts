@@ -7,6 +7,7 @@ import {Select} from 'primeng/select';
 import {FormsModule} from '@angular/forms';
 import {UserList} from '../../../../../core/interfaces/auth/auth.interface';
 import {Button} from 'primeng/button';
+import {ModalService} from '../../../../../core/services/overlays/modal.service';
 
 @Component({
   selector: 'app-create-chat',
@@ -21,6 +22,7 @@ import {Button} from 'primeng/button';
 export class CreateChatComponent extends BaseInjectionsComponent {
   private readonly _chatService: ChatService = inject(ChatService);
   private readonly _authService: AuthService = inject(AuthService);
+  private readonly _modalService = inject(ModalService);
 
   protected users: UserList = {} as UserList;
   protected selectedOption!: number;
@@ -44,10 +46,25 @@ export class CreateChatComponent extends BaseInjectionsComponent {
   }
 
   protected startChat() {
-    if(this.selectedOption !== 0) {
-      // TODO - Implementar a logica para criar o chat novo
+    if(this.selectedOption) {
+      this._chatService.createChat(this.selectedOption.toString()).subscribe({
+        next: (response) => {
+          if (response.success) {
+            this.toast.showToast('success', 'Chat criado com sucesso');
+            this._router.navigate(['/chats']);
+            this._modalService.closeDialog();
+          }
+        },
+        error: (error) => {
+          if(error.status === 422) {
+            this.toast.showToast('error', 'Erro ao criar chat', 'Não é possivel criar um chat com você mesmo');
+          }
+          if(error.status === 409) {
+            this.toast.showToast('error', 'Erro ao criar chat', 'Não é possivel criar um chat entre dois responsáveis');
+          }
+          this.toast.showToast('error', 'Erro ao criar chat', 'Por favor tente novamente mais tarde');
+        }
+      });
     }
   }
-
-
 }

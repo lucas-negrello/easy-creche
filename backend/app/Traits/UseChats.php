@@ -15,7 +15,6 @@ trait UseChats
         $recipientIsUser = $recipient->hasRole(['user']);
 
         if(
-            ($senderIsAdmin && $recipientIsAdmin) ||
             ($senderIsUser && $recipientIsUser) ||
             (!($senderIsAdmin || $senderIsUser)) ||
             (!($recipientIsAdmin || $recipientIsUser))
