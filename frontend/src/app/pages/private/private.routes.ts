@@ -71,6 +71,12 @@ export const Private: Routes = [
           .then(c => c.PanicComponent),
       },
       {
+        path: 'chats',
+        title: 'Chat',
+        loadComponent: () => import('./chat/chat.component')
+          .then(c => c.ChatComponent),
+      },
+      {
         path: '',
         title: 'Agendamentos',
         loadChildren: () => import('./schedules/schedules.routes')

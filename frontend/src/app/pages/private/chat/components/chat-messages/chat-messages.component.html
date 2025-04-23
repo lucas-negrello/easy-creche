@@ -1,0 +1,75 @@
+<div class="w-full h-full chat-messages-container">
+  <p-card>
+    <div class="flex flex-col h-full justify-between">
+      @if (!chat) {
+        <div class="flex-grow flex justify-center items-center">
+          <p>
+            <span>
+              Selecione um Chat!
+            </span>
+          </p>
+        </div>
+      } @else {
+        <div #scrollContainer class="flex-grow flex flex-col-reverse gap-3 overflow-y-auto">
+          @if (chatMessages.length === 0) {
+            <div class="h-full self-center">
+              <p>
+                <span>
+                  Nenhuma mensagem neste chat!
+                </span>
+              </p>
+            </div>
+          } @else {
+            @for (message of chatMessages; track message.id) {
+              @if (message.user_id === currentUser.id) {
+                <div class="self-end">
+                  <p-message severity="success">
+                    <div class="flex flex-col">
+                      <p>
+                        {{message.message}}
+                      </p>
+                      <p class="text-xs font-extralight self-end">
+                        {{message.created_at | date: 'hh:mm dd/MM/YY'}}
+                      </p>
+                    </div>
+                  </p-message>
+                </div>
+              } @else {
+                <div class="self-start">
+                  <p-message severity="warn">
+                    <div class="flex flex-col">
+                      <p>
+                        {{message.message}}
+                      </p>
+                      <p class="text-xs font-extralight self-start">
+                        {{message.created_at | date: 'hh:mm dd/MM/YY'}}
+                      </p>
+                    </div>
+                  </p-message>
+                </div>
+              }
+            }
+          }
+        </div>
+        <div class="flex gap-2 mt-4">
+          <input
+            pInputText
+            type="text"
+            name="message"
+            autocomplete="off"
+            placeholder="Digite sua mensagem..."
+            pSize="small"
+            fluid
+            (keydown.enter)="sendMessage()"
+            [(ngModel)]="message">
+          <p-button
+            type="button"
+            icon="pi pi-send"
+            size="small"
+            (onClick)="sendMessage()"
+            severity="info" />
+        </div>
+      }
+    </div>
+  </p-card>
+</div>

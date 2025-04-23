@@ -18,7 +18,9 @@ class ChatController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Chat::class);
-        $chats = auth()->user()->chats()->latest()->get();
+        $chats = auth()->user()->chats()->with(['users' => function ($query) {
+            $query->select('users.id', 'users.name', 'users.email')->without('students');
+        }])->latest()->get();
         return response()->json([
             'message'           => 'Chats listed successfully',
             'data'              => $chats,
