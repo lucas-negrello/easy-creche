@@ -12,11 +12,6 @@ export class ChatService extends HttpBaseService<ChatInterface>{
   protected override resource: string = 'chats';
 
   public createChat(recipient_id: string): Observable<ApiResponse<ChatInterface>> {
-    return this.http.post<ApiResponse<ChatInterface>>(`${this.apiUrl}/${this.resource}`, { recipient_id })
-      .pipe(
-        catchError((error): Observable<ApiResponse<ChatInterface>> => {
-          return of({success: false, message: 'Erro ao criar recurso', data: error, status_code: 400});
-        }),
-      );
+    return this.http.post<ApiResponse<ChatInterface>>(`${this.apiUrl}/${this.resource}`, { recipient_id });
   }
 }

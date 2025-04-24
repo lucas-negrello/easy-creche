@@ -45,7 +45,7 @@
     "label": "Registro de Desenvolvimento",
     "icon": "pi-chart-line",
     "route": "student-progress",
-    "isActive": false,
+    "isActive": true,
     "roles": ["super_admin","admin", "user"]
   },
   {

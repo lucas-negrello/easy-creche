@@ -31,7 +31,14 @@ export class ChatListComponent extends BaseInjectionsComponent {
   protected currentUser: UserInterface = JSON.parse(this._authSessionService.getProfile() ?? '') as UserInterface;
 
   ngOnInit() {
+    this._route.queryParams.subscribe(params => {
+      if(params['refresh']) this.fetchChats();
+    })
     this._layoutService.updateTitle('Chat');
+    this.fetchChats();
+  }
+
+  protected fetchChats() {
     this._chatService.findAll().subscribe((response) => {
       this.chats = response.data;
     });
@@ -46,6 +53,10 @@ export class ChatListComponent extends BaseInjectionsComponent {
   }
 
   protected createChat() {
+    this._router.navigate([], {
+      queryParams: {},
+      queryParamsHandling: 'replace'
+    });
     this._modalService.openDialog(CreateChatComponent, {
       closable: true,
       modal: true,

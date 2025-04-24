@@ -30,4 +30,9 @@ class RegisterStudent extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function studentProgress()
+    {
+        return $this->hasMany(StudentProgress::class, 'student_id');
+    }
 }

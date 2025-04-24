@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterResponsibleController;
 use App\Http\Controllers\RegisterStudentController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\StudentProgressController;
 use Illuminate\Support\Facades\Route;
 
 // LOGIN-LOGOUT ROUTES
@@ -33,6 +34,7 @@ Route::middleware('auth:sanctum')->group(function () {
         'register-students' => RegisterStudentController::class,
         'schedule' => ScheduleController::class,
         'monitoring' => MonitoringController::class,
+        'student-progress' => StudentProgressController::class,
         'chats' => ChatController::class,
     ]);
     Route::get('chats/{chat}/messages', [ChatMessageController::class, 'index'])

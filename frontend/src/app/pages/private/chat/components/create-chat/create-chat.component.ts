@@ -51,7 +51,7 @@ export class CreateChatComponent extends BaseInjectionsComponent {
         next: (response) => {
           if (response.success) {
             this.toast.showToast('success', 'Chat criado com sucesso');
-            this._router.navigate(['/chats']);
+            this._router.navigate(['/chats'], {queryParams: {refresh: true}});
             this._modalService.closeDialog();
           }
         },
@@ -61,8 +61,9 @@ export class CreateChatComponent extends BaseInjectionsComponent {
           }
           if(error.status === 409) {
             this.toast.showToast('error', 'Erro ao criar chat', 'Não é possivel criar um chat entre dois responsáveis');
+          } else {
+            this.toast.showToast('error', 'Erro ao criar chat', 'Por favor tente novamente mais tarde');
           }
-          this.toast.showToast('error', 'Erro ao criar chat', 'Por favor tente novamente mais tarde');
         }
       });
     }
