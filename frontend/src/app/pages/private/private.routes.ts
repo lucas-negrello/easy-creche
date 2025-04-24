@@ -41,8 +41,8 @@ export const Private: Routes = [
       {
         path: 'student-progress',
         title: 'Registro de Desenvolvimento',
-        loadComponent: () => import('./student-progress/student-progress.component')
-          .then(c => c.StudentProgressComponent),
+        loadChildren: () => import('./student-progress/student-progress.routes')
+          .then(r => r.StudentProgressRoutes),
       },
       {
         path: 'docs',

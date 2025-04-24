@@ -15,7 +15,7 @@ import {KeyFilter} from "primeng/keyfilter";
 import {InputMask} from "primeng/inputmask";
 
 @Component({
-  selector: 'app-register-responsible-form',
+  selector: 'app-student-progress-form',
   imports: [
     Fluid,
     FloatLabel,
