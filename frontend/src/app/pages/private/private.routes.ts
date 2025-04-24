@@ -41,8 +41,8 @@ export const Private: Routes = [
       {
         path: 'student-progress',
         title: 'Registro de Desenvolvimento',
-        loadComponent: () => import('./student-progress/student-progress.component')
-          .then(c => c.StudentProgressComponent),
+        loadChildren: () => import('./student-progress/student-progress.routes')
+          .then(r => r.StudentProgressRoutes),
       },
       {
         path: 'docs',
@@ -69,6 +69,12 @@ export const Private: Routes = [
         canActivate: [AdminGuard],
         loadComponent: () => import('./panic/panic.component')
           .then(c => c.PanicComponent),
+      },
+      {
+        path: 'chats',
+        title: 'Chat',
+        loadComponent: () => import('./chat/chat.component')
+          .then(c => c.ChatComponent),
       },
       {
         path: '',

@@ -12,10 +12,8 @@ import {DocUpdateComponent} from './components/doc-update/doc-update.component';
 import {RouterLink} from '@angular/router';
 import {ConfirmationDialogService} from '../../../core/services/overlays/confirmation-dialog.service';
 import {Select} from 'primeng/select';
-import {RegisterStudentService} from '../register-student/services/register-student.service';
 import {StudentInterface} from '../register-student/interfaces/student.interface';
 import {FormsModule} from '@angular/forms';
-import {UserInterface} from '../../../core/interfaces/user/user.interface';
 
 @Component({
   selector: 'app-docs',
@@ -44,7 +42,7 @@ export class DocsComponent extends BaseInjectionsComponent {
   ngOnInit() {
     const students = JSON.parse(this._authSessionService.getStudents() ?? '{}') as StudentInterface[];
     if(students) this.students = students;
-    this.selectedStudent = this.students[0].id as number;
+    this.selectedStudent = this.students[0]?.id as number || 0;
     this._layoutService.updateTitle('Documentos');
     this._fetchDocuments();
     this._route.queryParams.subscribe(params => {

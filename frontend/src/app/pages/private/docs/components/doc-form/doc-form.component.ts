@@ -4,25 +4,17 @@ import {DocumentService} from '../../services/document.service';
 import {FileUpload, FileUploadHandlerEvent} from 'primeng/fileupload';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {DocumentInterface, DocumentResponse} from '../../interfaces/docs.interface';
-import {RegisterStudentService} from '../../../register-student/services/register-student.service';
-import {map, Observable, of} from 'rxjs';
 import {StudentInterface} from '../../../register-student/interfaces/student.interface';
-import {AsyncPipe} from '@angular/common';
 import {Button} from 'primeng/button';
 import {FloatLabel} from 'primeng/floatlabel';
 import {Fluid} from 'primeng/fluid';
 import {Select} from 'primeng/select';
 import {HttpErrorResponse, HttpEventType} from '@angular/common/http';
 import {InputText} from 'primeng/inputtext';
-import {UserInterface} from '../../../../../core/interfaces/user/user.interface';
-import {Toast} from 'primeng/toast';
-import {ProgressBar} from 'primeng/progressbar';
-
 @Component({
   selector: 'app-doc-form',
   imports: [
     FileUpload,
-    AsyncPipe,
     Button,
     FloatLabel,
     Fluid,
@@ -30,8 +22,6 @@ import {ProgressBar} from 'primeng/progressbar';
     ReactiveFormsModule,
     Select,
     InputText,
-    Toast,
-    ProgressBar
   ],
   templateUrl: './doc-form.component.html',
   styleUrl: './doc-form.component.scss'

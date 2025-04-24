@@ -1,0 +1,9 @@
+  <div class="flex gap-2 w-full h-full">
+    <app-chat-list
+      (chat)="getChat($event)"
+      class="w-[30%] min-w-[220px] min-h-[75vh] max-h-[75vh]"></app-chat-list>
+    <app-chat-messages
+      [chat]="chat"
+      class="w-[70%] min-h-[75vh] max-h-[75vh]"></app-chat-messages>
+  </div>
+

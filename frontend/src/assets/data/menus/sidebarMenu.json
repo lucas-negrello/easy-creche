@@ -35,10 +35,17 @@
     "roles": ["super_admin","admin", "user"]
   },
   {
+    "label": "Chat",
+    "icon": "pi-comments",
+    "route": "chats",
+    "isActive": true,
+    "roles": ["super_admin","admin", "user"]
+  },
+  {
     "label": "Registro de Desenvolvimento",
     "icon": "pi-chart-line",
     "route": "student-progress",
-    "isActive": false,
+    "isActive": true,
     "roles": ["super_admin","admin", "user"]
   },
   {

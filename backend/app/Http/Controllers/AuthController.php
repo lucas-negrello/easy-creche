@@ -56,12 +56,14 @@ class AuthController extends Controller
                 'user'      => $responsible,
                 'role'      => $user->roles,
                 'students'  => $responsible->students,
+                'chats'     => $user->chats,
             ]);
         }
         return response()->json([
             'user'      => $user,
             'role'      => $user->roles,
-            'students'  => RegisterStudent::all()
+            'students'  => RegisterStudent::all(),
+            'chats'     => $user->chats,
         ]);
     }
 

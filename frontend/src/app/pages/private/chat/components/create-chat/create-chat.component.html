@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-2">
+  <p-select
+    [options]="users.user"
+    appendTo="body"
+    optionLabel="name"
+    optionValue="id"
+    [(ngModel)]="selectedOption"
+    fluid
+  />
+  <p-button
+    label="Iniciar Chat"
+    (onClick)="startChat()"
+    />
+</div>
