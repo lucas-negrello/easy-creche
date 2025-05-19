@@ -1,0 +1,138 @@
+@if (currentUserRole !== 'user') {
+  <div class="flex flex-col items-center gap-5">
+    <p-card class="w-full sm:w-[80%]">
+      <div class="flex flex-col gap-5">
+        <p>Selecione um Aluno</p>
+        <div>
+          <p-select
+            appendTo="body"
+            optionLabel="name"
+            optionValue="id"
+            [options]="students"
+            [(ngModel)]="selectedStudent"
+            (onChange)="fetchData$()"
+            placeholder="Aluno"
+            fluid
+          />
+        </div>
+      </div>
+    </p-card>
+    <p-card class="w-full sm:w-[80%]">
+      @if (!selectedStudent) {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">Nenhum Aluno Selecionado</div>
+      } @else {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">
+          <p-table
+            [value]="childFrequency"
+            [paginator]="true"
+            [rows]="3"
+            [rowsPerPageOptions]="[3,6,10]"
+            [sortOrder]="-1"
+            sortField="entrance"
+          >
+            <ng-template #caption>
+              <div class="flex justify-center">
+                <button
+                  class="w-full"
+                  pButton
+                  severity="primary"
+                  (click)="setChildFrequency(selectedStudent)"
+                >
+                  Adicionar Entrada
+                </button>
+              </div>
+            </ng-template>
+            <ng-template #header>
+              <tr>
+                <th pSortableColumn="entrance">Entrada <p-sortIcon field="entrance" /></th>
+                <th pSortableColumn="exit">Saída <p-sortIcon field="exit" /></th>
+                <th>Tempo em Sala</th>
+              </tr>
+            </ng-template>
+            <ng-template #body let-childFreq>
+              <tr>
+                <td>{{childFreq.entrance | date: 'dd/MM/YY HH:mm'}}</td>
+                @if (!childFreq.exit) {
+                  <td colspan="2">
+                    <div class="flex justify-center">
+                      <button
+                        class="w-full"
+                        pButton
+                        severity="warn"
+                        (click)="setChildFrequency(selectedStudent, childFreq.id)"
+                      >
+                        Adicionar Saída
+                      </button>
+                    </div>
+                  </td>
+                } @else {
+                  <td>{{childFreq?.exit | date: 'dd/MM/YY HH:mm'}}</td>
+                  <td>{{calculateTime(childFreq?.entrance, childFreq?.exit)}}</td>
+                }
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      }
+    </p-card>
+  </div>
+} @else {
+  <div class="flex flex-col items-center gap-5">
+    <p-card class="w-full sm:w-[80%]">
+      <div class="flex flex-col gap-5">
+        <p>Selecione um Filho</p>
+        <div>
+          <p-select
+            appendTo="body"
+            optionLabel="name"
+            optionValue="id"
+            [options]="students"
+            [(ngModel)]="selectedStudent"
+            (onChange)="fetchData$()"
+            placeholder="Filho"
+            fluid
+          />
+        </div>
+      </div>
+    </p-card>
+    <p-card class="w-full sm:w-[80%]">
+      @if (!selectedStudent) {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">Nenhum Filho Selecionado</div>
+      } @else {
+        <div class="min-h-[60vh] max-sm:min-h-[40vh]">
+          <p-table
+            [value]="childFrequency"
+            [paginator]="true"
+            [rows]="3"
+            [rowsPerPageOptions]="[3,6,10]"
+            [sortOrder]="-1"
+            sortField="entrance"
+          >
+            <ng-template #header>
+              <tr>
+                <th pSortableColumn="entrance">Entrada <p-sortIcon field="entrance" /></th>
+                <th pSortableColumn="exit">Saída <p-sortIcon field="exit" /></th>
+                <th>Tempo em Sala</th>
+              </tr>
+            </ng-template>
+            <ng-template #body let-childFreq>
+              <tr>
+                <td>{{childFreq.entrance | date: 'dd/MM/YY HH:mm'}}</td>
+                @if (!childFreq.exit) {
+                  <td colspan="2">
+                    <div class="flex justify-center">
+                      <p class="w-full border border-primary rounded-md text-primary text-center">Não registrada</p>
+                    </div>
+                  </td>
+                } @else {
+                  <td>{{childFreq?.exit | date: 'dd/MM/YY HH:mm'}}</td>
+                  <td>{{calculateTime(childFreq?.entrance, childFreq?.exit)}}</td>
+                }
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      }
+    </p-card>
+  </div>
+}

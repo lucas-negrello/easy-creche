@@ -1,0 +1,9 @@
+<p-card>
+  <app-datatable
+    [rowData$]="rowData$"
+    [colDefs]="colDefs"
+    [addCallbackFn]="userIsAdmin ? add.bind(this) : undefined"
+    [tableCustomConfig]="custom"
+    [loading]="loading"
+  ></app-datatable>
+</p-card>

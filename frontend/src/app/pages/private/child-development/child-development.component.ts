@@ -9,70 +9,70 @@ import {
 } from '../../../shared/datatable/components/grid-action-buttons/grid-action-buttons.interface';
 import {ColDef, ICellRendererParams, ValueFormatterParams, ValueGetterParams} from 'ag-grid-community';
 import {TableCustomConfig} from '../../../shared/datatable/datatable.interface';
-import {StudentProgressService} from './services/student-progress.service';
-import {StudentProgressInterface} from './interfaces/student-progress.interface';
+import {ChildDevelopmentService} from './services/child-development.service';
+import {ChildDevelopmentInterface} from './interfaces/child-development.interface';
 import {UserInterface} from '../../../core/interfaces/user/user.interface';
 import {StudentInterface} from '../register-student/interfaces/student.interface';
 
 @Component({
-  selector: 'app-student-progress',
+  selector: 'app-child-development',
   imports: [
     Card,
     DatatableComponent
   ],
-  templateUrl: './student-progress.component.html',
-  styleUrl: './student-progress.component.scss'
+  templateUrl: './child-development.component.html',
+  styleUrl: './child-development.component.scss'
 })
-export class StudentProgressComponent extends BaseInjectionsComponent {
+export class ChildDevelopmentComponent extends BaseInjectionsComponent {
   private readonly _layoutService: LayoutService = inject(LayoutService);
-  private readonly _studentProgressService: StudentProgressService = inject(StudentProgressService);
+  private readonly _childDevelopmentService: ChildDevelopmentService = inject(ChildDevelopmentService);
 
   protected currentUser: UserInterface = JSON.parse(this._authSessionService.getProfile() ?? '') as UserInterface;
   protected studentsAllowed: StudentInterface[] = JSON.parse(this._authSessionService.getStudents() ?? '[]') as StudentInterface[];
 
   protected userIsAdmin: boolean = !(this.currentUser.roles && this.currentUser.roles[0].name === ('user'));
 
-  protected rowData$: Observable<StudentProgressInterface[]> = of([]);
-  protected cellRenderParamsAdmin: Partial<CustomCellRendererParams<StudentProgressInterface>> = {
+  protected rowData$: Observable<ChildDevelopmentInterface[]> = of([]);
+  protected cellRenderParamsAdmin: Partial<CustomCellRendererParams<ChildDevelopmentInterface>> = {
     format: 'ellipsis',
     actions: [
       {
         icon: 'pi-icon pi-eye',
         label: 'Ver',
-        callback: (row: ICellRendererParams<StudentProgressInterface>) => this.view(row),
+        callback: (row: ICellRendererParams<ChildDevelopmentInterface>) => this.view(row),
       },
       {
         icon: 'pi-icon pi-pencil',
         label: 'Editar',
-        callback: (row: ICellRendererParams<StudentProgressInterface>) => this.edit(row),
+        callback: (row: ICellRendererParams<ChildDevelopmentInterface>) => this.edit(row),
       },
       {
         icon: 'pi-icon pi-trash',
         label: 'Excluir',
-        callback: (row: ICellRendererParams<StudentProgressInterface>) => this.delete(row),
+        callback: (row: ICellRendererParams<ChildDevelopmentInterface>) => this.delete(row),
         callbackConfirmationDialog: {},
       },
     ],
     width: 100
   };
-  protected cellRenderParamsUser: Partial<CustomCellRendererParams<StudentProgressInterface>> = {
+  protected cellRenderParamsUser: Partial<CustomCellRendererParams<ChildDevelopmentInterface>> = {
     format: 'buttons',
     actions: [
       {
         icon: 'pi-icon pi-eye',
         label: 'Ver',
-        callback: (row: ICellRendererParams<StudentProgressInterface>) => this.view(row),
+        callback: (row: ICellRendererParams<ChildDevelopmentInterface>) => this.view(row),
       },
     ],
     width: 100
   };
   protected colDefs: ColDef[] = this.colDefByWindowSize();
-  protected custom: TableCustomConfig<StudentProgressInterface> = {
+  protected custom: TableCustomConfig<ChildDevelopmentInterface> = {
     rowSelection: 'single',
   };
 
   ngOnInit() {
-    this._layoutService.updateTitle('Feedback dos Alunos');
+    this._layoutService.updateTitle('Registro de Desenvolvimento Infantil');
     this.fetchRowData$();
   }
 
@@ -84,7 +84,7 @@ export class StudentProgressComponent extends BaseInjectionsComponent {
         headerName: 'Data',
         field: 'created_at',
         initialSort: 'desc',
-        valueFormatter: (params: ValueFormatterParams<StudentProgressInterface>) => {
+        valueFormatter: (params: ValueFormatterParams<ChildDevelopmentInterface>) => {
           return new Date(params.value).toLocaleDateString('en-US', {
             day: '2-digit',
             month: '2-digit',
@@ -95,7 +95,7 @@ export class StudentProgressComponent extends BaseInjectionsComponent {
       {
         headerName: 'Criado Por',
         field: 'created_by',
-        valueGetter: (params: ValueGetterParams<StudentProgressInterface>) => params.data?.register_admin.name ?? 'Não Informado'
+        valueGetter: (params: ValueGetterParams<ChildDevelopmentInterface>) => params.data?.register_admin.name ?? 'Não Informado'
       },
       {headerName: 'Ações', field: 'action', cellRendererParams:
           (this.currentUser.roles && this.currentUser.roles[0].name === ('user')) ?
@@ -107,7 +107,7 @@ export class StudentProgressComponent extends BaseInjectionsComponent {
         headerName: 'Data',
         field: 'created_at',
         initialSort: 'desc',
-        valueFormatter: (params: ValueFormatterParams<StudentProgressInterface>) => {
+        valueFormatter: (params: ValueFormatterParams<ChildDevelopmentInterface>) => {
           return new Date(params.value).toLocaleDateString('pt-BR', {
             day: '2-digit',
             month: '2-digit',
@@ -118,12 +118,12 @@ export class StudentProgressComponent extends BaseInjectionsComponent {
       {
         headerName: 'Criado Por',
         field: 'created_by',
-        valueGetter: (params: ValueGetterParams<StudentProgressInterface>) => params.data?.register_admin.name ?? 'Não Informado'
+        valueGetter: (params: ValueGetterParams<ChildDevelopmentInterface>) => params.data?.register_admin.name ?? 'Não Informado'
       },
       {
         headerName: 'Aluno',
         field: 'student',
-        valueGetter: (params: ValueGetterParams<StudentProgressInterface>) => params.data?.student.name ?? 'Não Informado'
+        valueGetter: (params: ValueGetterParams<ChildDevelopmentInterface>) => params.data?.student.name ?? 'Não Informado'
       },
       {headerName: 'Ações', field: 'action', cellRendererParams:
           (this.currentUser.roles && this.currentUser.roles[0].name === ('user')) ?
@@ -133,33 +133,33 @@ export class StudentProgressComponent extends BaseInjectionsComponent {
   }
 
   protected fetchRowData$(): void {
-    this.rowData$ = this._studentProgressService.findAll().pipe(
+    this.rowData$ = this._childDevelopmentService.findAll().pipe(
       map(apiResponse => {
-        return apiResponse.data.filter((studentProgress) => {
-          return this.studentsAllowed.some(student => student.id === studentProgress.student_id);
+        return apiResponse.data.filter((childDevelopment) => {
+          return this.studentsAllowed.some(student => student.id === childDevelopment.student_id);
         })
       })
     );
   }
 
-  public edit(params: ICellRendererParams<StudentProgressInterface>) {
+  public edit(params: ICellRendererParams<ChildDevelopmentInterface>) {
     const id = params.data?.id;
     if (id) {
       this._router.navigate([id, 'edit'], {relativeTo: this._route});
     }
   }
 
-  public view(params: ICellRendererParams<StudentProgressInterface>) {
+  public view(params: ICellRendererParams<ChildDevelopmentInterface>) {
     const id = params.data?.id;
     if (id) {
       this._router.navigate([id], {relativeTo: this._route});
     }
   }
 
-  public delete(params: ICellRendererParams<StudentProgressInterface>) {
+  public delete(params: ICellRendererParams<ChildDevelopmentInterface>) {
     const id = params.data?.id;
     if (id) {
-      this._studentProgressService.delete(id).subscribe({
+      this._childDevelopmentService.delete(id).subscribe({
         next: () => {
           this.toast.showToast('success', 'Deletado com sucesso');
           this.loading = true;

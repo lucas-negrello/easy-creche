@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86cc6518-d73b-475a-aab9-6cee50029e35" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/private.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/register-responsible/components/register-responsible-form/register-responsible-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/register-responsible/components/register-responsible-form/register-responsible-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/student-progress/components/student-progress-form/student-progress-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/student-progress/components/student-progress-form/student-progress-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/private/student-progress/student-progress.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/private/student-progress/student-progress.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/data/menus/sidebarMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/data/menus/sidebarMenu.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,8 +168,8 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "16-registro-de-desenvolvimento-infantil-e-controle-de-presença-e-frequencia",
     "javascript.nodejs.core.library.configured.version": "22.15.0",
-    "javascript.nodejs.core.library.typings.version": "22.15.18",
-    "last_opened_file_path": "/home/negrello/Projects/Seguranca",
+    "javascript.nodejs.core.library.typings.version": "22.15.19",
+    "last_opened_file_path": "/home/negrello/Projects/easy-creche/frontend/src/app/pages/private",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -187,11 +188,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/app/pages/private" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/student-progress" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/schedules" />
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/docs" />
       <recent name="$PROJECT_DIR$/frontend/src/app/core/guards/route" />
-      <recent name="$PROJECT_DIR$/frontend/src/app/core/guards/profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src/app/pages/private/schedules/components" />
@@ -239,6 +240,7 @@
       <workItem from="1745449616121" duration="1573000" />
       <workItem from="1746578509782" duration="36000" />
       <workItem from="1747350583137" duration="5530000" />
+      <workItem from="1747692451447" duration="5678000" />
     </task>
     <servers />
   </component>
