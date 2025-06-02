@@ -1,0 +1,56 @@
+<form class="p-5 flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p-fluid>
+    <div class="mb-5">
+      <p-floatlabel variant="on">
+        <p-select
+          id="student_id"
+          size="small"
+          formControlName="student_id"
+          [options]="students"
+          optionValue="id"
+          optionLabel="name"
+          showClear
+          [class]="invalidInput('student_id')"
+          appendTo="body"
+          fluid
+        />
+        <label for="student_id">
+          Aluno*
+        </label>
+      </p-floatlabel>
+      <div class="min-h-5">
+        @if (checkValidation('student_id')) {
+          <small>{{ returnErrors('student_id') }}</small>
+        }
+      </div>
+    </div>
+    <div class="mb-5">
+      <p-floatlabel variant="on">
+        <label for="description">
+          Registro*
+        </label>
+        <textarea
+          id="description"
+          pTextarea
+          formControlName="description"
+          [class]="invalidInput('description')"
+          fluid
+        ></textarea>
+      </p-floatlabel>
+      <div class="min-h-5">
+        @if (checkValidation('description')) {
+          <small>{{ returnErrors('description') }}</small>
+        }
+      </div>
+    </div>
+    <div>
+      <p-button
+        size="small"
+        severity="secondary"
+        [loading]="loading"
+        [label]="defineLabel()"
+        (onClick)="onSubmit()"
+      />
+    </div>
+  </p-fluid>
+</form>

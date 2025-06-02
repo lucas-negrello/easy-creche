@@ -40,9 +40,21 @@ export const Private: Routes = [
       },
       {
         path: 'student-progress',
-        title: 'Registro de Desenvolvimento',
+        title: 'Feedback dos Alunos',
         loadChildren: () => import('./student-progress/student-progress.routes')
           .then(r => r.StudentProgressRoutes),
+      },
+      {
+        path: 'child-development',
+        title: 'Registro de Desenvolvimento',
+        loadChildren: () => import('./child-development/child-development.routes')
+          .then(r => r.ChildDevelopmentRoutes),
+      },
+      {
+        path: 'child-frequency',
+        title: 'Controle de Frequência',
+        loadComponent: () => import('./child-frequency/child-frequency.component')
+          .then(c => c.ChildFrequencyComponent),
       },
       {
         path: 'docs',

@@ -5,14 +5,14 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormBaseComponent} from '../../../../../core/components/form-base/form-base.component';
 import {Button} from 'primeng/button';
 import {LayoutService} from '../../../../../core/services/layout/layout.service';
-import {StudentProgressInterface} from '../../interfaces/student-progress.interface';
-import {StudentProgressService} from '../../services/student-progress.service';
+import {ChildDevelopmentInterface} from '../../interfaces/child-development.interface';
+import {ChildDevelopmentService} from '../../services/child-development.service';
 import {Select} from 'primeng/select';
 import {Textarea} from 'primeng/textarea';
 import {StudentInterface} from '../../../register-student/interfaces/student.interface';
 
 @Component({
-  selector: 'app-student-progress-form',
+  selector: 'app-child-development-form',
   imports: [
     Fluid,
     FloatLabel,
@@ -21,19 +21,19 @@ import {StudentInterface} from '../../../register-student/interfaces/student.int
     Select,
     Textarea
   ],
-  templateUrl: './student-progress-form.component.html',
-  styleUrl: './student-progress-form.component.scss'
+  templateUrl: './child-development-form.component.html',
+  styleUrl: './child-development-form.component.scss'
 })
-export class StudentProgressFormComponent extends FormBaseComponent<StudentProgressInterface>{
+export class ChildDevelopmentFormComponent extends FormBaseComponent<ChildDevelopmentInterface>{
 
   private readonly _layoutService: LayoutService = inject(LayoutService);
 
   constructor(
     protected override _fb: FormBuilder,
-    protected readonly _studentProgressService: StudentProgressService,
+    protected readonly _studentProgressService: ChildDevelopmentService,
   ) {
     super(_fb, _studentProgressService);
-    this._layoutService.updateTitle('Feedeback do Aluno');
+    this._layoutService.updateTitle('Registro de Desenvolvimento Infantil');
   }
 
   protected students: StudentInterface[] = JSON.parse(this._authSessionService.getStudents() ?? '[]') as StudentInterface[];

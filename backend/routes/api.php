@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ChatMessageController;
+use App\Http\Controllers\ChildDevelopmentController;
+use App\Http\Controllers\ChildPresenceController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MonitoringController;
@@ -36,6 +38,8 @@ Route::middleware('auth:sanctum')->group(function () {
         'monitoring' => MonitoringController::class,
         'student-progress' => StudentProgressController::class,
         'chats' => ChatController::class,
+        'child-presences' => ChildPresenceController::class,
+        'child-development' => ChildDevelopmentController::class,
     ]);
     Route::get('chats/{chat}/messages', [ChatMessageController::class, 'index'])
         ->name('chats.messages.index');

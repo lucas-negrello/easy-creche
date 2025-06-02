@@ -42,9 +42,23 @@
     "roles": ["super_admin","admin", "user"]
   },
   {
-    "label": "Registro de Desenvolvimento",
+    "label": "Feedback de Alunos",
     "icon": "pi-chart-line",
     "route": "student-progress",
+    "isActive": true,
+    "roles": ["super_admin","admin", "user"]
+  },
+  {
+    "label": "Registro de Desenvolvimento",
+    "icon": "pi-chart-bar",
+    "route": "child-development",
+    "isActive": true,
+    "roles": ["super_admin","admin", "user"]
+  },
+  {
+    "label": "Controle de Frequência",
+    "icon": "pi-history",
+    "route": "child-frequency",
     "isActive": true,
     "roles": ["super_admin","admin", "user"]
   },
@@ -53,13 +67,6 @@
     "icon": "pi-images",
     "route": "docs",
     "isActive": true,
-    "roles": ["super_admin","admin", "user"]
-  },
-  {
-    "label": "Recursos e Materiais",
-    "icon": "pi-pen-to-square",
-    "route": "resources",
-    "isActive": false,
     "roles": ["super_admin","admin", "user"]
   },
   {
