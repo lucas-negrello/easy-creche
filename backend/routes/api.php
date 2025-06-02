@@ -8,6 +8,7 @@ use App\Http\Controllers\ChildPresenceController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\MonitoringController;
+use App\Http\Controllers\Panic;
 use App\Http\Controllers\RegisterAdminController;
 use App\Http\Controllers\RegisterResponsibleController;
 use App\Http\Controllers\RegisterStudentController;
@@ -29,6 +30,7 @@ Route::post('/password/reset/{token}/{email}', [ResetPasswordController::class, 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::get('/users', [AuthController::class, 'users']);
+    Route::post('/panic', [Panic::class, 'sendPanicMessage']);
     // RESOURCE ROUTES
     Route::apiResources([
         'register-admins' => RegisterAdminController::class,
