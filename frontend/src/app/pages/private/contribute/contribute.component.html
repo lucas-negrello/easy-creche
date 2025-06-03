@@ -1,1 +1,26 @@
-<p>contribute works!</p>
+<p-card>
+  <div class="flex flex-col gap-8 items-center justify-center">
+    <div class="text-2xl font-bold">
+      Contribua com nossa creche!
+    </div>
+    <div class="text-xl">
+      Toda ajuda é bem-vinda, seja com doações ou com seu tempo!
+    </div>
+    @if (payloadComCRC) {
+      <qrcode [qrdata]="payloadComCRC" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+    } @else {
+      <div class="h-[256px] w-[256px] flex items-center justify-center bg-white">
+        <span class="text-gray-500">QR Code não disponível</span>
+      </div>
+    }
+    @if (copyPasteCRC) {
+      <div class="flex flex-col gap-4 items-center justify-content-center">
+        <button pButton (click)="copiar()">
+          Copiar Chave Pix
+        </button>
+      </div>
+    } @else {
+      <div class="text-gray-500 bg-white">Informações de PIX não disponíveis</div>
+    }
+  </div>
+</p-card>
