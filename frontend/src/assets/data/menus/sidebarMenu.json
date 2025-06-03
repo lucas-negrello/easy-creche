@@ -73,14 +73,14 @@
     "label": "Contribua!",
     "icon": "pi-money-bill",
     "route": "contribute",
-    "isActive": false,
+    "isActive": true,
     "roles": ["super_admin","admin", "user"]
   },
   {
     "label": "Botão do Pânico",
     "icon": "pi-exclamation-circle",
     "route": "panic",
-    "isActive": false,
+    "isActive": true,
     "roles": ["super_admin","admin"]
   }
 ]

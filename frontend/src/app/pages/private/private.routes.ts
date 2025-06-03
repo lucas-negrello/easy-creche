@@ -70,7 +70,6 @@ export const Private: Routes = [
       },
       {
         path: 'contribute',
-        canActivate: [UserGuard],
         title: 'Contribua!',
         loadComponent: () => import('./contribute/contribute.component')
           .then(c => c.ContributeComponent),
