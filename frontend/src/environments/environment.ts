@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   currentEnvironment: 'production',
-  baseUrl: 'http://my-prod-url',
-  apiUrl: 'http://api-prod-url',
+  baseUrl: 'http://35.198.24.52:8080',
+  apiUrl: 'http://35.198.24.52:8080',
   pixKey: '+5554999314787'
 };
