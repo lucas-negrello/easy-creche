@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   currentEnvironment: 'production',
-  baseUrl: 'http://35.198.24.52:8080',
-  apiUrl: 'http://35.198.24.52:8080/api',
+  baseUrl: 'http://easycreche-api.lsnegrello.com.br',
+  apiUrl: 'http://easycreche-api.lsnegrello.com.br/api',
   pixKey: '+5554999314787'
 };
