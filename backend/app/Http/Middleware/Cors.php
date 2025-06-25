@@ -22,6 +22,8 @@ class Cors
         }
 
         $response->headers->set('Access-Control-Allow-Origin', 'http://35.198.24.52');
+        $response->headers->set('Access-Control-Allow-Origin', 'http://easycreche.lsnegrello.com.br');
+        $response->headers->set('Access-Control-Allow-Origin', 'https://easycreche.lsnegrello.com.br');
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
         // Se precisar, habilite credenciais:
